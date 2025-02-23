@@ -10,6 +10,8 @@ builder.Services.AddInfrastructureServices(builder.Configuration);
 
 var app = builder.Build();
 
+app.Services.ExecuteDatabaseSeed();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
