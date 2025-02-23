@@ -4,6 +4,8 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DocumentationFile>TrackIt.API.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,17 +14,25 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Serilog" Version="4.2.1-dev-02340" />
+        <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="6.0.1-dev-00953" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Controllers\" />
-      <Folder Include="Extensions\" />
       <Folder Include="Middleware\" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\TrackIt.Infrastructure\TrackIt.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="TrackIt.Infrastructure">
+        <HintPath>..\TrackIt.Infrastructure\bin\Debug\net8.0\TrackIt.Infrastructure.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>
