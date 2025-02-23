@@ -6,4 +6,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="API.Tests\" />
+      <Folder Include="Application.Tests\" />
+      <Folder Include="Infrastructure.Tests\" />
+    </ItemGroup>
+
 </Project>
