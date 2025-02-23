@@ -5,5 +5,13 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\TrackIt.Domain\TrackIt.Domain.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Configurations\" />
+      <Folder Include="Repositories\" />
+      <Folder Include="Services\" />
+    </ItemGroup>
 
 </Project>
