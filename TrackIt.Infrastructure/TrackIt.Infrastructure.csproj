@@ -6,12 +6,12 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.6.0" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.0" />
+        <ProjectReference Include="..\TrackIt.Application\TrackIt.Application.csproj" />
         <ProjectReference Include="..\TrackIt.Domain\TrackIt.Domain.csproj" />
         <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.2" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Repositories\" />
     </ItemGroup>
 
 </Project>

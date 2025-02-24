@@ -37,6 +37,11 @@ public class ApplicationDbContext : DbContext
     ///     Таблица пользователей телеграмм
     /// </summary>
     public DbSet<TelegramUserEntity> TelegramUsers { get; set; }
+    
+    /// <summary>
+    ///     Таблица рефреш-токенов
+    /// </summary>
+    public DbSet<RefreshTokenEntity> RefreshTokens { get; set; }
 
     /// <inheritdoc cref="ApplicationDbContext" />
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -54,5 +59,6 @@ public class ApplicationDbContext : DbContext
         PlannedPaymentEntity.Configure(modelBuilder.Entity<PlannedPaymentEntity>());
         BudgetEntity.Configure(modelBuilder.Entity<BudgetEntity>());
         TelegramUserEntity.Configure(modelBuilder.Entity<TelegramUserEntity>());
+        RefreshTokenEntity.Configure(modelBuilder.Entity<RefreshTokenEntity>());
     }
 }

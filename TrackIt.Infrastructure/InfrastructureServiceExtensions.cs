@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TrackIt.Application.Interfaces;
 using TrackIt.Infrastructure.Configurations;
 using TrackIt.Infrastructure.Persistence;
+using TrackIt.Infrastructure.Repositories;
 using TrackIt.Infrastructure.Services;
 
 namespace TrackIt.Infrastructure;
@@ -29,6 +31,7 @@ public static class InfrastructureServiceExtensions
             options.UseNpgsql(connectionString));
         
         services.AddTransient<DatabaseSeeder>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         return services;
     }

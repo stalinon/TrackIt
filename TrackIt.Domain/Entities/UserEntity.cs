@@ -36,6 +36,11 @@ public class UserEntity : IBaseEntity
     public string PasswordHash { get; set; } = default!;
     
     /// <summary>
+    ///     Рефреш-токены
+    /// </summary>
+    public ICollection<RefreshTokenEntity> RefreshTokens { get; set; } = default!;
+    
+    /// <summary>
     ///     Категории
     /// </summary>
     public ICollection<CategoryEntity> Categories { get; set; } = default!;
@@ -100,6 +105,11 @@ public class UserEntity : IBaseEntity
         builder.HasOne(u => u.TelegramUser)
             .WithOne(t => t.User)
             .HasForeignKey<TelegramUserEntity>(t => t.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(u => u.RefreshTokens)
+            .WithOne(t => t.User)
+            .HasForeignKey(t => t.UserId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }
