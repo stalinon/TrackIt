@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: trackit-db
+    restart: always
+    environment:
+      POSTGRES_DB: trackit
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+    ports:
+      - "5433:5432"  # Внешний 5433 → Внутренний 5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - trackit-network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.1.2
+    container_name: trackit-keycloak
+    command: start-dev --proxy=edge
+    restart: always
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgres
+      KC_DB_URL_DATABASE: trackit
+      KC_DB_USERNAME: postgres
+      KC_DB_PASSWORD: secret
+      KC_HOSTNAME: localhost
+    ports:
+      - "8180:8080"  # Внешний 8180 → Внутренний 8080
+    depends_on:
+      - postgres
+    networks:
+      - trackit-network
+
+volumes:
+  postgres_data:
+
+networks:
+  trackit-network:
+    driver: bridge
