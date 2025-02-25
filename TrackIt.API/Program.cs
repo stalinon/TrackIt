@@ -1,4 +1,5 @@
 using TrackIt.API.Extensions;
+using TrackIt.API.Middleware;
 using TrackIt.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +12,7 @@ builder.Services.AddKeycloakAuthentication(builder.Configuration);
 builder.Services.AddKeycloakAuthorization();
 
 var app = builder.Build();
-
+app.UseMiddleware<UserContextMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();
 

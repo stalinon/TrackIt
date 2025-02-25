@@ -6,12 +6,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
+        <ProjectReference Include="..\TrackIt.Application\TrackIt.Application.csproj" />
         <ProjectReference Include="..\TrackIt.Domain\TrackIt.Domain.csproj" />
         <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.2" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Repositories\" />
     </ItemGroup>
 
 </Project>

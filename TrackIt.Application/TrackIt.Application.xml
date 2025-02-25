@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TrackIt.Application</name>
+    </assembly>
+    <members>
+        <member name="T:TrackIt.Application.AuthPolicies">
+            <summary>
+                Политики авторизации
+            </summary>
+        </member>
+        <member name="F:TrackIt.Application.AuthPolicies.AdminPolicy">
+            <summary>
+                Политика администратора
+            </summary>
+        </member>
+        <member name="F:TrackIt.Application.AuthPolicies.UserPolicy">
+            <summary>
+                Политика пользователя
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.AuthPolicies.AddAuthorization(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Добавляет поддержку авторизации в приложение
+            </summary>
+        </member>
+    </members>
+</doc>

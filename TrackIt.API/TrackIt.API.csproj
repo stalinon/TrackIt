@@ -24,11 +24,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
-      <Folder Include="Middleware\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\TrackIt.Application\TrackIt.Application.csproj" />
       <ProjectReference Include="..\TrackIt.Infrastructure\TrackIt.Infrastructure.csproj" />
     </ItemGroup>
