@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using TrackIt.Application;
 
 namespace TrackIt.API.Extensions;
 
 /// <summary>
-///     Настройки интеграции с внешним сервисом авторизации Keycloak.
+///     Настройки Keycloak
 /// </summary>
 public static class KeycloakExtensions
 {
@@ -32,7 +33,8 @@ public static class KeycloakExtensions
                     ValidAudience = audience,
                     ValidateIssuer = true,
                     ValidIssuer = authority,
-                    ValidateLifetime = true
+                    ValidateLifetime = true,
+                    RoleClaimType = "roles"
                 };
             });
 
@@ -44,14 +46,7 @@ public static class KeycloakExtensions
     /// </summary>
     public static IServiceCollection AddKeycloakAuthorization(this IServiceCollection services)
     {
-        services.AddAuthorization(options =>
-        {
-            options.AddPolicy("AdminPolicy", policy =>
-                policy.RequireRole("admin"));
-
-            options.AddPolicy("UserPolicy", policy =>
-                policy.RequireRole("user"));
-        });
+        AuthPolicies.AddAuthorization(services);
 
         return services;
     }

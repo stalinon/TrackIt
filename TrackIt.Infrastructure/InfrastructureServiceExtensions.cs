@@ -38,10 +38,29 @@ public static class InfrastructureServiceExtensions
     /// </summary>
     public static void ExecuteDatabaseSeed(this IServiceProvider serviceProvider)
     {
+        serviceProvider.ApplyMigrations<ApplicationDbContext>();
+        
         // Запуск DatabaseSeeder при старте приложения
         using var scope = serviceProvider.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
         var seeder = scope.ServiceProvider.GetRequiredService<DatabaseSeeder>();
         seeder.Seed(context);
+    }
+    
+    private static void ApplyMigrations<T>(this IServiceProvider serviceProvider) where T : DbContext
+    {
+        try
+        {
+            using var scope = serviceProvider.CreateScope();
+            using var db = scope.ServiceProvider.GetRequiredService<T>();
+
+            db.Database.SetCommandTimeout(TimeSpan.FromDays(2));
+            db.Database.Migrate();
+            db.Database.SetCommandTimeout(null);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error applying database migrations", ex);
+        }
     }
 }
