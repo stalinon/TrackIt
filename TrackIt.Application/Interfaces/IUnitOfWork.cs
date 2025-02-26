@@ -23,6 +23,11 @@ public interface IUnitOfWork : IDisposable
     ICategoryRepository Categories { get; }
     
     /// <summary>
+    ///     Запланированные платежи
+    /// </summary>
+    IPlannedPaymentRepository PlannedPayments { get; }
+    
+    /// <summary>
     ///     Сохранить изменения
     /// </summary>
     Task<int> SaveChangesAsync();
