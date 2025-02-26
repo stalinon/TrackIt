@@ -1,6 +1,6 @@
-using TrackIt.Domain.Interfaces.Repositories;
+using TrackIt.Application.Interfaces.Repositories;
 
-namespace TrackIt.Domain.Interfaces;
+namespace TrackIt.Application.Interfaces;
 
 /// <summary>
 ///     Паттерн UnitOfWork
@@ -11,6 +11,11 @@ public interface IUnitOfWork : IDisposable
     ///     Пользователи
     /// </summary>
     IUserRepository Users { get; }
+    
+    /// <summary>
+    ///     Транзакции
+    /// </summary>
+    ITransactionRepository Transactions { get; }
     
     /// <summary>
     ///     Сохранить изменения

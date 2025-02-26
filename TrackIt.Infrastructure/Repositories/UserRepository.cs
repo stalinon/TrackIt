@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using TrackIt.Application.Interfaces.Repositories;
 using TrackIt.Domain.Entities;
-using TrackIt.Domain.Interfaces.Repositories;
 using TrackIt.Infrastructure.Persistence;
 
 namespace TrackIt.Infrastructure.Repositories;

@@ -4,6 +4,39 @@
         <name>TrackIt.API</name>
     </assembly>
     <members>
+        <member name="T:TrackIt.API.Controllers.TransactionController">
+            <summary>
+                Контроллер транзакций
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.TransactionController.#ctor(MediatR.IMediator,TrackIt.Application.Interfaces.IUserContext)">
+            <inheritdoc cref="T:TrackIt.API.Controllers.TransactionController" />
+        </member>
+        <member name="M:TrackIt.API.Controllers.TransactionController.Create(TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand)">
+            <summary>
+                Создание транзакции
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.TransactionController.Update(System.Guid,TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand)">
+            <summary>
+                Обновление транзакции
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.TransactionController.Delete(System.Guid)">
+            <summary>
+                Удаление транзакции
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.TransactionController.GetAll(System.Int32,System.Int32)">
+            <summary>
+                Получение всех транзакций
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.TransactionController.GetById(System.Guid)">
+            <summary>
+                Получение транзакции по ID
+            </summary>
+        </member>
         <member name="T:TrackIt.API.Controllers.UserController">
             <summary>
                 Контроллер пользователей
@@ -15,11 +48,6 @@
         <member name="M:TrackIt.API.Controllers.UserController.GetUserProfile">
             <summary>
                 Получить профиль текущего пользователя
-            </summary>
-        </member>
-        <member name="M:TrackIt.API.Controllers.UserController.GetPaginatedUsers(System.Int32,System.Int32)">
-            <summary>
-                Получить пагинированных пользователей
             </summary>
         </member>
         <member name="T:TrackIt.API.Extensions.KeycloakExtensions">

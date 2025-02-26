@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using TrackIt.Domain.Interfaces.Repositories;
+using TrackIt.Application.Interfaces.Repositories;
 using TrackIt.Infrastructure.Persistence;
 
 namespace TrackIt.Infrastructure.Repositories;

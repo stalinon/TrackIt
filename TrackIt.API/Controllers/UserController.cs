@@ -8,7 +8,7 @@ namespace TrackIt.API.Controllers;
 /// <summary>
 ///     Контроллер пользователей
 /// </summary>
-[Route("api/user")]
+[Route("api/users")]
 [ApiController]
 [Authorize]
 public class UserController : ControllerBase
@@ -41,15 +41,5 @@ public class UserController : ControllerBase
 
         var user = await _userService.GetUserByEmailAsync(userEmail);
         return user == null ? NotFound("User not found") : Ok(user);
-    }
-
-    /// <summary>
-    ///     Получить пагинированных пользователей
-    /// </summary>
-    [HttpGet("paginated")]
-    public async Task<IActionResult> GetPaginatedUsers([FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 10)
-    {
-        var users = await _userService.GetPaginatedUsersAsync(pageIndex, pageSize);
-        return Ok(users);
     }
 }

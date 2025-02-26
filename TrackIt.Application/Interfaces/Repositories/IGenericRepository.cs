@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 
-namespace TrackIt.Domain.Interfaces.Repositories;
+namespace TrackIt.Application.Interfaces.Repositories;
 
 /// <summary>
 ///     Репозиторий

@@ -1,7 +1,6 @@
 using TrackIt.Application.DTOs;
 using TrackIt.Application.Interfaces;
 using TrackIt.Domain.Entities;
-using TrackIt.Domain.Interfaces;
 
 namespace TrackIt.Infrastructure.Services;
 
