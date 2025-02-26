@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TrackIt.Application.DTOs.Transactions;
 using TrackIt.Application.Interfaces;
 using TrackIt.Infrastructure.Configurations;
 using TrackIt.Infrastructure.Persistence;
@@ -34,6 +33,7 @@ public static class InfrastructureServiceExtensions
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<ITransactionService, TransactionService>();
+        services.AddScoped<ICategoryService, CategoryService>();
         
         services.AddHttpContextAccessor();
         services.AddScoped<IUserContext, UserContext>();

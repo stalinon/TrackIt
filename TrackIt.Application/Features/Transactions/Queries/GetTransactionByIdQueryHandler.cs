@@ -7,19 +7,11 @@ namespace TrackIt.Application.Features.Transactions.Queries;
 /// <summary>
 ///     Обработчик запроса <see cref="GetTransactionByIdQuery"/>.
 /// </summary>
-public class GetTransactionByIdQueryHandler : IRequestHandler<GetTransactionByIdQuery, TransactionDto?>
+internal sealed class GetTransactionByIdQueryHandler(ITransactionService service) : IRequestHandler<GetTransactionByIdQuery, DetailedTransactionDto?>
 {
-    private readonly ITransactionService _service;
-
-    /// <inheritdoc cref="GetTransactionByIdQueryHandler" />
-    public GetTransactionByIdQueryHandler(ITransactionService service)
-    {
-        _service = service;
-    }
-
     /// <inheritdoc />
-    public async Task<TransactionDto?> Handle(GetTransactionByIdQuery request, CancellationToken cancellationToken)
+    public async Task<DetailedTransactionDto?> Handle(GetTransactionByIdQuery request, CancellationToken cancellationToken)
     {
-        return await _service.GetByIdAsync(request, cancellationToken);
+        return await service.GetByIdAsync(request, cancellationToken);
     }
 }

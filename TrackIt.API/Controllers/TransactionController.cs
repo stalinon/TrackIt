@@ -13,7 +13,6 @@ namespace TrackIt.API.Controllers;
 [ApiController]
 public class TransactionController(IMediator mediator) : ControllerBase
 {
-
     /// <summary>
     ///     Создание транзакции
     /// </summary>

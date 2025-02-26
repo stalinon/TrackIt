@@ -85,7 +85,7 @@ internal sealed class TransactionService(IUnitOfWork unitOfWork, IUserContext us
     }
 
     /// <inheritdoc />
-    public async Task<TransactionDto?> GetByIdAsync(GetTransactionByIdQuery query, CancellationToken cancellationToken)
+    public async Task<DetailedTransactionDto?> GetByIdAsync(GetTransactionByIdQuery query, CancellationToken cancellationToken)
     {
         var transaction = await unitOfWork.Transactions.GetByIdAsync(query.TransactionId);
 
@@ -94,31 +94,34 @@ internal sealed class TransactionService(IUnitOfWork unitOfWork, IUserContext us
             return null;
         }
 
-        return new TransactionDto
-        {
-            Id = transaction.Id,
-            UserId = transaction.UserId,
-            Amount = transaction.Amount,
-            Date = transaction.Date
-        };
-    }
-
-    /// <inheritdoc />
-    public async Task<IEnumerable<DetailedTransactionDto>> ListAsync(GetTransactionsQuery query, CancellationToken cancellationToken)
-    {
-        var transactions = await unitOfWork.Transactions.GetPaginatedAsync(
-            pageIndex: query.PageIndex,
-            pageSize: query.Limit,
-            filter: e => e.UserId == userContext.UserId,
-            orderBy: e => e.Date);
-
-        return transactions.Select(transaction => new DetailedTransactionDto
+        return new DetailedTransactionDto
         {
             Id = transaction.Id,
             UserId = transaction.UserId,
             Amount = transaction.Amount,
             Date = transaction.Date,
-            Description = transaction.Description
+            Description = transaction.Description,
+            CategoryId = transaction.CategoryId,
+            CreatedAt = transaction.CreatedAt,
+            UpdatedAt = transaction.UpdatedAt
+        };
+    }
+
+    /// <inheritdoc />
+    public async Task<IEnumerable<TransactionDto>> ListAsync(GetTransactionsQuery query, CancellationToken cancellationToken)
+    {
+        var transactions = await unitOfWork.Transactions.GetPaginatedAsync(
+            pageIndex: query.PageIndex,
+            pageSize: query.Limit,
+            filter: e => e.UserId == userContext.UserId && (query.CategoryId == null || query.CategoryId == e.CategoryId),
+            orderBy: e => e.Date);
+
+        return transactions.Select(transaction => new TransactionDto
+        {
+            Id = transaction.Id,
+            UserId = transaction.UserId,
+            Amount = transaction.Amount,
+            Date = transaction.Date
         }).ToList();
     }
 }

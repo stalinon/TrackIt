@@ -27,11 +27,11 @@ public interface ITransactionService
     /// <summary>
     ///     Получить транзакцию
     /// </summary>
-    Task<TransactionDto?> GetByIdAsync(GetTransactionByIdQuery query, CancellationToken cancellationToken);
+    Task<DetailedTransactionDto?> GetByIdAsync(GetTransactionByIdQuery query, CancellationToken cancellationToken);
 
     /// <summary>
     ///     Получить список транзакций
     /// </summary>
-    Task<IEnumerable<DetailedTransactionDto>>
+    Task<IEnumerable<TransactionDto>>
         ListAsync(GetTransactionsQuery query, CancellationToken cancellationToken);
 }
