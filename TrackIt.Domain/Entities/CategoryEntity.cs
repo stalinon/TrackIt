@@ -83,5 +83,9 @@ public class CategoryEntity : IBaseEntity
             .WithMany(u => u.Categories)
             .HasForeignKey(c => c.UserId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasIndex(c => new {c.UserId, c.Name, c.Type})
+            .IsUnique()
+            .HasDatabaseName("IX_categories_unique");
     }
 }

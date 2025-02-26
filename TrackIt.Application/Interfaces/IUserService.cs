@@ -12,14 +12,4 @@ public interface IUserService
     ///     Получить пользователя по его почте
     /// </summary>
     Task<UserDto?> GetUserByEmailAsync(string email);
-    
-    /// <summary>
-    ///     Создать нового пользователя
-    /// </summary>
-    Task<UserDto> CreateUserAsync(string email);
-    
-    /// <summary>
-    ///     Получить пагинированный список пользователей
-    /// </summary>
-    Task<IEnumerable<UserDto>> GetPaginatedUsersAsync(int pageIndex, int pageSize);
 }

@@ -14,11 +14,6 @@ public class UpdateTransactionCommand : IRequest<TransactionDto>
     public Guid TransactionId { get; set; }
 
     /// <summary>
-    ///     Уникальный идентификатор пользователя.
-    /// </summary>
-    public Guid UserId { get; set; }
-
-    /// <summary>
     ///     Уникальный идентификатор категории.
     /// </summary>
     public Guid CategoryId { get; set; }

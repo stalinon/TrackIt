@@ -6,7 +6,7 @@ using TrackIt.Infrastructure.Persistence;
 namespace TrackIt.Infrastructure.Repositories;
 
 /// <inheritdoc cref="IUserRepository" />
-public class UserRepository : GenericRepository<UserEntity>, IUserRepository
+internal sealed class UserRepository : GenericRepository<UserEntity>, IUserRepository
 {
     /// <inheritdoc cref="UserRepository" />
     public UserRepository(ApplicationDbContext context) : base(context) { }

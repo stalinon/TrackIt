@@ -10,7 +10,7 @@ namespace TrackIt.Application.Features.Transactions.Queries;
 public class GetTransactionsQuery : PagedQuery, IRequest<IEnumerable<TransactionDto>>
 {
     /// <summary>
-    ///     Уникальный идентификатор пользователя.
+    ///     Идентификатор категории
     /// </summary>
-    public Guid UserId { get; set; }
+    public Guid? CategoryId { get; set; } = null;
 }

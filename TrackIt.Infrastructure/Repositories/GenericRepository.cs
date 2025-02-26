@@ -6,7 +6,7 @@ using TrackIt.Infrastructure.Persistence;
 namespace TrackIt.Infrastructure.Repositories;
 
 /// <inheritdoc cref="IGenericRepository{T}" />
-public class GenericRepository<T> : IGenericRepository<T> where T : class
+internal class GenericRepository<T> : IGenericRepository<T> where T : class
 {
     protected readonly ApplicationDbContext Context;
     protected readonly DbSet<T> DbSet;

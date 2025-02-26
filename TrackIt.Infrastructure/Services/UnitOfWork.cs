@@ -15,6 +15,9 @@ public class UnitOfWork : IUnitOfWork
     
     /// <inheritdoc />
     public ITransactionRepository Transactions { get; }
+    
+    /// <inheritdoc />
+    public ICategoryRepository Categories { get; }
 
     /// <inheritdoc cref="UnitOfWork" />
     public UnitOfWork(ApplicationDbContext context)
@@ -22,6 +25,7 @@ public class UnitOfWork : IUnitOfWork
         _context = context;
         Transactions = new TransactionRepository(_context);
         Users = new UserRepository(_context);
+        Categories = new CategoryRepository(_context);
     }
 
     /// <inheritdoc />

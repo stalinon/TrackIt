@@ -9,11 +9,6 @@ namespace TrackIt.Application.Features.Transactions.Commands;
 public class CreateTransactionCommand : IRequest<TransactionDto>
 {
     /// <summary>
-    ///     Уникальный идентификатор пользователя.
-    /// </summary>
-    public Guid UserId { get; set; }
-
-    /// <summary>
     ///     Идентификатор категории.
     /// </summary>
     public Guid CategoryId { get; set; }

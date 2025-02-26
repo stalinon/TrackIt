@@ -8,7 +8,7 @@ namespace TrackIt.Infrastructure.Repositories;
 /// <summary>
 ///     Реализация репозитория для работы с транзакциями.
 /// </summary>
-public class TransactionRepository : GenericRepository<TransactionEntity>, ITransactionRepository
+internal sealed class TransactionRepository : GenericRepository<TransactionEntity>, ITransactionRepository
 {
     private readonly ApplicationDbContext _context;
 
