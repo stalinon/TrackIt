@@ -20,35 +20,6 @@ public class UserService : IUserService
     {
         return MapToUserDto(await _unitOfWork.Users.GetByEmailAsync(email));
     }
-
-    /// <inheritdoc />
-    public async Task<UserDto> CreateUserAsync(string email)
-    {
-        var existingUser = await _unitOfWork.Users.GetByEmailAsync(email);
-        if (existingUser != null)
-        {
-            throw new Exception("User already exists");
-        }
-
-        var newUser = new UserEntity
-        {
-            Id = Guid.NewGuid(),
-            Email = email,
-            CreatedAt = DateTime.UtcNow,
-            UpdatedAt = DateTime.UtcNow
-        };
-
-        await _unitOfWork.Users.AddAsync(newUser);
-        await _unitOfWork.SaveChangesAsync();
-
-        return MapToUserDto(newUser)!;
-    }
-
-    /// <inheritdoc />
-    public async Task<IEnumerable<UserDto>> GetPaginatedUsersAsync(int pageIndex, int pageSize)
-    {
-        return (await _unitOfWork.Users.GetPaginatedUsersAsync(pageIndex, pageSize)).Select(MapToUserDto).ToArray()!;
-    }
     
     private static UserDto? MapToUserDto(UserEntity? user)
     {

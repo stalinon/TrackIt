@@ -8,28 +8,17 @@ namespace TrackIt.Application.Features.Transactions.Commands;
 /// </summary>
 public class DeleteTransactionCommandHandler : IRequestHandler<DeleteTransactionCommand, bool>
 {
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly ITransactionService _service;
 
     /// <inheritdoc cref="DeleteTransactionCommandHandler" />
-    public DeleteTransactionCommandHandler(IUnitOfWork unitOfWork)
+    public DeleteTransactionCommandHandler(ITransactionService service)
     {
-        _unitOfWork = unitOfWork;
+        _service = service;
     }
 
     /// <inheritdoc />
     public async Task<bool> Handle(DeleteTransactionCommand request, CancellationToken cancellationToken)
     {
-        // Получаем транзакцию из БД
-        var transaction = await _unitOfWork.Transactions.GetByIdAsync(request.TransactionId);
-        
-        if (transaction == null || transaction.UserId != request.UserId)
-        {
-            throw new UnauthorizedAccessException("Транзакция не найдена или доступ запрещен.");
-        }
-
-        _unitOfWork.Transactions.Remove(transaction);
-        await _unitOfWork.SaveChangesAsync();
-
-        return true;
+        return await _service.DeleteAsync(request, cancellationToken);
     }
 }

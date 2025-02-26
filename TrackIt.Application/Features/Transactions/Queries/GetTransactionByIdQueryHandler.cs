@@ -9,30 +9,17 @@ namespace TrackIt.Application.Features.Transactions.Queries;
 /// </summary>
 public class GetTransactionByIdQueryHandler : IRequestHandler<GetTransactionByIdQuery, TransactionDto?>
 {
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly ITransactionService _service;
 
     /// <inheritdoc cref="GetTransactionByIdQueryHandler" />
-    public GetTransactionByIdQueryHandler(IUnitOfWork unitOfWork)
+    public GetTransactionByIdQueryHandler(ITransactionService service)
     {
-        _unitOfWork = unitOfWork;
+        _service = service;
     }
 
     /// <inheritdoc />
     public async Task<TransactionDto?> Handle(GetTransactionByIdQuery request, CancellationToken cancellationToken)
     {
-        var transaction = await _unitOfWork.Transactions.GetByIdAsync(request.TransactionId);
-
-        if (transaction == null || transaction.UserId != request.UserId)
-        {
-            return null;
-        }
-
-        return new TransactionDto
-        {
-            Id = transaction.Id,
-            UserId = transaction.UserId,
-            Amount = transaction.Amount,
-            Date = transaction.Date
-        };
+        return await _service.GetByIdAsync(request, cancellationToken);
     }
 }

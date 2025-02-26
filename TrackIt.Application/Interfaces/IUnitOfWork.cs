@@ -18,6 +18,11 @@ public interface IUnitOfWork : IDisposable
     ITransactionRepository Transactions { get; }
     
     /// <summary>
+    ///     Категории
+    /// </summary>
+    ICategoryRepository Categories { get; }
+    
+    /// <summary>
     ///     Сохранить изменения
     /// </summary>
     Task<int> SaveChangesAsync();
