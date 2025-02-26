@@ -28,12 +28,6 @@ public class UserEntity : IBaseEntity
     /// </summary>
     [Column("email")]
     public string Email { get; set; } = default!;
-
-    /// <summary>
-    ///     Хэш пароля
-    /// </summary>
-    [Column("password_hash")]
-    public string PasswordHash { get; set; } = default!;
     
     /// <summary>
     ///     Категории

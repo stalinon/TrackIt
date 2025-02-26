@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TrackIt.API</name>
+    </assembly>
+    <members>
+        <member name="T:TrackIt.API.Controllers.UserController">
+            <summary>
+                Контроллер пользователей
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.UserController.#ctor(TrackIt.Application.Interfaces.IUserService)">
+            <inheritdoc cref="T:TrackIt.API.Controllers.UserController"/>
+        </member>
+        <member name="M:TrackIt.API.Controllers.UserController.GetUserProfile">
+            <summary>
+                Получить профиль текущего пользователя
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.UserController.GetPaginatedUsers(System.Int32,System.Int32)">
+            <summary>
+                Получить пагинированных пользователей
+            </summary>
+        </member>
+        <member name="T:TrackIt.API.Extensions.KeycloakExtensions">
+            <summary>
+                Настройки Keycloak
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Extensions.KeycloakExtensions.AddKeycloakAuthentication(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+                Добавляет поддержку аутентификации через Keycloak
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Extensions.KeycloakExtensions.AddKeycloakAuthorization(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Добавляет поддержку авторизации в приложение
+            </summary>
+        </member>
+        <member name="T:TrackIt.API.Extensions.LoggingExtensions">
+            <summary>
+                Настройки логирования
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Extensions.LoggingExtensions.AddLogging(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+                Добавить логирование
+            </summary>
+        </member>
+        <member name="T:TrackIt.API.Extensions.SwaggerExtensions">
+            <summary>
+                Расширения настройки Swagger
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Extensions.SwaggerExtensions.ConfigureSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Настроить Swagger
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Extensions.SwaggerExtensions.ConfigureSwagger(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+                Настроить Swagger
+            </summary>
+        </member>
+        <member name="T:TrackIt.API.Middleware.UserContextMiddleware">
+            <summary>
+                Контекстная мидлварь
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Middleware.UserContextMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <inheritdoc cref="T:TrackIt.API.Middleware.UserContextMiddleware" />
+        </member>
+        <member name="M:TrackIt.API.Middleware.UserContextMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext,TrackIt.Application.Interfaces.IUserContext)">
+            <inheritdoc cref="T:TrackIt.API.Middleware.UserContextMiddleware" />
+        </member>
+    </members>
+</doc>
