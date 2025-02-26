@@ -25,7 +25,7 @@ public class DatabaseSeeder
     /// </summary>
     public void Seed(ApplicationDbContext context)
     {
-        // Добавляем пользователя, если его нет в базе
+        /*// Добавляем пользователя, если его нет в базе
         if (!context.Users.Any())
         {
             var password = _appSettings.Value.UserPassword;
@@ -79,6 +79,6 @@ public class DatabaseSeeder
 
             context.Transactions.AddRange(transactionList);
             context.SaveChanges();
-        }
+        }*/
     }
 }

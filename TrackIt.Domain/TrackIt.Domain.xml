@@ -1,0 +1,414 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TrackIt.Domain</name>
+    </assembly>
+    <members>
+        <member name="T:TrackIt.Domain.Common.IBaseEntity">
+            <summary>
+                Интерфейс базовой сущности
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Common.IBaseEntity.Id">
+            <summary>
+                Идентификатор
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Common.IBaseEntity.CreatedAt">
+            <summary>
+                Дата создания
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Common.IBaseEntity.UpdatedAt">
+            <summary>
+                Дата обновления
+            </summary>
+        </member>
+        <member name="T:TrackIt.Domain.Entities.BudgetEntity">
+            <summary>
+                Таблица лимитов бюджета
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.BudgetEntity.Id">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.BudgetEntity.CreatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.BudgetEntity.UpdatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.BudgetEntity.LimitAmount">
+            <summary>
+                Величина лимита
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.BudgetEntity.Period">
+            <summary>
+                Период
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.BudgetEntity.UserId">
+            <summary>
+                Идентификатор пользователя
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.BudgetEntity.User">
+            <summary>
+                Пользователь
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.BudgetEntity.CategoryId">
+            <summary>
+                Идентификатор категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.BudgetEntity.Category">
+            <summary>
+                Категория
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Entities.BudgetEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{TrackIt.Domain.Entities.BudgetEntity})">
+            <summary>
+                Настройка сущности
+            </summary>
+        </member>
+        <member name="T:TrackIt.Domain.Entities.CategoryEntity">
+            <summary>
+                Таблица категорий
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.CategoryEntity.Id">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.CategoryEntity.CreatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.CategoryEntity.UpdatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.CategoryEntity.Name">
+            <summary>
+                Название категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.CategoryEntity.Type">
+            <summary>
+                Тип категории
+            </summary>
+            <remarks>income / expense</remarks>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.CategoryEntity.UserId">
+            <summary>
+                Идентификатор пользователя
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.CategoryEntity.User">
+            <summary>
+                Пользователь
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.CategoryEntity.Transactions">
+            <summary>
+                Транзакции
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.CategoryEntity.Budgets">
+            <summary>
+                Бюджеты
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Entities.CategoryEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{TrackIt.Domain.Entities.CategoryEntity})">
+            <summary>
+                Настройка сущности
+            </summary>
+        </member>
+        <member name="T:TrackIt.Domain.Entities.PlannedPaymentEntity">
+            <summary>
+                Таблица запланированных плат
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.PlannedPaymentEntity.Id">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.PlannedPaymentEntity.CreatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.PlannedPaymentEntity.UpdatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.PlannedPaymentEntity.Amount">
+            <summary>
+                Количество
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.PlannedPaymentEntity.DueDate">
+            <summary>
+                Дата
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.PlannedPaymentEntity.Description">
+            <summary>
+                Описание
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.PlannedPaymentEntity.UserId">
+            <summary>
+                Идентификатор пользователя
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.PlannedPaymentEntity.User">
+            <summary>
+                Пользователь
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Entities.PlannedPaymentEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{TrackIt.Domain.Entities.PlannedPaymentEntity})">
+            <summary>
+                Настройка сущности
+            </summary>
+        </member>
+        <member name="T:TrackIt.Domain.Entities.TelegramUserEntity">
+            <summary>
+                Таблица пользователей телеграмм
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.TelegramUserEntity.Id">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.TelegramUserEntity.CreatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.TelegramUserEntity.UpdatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.TelegramUserEntity.TelegramId">
+            <summary>
+                Идентификатор пользователя в Телеграмм
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.TelegramUserEntity.UserId">
+            <summary>
+                Идентификатор пользователя
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.TelegramUserEntity.User">
+            <summary>
+                Пользователь
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Entities.TelegramUserEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{TrackIt.Domain.Entities.TelegramUserEntity})">
+            <summary>
+                Настройка сущности
+            </summary>
+        </member>
+        <member name="T:TrackIt.Domain.Entities.TransactionEntity">
+            <summary>
+                Таблица транзакций
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.TransactionEntity.Id">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.TransactionEntity.CreatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.TransactionEntity.UpdatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.TransactionEntity.Amount">
+            <summary>
+                Количество
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.TransactionEntity.Description">
+            <summary>
+                Описание
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.TransactionEntity.UserId">
+            <summary>
+                Идентификатор пользователя
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.TransactionEntity.User">
+            <summary>
+                Пользователь
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.TransactionEntity.CategoryId">
+            <summary>
+                Идентификатор категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.TransactionEntity.Category">
+            <summary>
+                Категория
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Entities.TransactionEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{TrackIt.Domain.Entities.TransactionEntity})">
+            <summary>
+                Настройка сущности
+            </summary>
+        </member>
+        <member name="T:TrackIt.Domain.Entities.UserEntity">
+            <summary>
+                Таблица пользователей
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.UserEntity.Id">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.UserEntity.CreatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.UserEntity.UpdatedAt">
+            <inheritdoc />
+        </member>
+        <member name="P:TrackIt.Domain.Entities.UserEntity.Email">
+            <summary>
+                Электронная почта пользователя
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.UserEntity.Categories">
+            <summary>
+                Категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.UserEntity.Transactions">
+            <summary>
+                Транзакции
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.UserEntity.PlannedPayments">
+            <summary>
+                Запланированные оплаты
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.UserEntity.Budgets">
+            <summary>
+                Бюджеты
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.UserEntity.TelegramUser">
+            <summary>
+                Телеграм
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Entities.UserEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{TrackIt.Domain.Entities.UserEntity})">
+            <summary>
+                Настройка сущности
+            </summary>
+        </member>
+        <member name="T:TrackIt.Domain.Enums.BudgetPeriod">
+            <summary>
+                Период лимиат бюджета
+            </summary>
+        </member>
+        <member name="F:TrackIt.Domain.Enums.BudgetPeriod.WEEK">
+            <summary>
+                Неделя
+            </summary>
+        </member>
+        <member name="F:TrackIt.Domain.Enums.BudgetPeriod.MONTH">
+            <summary>
+                Месяц
+            </summary>
+        </member>
+        <member name="T:TrackIt.Domain.Enums.CategoryType">
+            <summary>
+                Тип категории
+            </summary>
+        </member>
+        <member name="F:TrackIt.Domain.Enums.CategoryType.EXPENSE">
+            <summary>
+                Трата
+            </summary>
+        </member>
+        <member name="F:TrackIt.Domain.Enums.CategoryType.INCOME">
+            <summary>
+                Доход
+            </summary>
+        </member>
+        <member name="T:TrackIt.Domain.Interfaces.IUnitOfWork">
+            <summary>
+                Паттерн UnitOfWork
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Interfaces.IUnitOfWork.Users">
+            <summary>
+                Пользователи
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Interfaces.IUnitOfWork.SaveChangesAsync">
+            <summary>
+                Сохранить изменения
+            </summary>
+        </member>
+        <member name="T:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1">
+            <summary>
+                Репозиторий
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.GetByIdAsync(System.Guid)">
+            <summary>
+                Получить сущность по идентификатору
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.GetAllAsync">
+            <summary>
+                Получить все сущности
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+                Найти сущности
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.GetPaginatedAsync(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Boolean)">
+            <summary>
+                Получить пагинированный список сущностей (сортировки, фильтрации и прочее)
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.ExistsAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+                Существуют ли сущности
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+                Посчитать сущности
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.AddAsync(`0)">
+            <summary>
+                Добавить сущности
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.Update(`0)">
+            <summary>
+                Обновить сущность
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.Remove(`0)">
+            <summary>
+                Удалить сущность
+            </summary>
+        </member>
+        <member name="T:TrackIt.Domain.Interfaces.Repositories.IUserRepository">
+            <summary>
+                Репозиторий пользователей
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Interfaces.Repositories.IUserRepository.GetByEmailAsync(System.String)">
+            <summary>
+                Получить пользователя по почте
+            </summary>
+        </member>
+        <member name="M:TrackIt.Domain.Interfaces.Repositories.IUserRepository.GetPaginatedUsersAsync(System.Int32,System.Int32)">
+            <summary>
+                Получить пагинированный список пользователей
+            </summary>
+        </member>
+    </members>
+</doc>

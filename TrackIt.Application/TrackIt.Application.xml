@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TrackIt.Application</name>
+    </assembly>
+    <members>
+        <member name="T:TrackIt.Application.AuthPolicies">
+            <summary>
+                Политики авторизации
+            </summary>
+        </member>
+        <member name="F:TrackIt.Application.AuthPolicies.AdminPolicy">
+            <summary>
+                Политика администратора
+            </summary>
+        </member>
+        <member name="F:TrackIt.Application.AuthPolicies.UserPolicy">
+            <summary>
+                Политика пользователя
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.AuthPolicies.AddAuthorization(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+                Добавляет поддержку авторизации в приложение
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.DTOs.UserDto">
+            <summary>
+                Модель пользователя
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.UserDto.Id">
+            <summary>
+                Идентификатор
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.UserDto.Email">
+            <summary>
+                Электронная почта
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.UserDto.CreatedAt">
+            <summary>
+                Дата создания
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Interfaces.IUserContext">
+            <summary>
+                Контекст пользователей
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Interfaces.IUserContext.Email">
+            <summary>
+                Почта пользователя
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Interfaces.IUserContext.Roles">
+            <summary>
+                Роли пользователя
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IUserContext.GetOrCreateCurrentUserAsync">
+            <summary>
+                Создать пользователя, если его нет в БД
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Interfaces.IUserService">
+            <summary>
+                Сервис пользователей
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IUserService.GetUserByEmailAsync(System.String)">
+            <summary>
+                Получить пользователя по его почте
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IUserService.CreateUserAsync(System.String)">
+            <summary>
+                Создать нового пользователя
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IUserService.GetPaginatedUsersAsync(System.Int32,System.Int32)">
+            <summary>
+                Получить пагинированный список пользователей
+            </summary>
+        </member>
+    </members>
+</doc>
