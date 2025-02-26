@@ -1,5 +1,5 @@
-using TrackIt.Domain.Interfaces;
-using TrackIt.Domain.Interfaces.Repositories;
+using TrackIt.Application.Interfaces;
+using TrackIt.Application.Interfaces.Repositories;
 using TrackIt.Infrastructure.Persistence;
 using TrackIt.Infrastructure.Repositories;
 
@@ -12,11 +12,15 @@ public class UnitOfWork : IUnitOfWork
     
     /// <inheritdoc />
     public IUserRepository Users { get; }
+    
+    /// <inheritdoc />
+    public ITransactionRepository Transactions { get; }
 
     /// <inheritdoc cref="UnitOfWork" />
     public UnitOfWork(ApplicationDbContext context)
     {
         _context = context;
+        Transactions = new TransactionRepository(_context);
         Users = new UserRepository(_context);
     }
 

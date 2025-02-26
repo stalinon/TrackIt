@@ -4,6 +4,16 @@
         <name>TrackIt.Application</name>
     </assembly>
     <members>
+        <member name="T:TrackIt.Application.ApplicationServiceExtensions">
+            <summary>
+                Расширения <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.ApplicationServiceExtensions.AddApplicationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+                Добавить сервисы TrackIt.Application в DI
+            </summary>
+        </member>
         <member name="T:TrackIt.Application.AuthPolicies">
             <summary>
                 Политики авторизации
@@ -22,6 +32,31 @@
         <member name="M:TrackIt.Application.AuthPolicies.AddAuthorization(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
                 Добавляет поддержку авторизации в приложение
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.DTOs.Transactions.TransactionDto">
+            <summary>
+                Модель транзакции
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Transactions.TransactionDto.Id">
+            <summary>
+                Уникальный идентификатор транзакции.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Transactions.TransactionDto.UserId">
+            <summary>
+                Уникальный идентификатор пользователя.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Transactions.TransactionDto.Amount">
+            <summary>
+                Сумма транзакции.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Transactions.TransactionDto.Date">
+            <summary>
+                Дата транзакции.
             </summary>
         </member>
         <member name="T:TrackIt.Application.DTOs.UserDto">
@@ -44,9 +79,194 @@
                 Дата создания
             </summary>
         </member>
+        <member name="T:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand">
+            <summary>
+                Команда для создания новой транзакции.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand.UserId">
+            <summary>
+                Уникальный идентификатор пользователя.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand.CategoryId">
+            <summary>
+                Идентификатор категории.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand.Amount">
+            <summary>
+                Сумма транзакции.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand.Description">
+            <summary>
+                Описание транзакции.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand.Date">
+            <summary>
+                Дата транзакции.
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommandHandler">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand"/>.
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommandHandler.#ctor(TrackIt.Infrastructure.Interfaces.IUnitOfWork)">
+            <inheritdoc cref="T:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommandHandler" />
+        </member>
+        <member name="M:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommandHandler.Handle(TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommand">
+            <summary>
+                Команда для удаления транзакции.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommand.TransactionId">
+            <summary>
+                Уникальный идентификатор транзакции.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommand.UserId">
+            <summary>
+                Уникальный идентификатор пользователя.
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommandHandler">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommand"/>.
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommandHandler.#ctor(TrackIt.Infrastructure.Interfaces.IUnitOfWork)">
+            <inheritdoc cref="T:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommandHandler" />
+        </member>
+        <member name="M:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommandHandler.Handle(TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand">
+            <summary>
+                Команда для обновления транзакции.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand.TransactionId">
+            <summary>
+                Уникальный идентификатор транзакции.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand.UserId">
+            <summary>
+                Уникальный идентификатор пользователя.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand.CategoryId">
+            <summary>
+                Уникальный идентификатор категории.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand.Amount">
+            <summary>
+                Сумма транзакции.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand.Description">
+            <summary>
+                Описание транзакции.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand.Date">
+            <summary>
+                Дата транзакции.
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommandHandler">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand"/>.
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommandHandler.#ctor(TrackIt.Infrastructure.Interfaces.IUnitOfWork)">
+            <inheritdoc cref="T:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommandHandler" />
+        </member>
+        <member name="M:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommandHandler.Handle(TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQuery">
+            <summary>
+                Запрос на получение транзакции по ID.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQuery.TransactionId">
+            <summary>
+                Уникальный идентификатор транзакции.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQuery.UserId">
+            <summary>
+                Уникальный идентификатор пользователя.
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQueryHandler">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQuery"/>.
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQueryHandler.#ctor(TrackIt.Infrastructure.Interfaces.IUnitOfWork)">
+            <inheritdoc cref="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQueryHandler" />
+        </member>
+        <member name="M:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQueryHandler.Handle(TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQuery,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQuery">
+            <summary>
+                Запрос на получение всех транзакций пользователя.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQuery.UserId">
+            <summary>
+                Уникальный идентификатор пользователя.
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQueryHandler">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQuery"/>.
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQueryHandler.#ctor(TrackIt.Infrastructure.Interfaces.IUnitOfWork)">
+            <inheritdoc cref="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQueryHandler" />
+        </member>
+        <member name="M:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQueryHandler.Handle(TrackIt.Application.Features.Transactions.Queries.GetTransactionsQuery,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Transactions.Validators.CreateTransactionValidator">
+            <summary>
+                Валидатор команды <see cref="T:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand"/>.
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Transactions.Validators.CreateTransactionValidator.#ctor">
+            <summary>
+                Инициализирует новый экземпляр <see cref="T:TrackIt.Application.Features.Transactions.Validators.CreateTransactionValidator"/>.
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Transactions.Validators.UpdateTransactionValidator">
+            <summary>
+                Валидатор команды <see cref="T:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand"/>.
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Transactions.Validators.UpdateTransactionValidator.#ctor">
+            <summary>
+                Инициализирует новый экземпляр <see cref="T:TrackIt.Application.Features.Transactions.Validators.UpdateTransactionValidator"/>.
+            </summary>
+        </member>
         <member name="T:TrackIt.Application.Interfaces.IUserContext">
             <summary>
                 Контекст пользователей
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Interfaces.IUserContext.UserId">
+            <summary>
+                Идентификатор пользователя
             </summary>
         </member>
         <member name="P:TrackIt.Application.Interfaces.IUserContext.Email">

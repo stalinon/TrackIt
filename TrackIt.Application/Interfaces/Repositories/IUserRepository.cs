@@ -1,6 +1,6 @@
 using TrackIt.Domain.Entities;
 
-namespace TrackIt.Domain.Interfaces.Repositories;
+namespace TrackIt.Application.Interfaces.Repositories;
 
 /// <summary>
 ///     Репозиторий пользователей

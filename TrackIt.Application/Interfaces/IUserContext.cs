@@ -9,6 +9,11 @@ namespace TrackIt.Application.Interfaces;
 public interface IUserContext
 {
     /// <summary>
+    ///     Идентификатор пользователя
+    /// </summary>
+    Guid UserId { get; }
+    
+    /// <summary>
     ///     Почта пользователя
     /// </summary>
     string? Email { get; }

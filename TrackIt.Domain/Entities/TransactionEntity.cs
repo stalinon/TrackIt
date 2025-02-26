@@ -33,7 +33,13 @@ public class TransactionEntity : IBaseEntity
     ///     Описание
     /// </summary>
     [Column("description")]
-    public string Description { get; set; } = default!;
+    public string? Description { get; set; }
+    
+    /// <summary>
+    ///     Дата транзакции
+    /// </summary>
+    [Column("date")]
+    public DateTime Date { get; set; }
     
     /// <summary>
     ///     Идентификатор пользователя

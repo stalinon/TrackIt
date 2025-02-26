@@ -24,6 +24,21 @@
                 Дата обновления
             </summary>
         </member>
+        <member name="T:TrackIt.Domain.Common.PagedQuery">
+            <summary>
+                Базовый пагинированный запрос
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Common.PagedQuery.PageIndex">
+            <summary>
+                Номер страницы
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Common.PagedQuery.Limit">
+            <summary>
+                Предел
+            </summary>
+        </member>
         <member name="T:TrackIt.Domain.Entities.BudgetEntity">
             <summary>
                 Таблица лимитов бюджета
@@ -225,6 +240,11 @@
                 Описание
             </summary>
         </member>
+        <member name="P:TrackIt.Domain.Entities.TransactionEntity.Date">
+            <summary>
+                Дата транзакции
+            </summary>
+        </member>
         <member name="P:TrackIt.Domain.Entities.TransactionEntity.UserId">
             <summary>
                 Идентификатор пользователя
@@ -329,21 +349,6 @@
                 Доход
             </summary>
         </member>
-        <member name="T:TrackIt.Domain.Interfaces.IUnitOfWork">
-            <summary>
-                Паттерн UnitOfWork
-            </summary>
-        </member>
-        <member name="P:TrackIt.Domain.Interfaces.IUnitOfWork.Users">
-            <summary>
-                Пользователи
-            </summary>
-        </member>
-        <member name="M:TrackIt.Domain.Interfaces.IUnitOfWork.SaveChangesAsync">
-            <summary>
-                Сохранить изменения
-            </summary>
-        </member>
         <member name="T:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1">
             <summary>
                 Репозиторий
@@ -395,6 +400,11 @@
                 Удалить сущность
             </summary>
         </member>
+        <member name="T:TrackIt.Domain.Interfaces.Repositories.ITransactionRepository">
+            <summary>
+                Интерфейс репозитория для работы с транзакциями.
+            </summary>
+        </member>
         <member name="T:TrackIt.Domain.Interfaces.Repositories.IUserRepository">
             <summary>
                 Репозиторий пользователей
@@ -408,6 +418,26 @@
         <member name="M:TrackIt.Domain.Interfaces.Repositories.IUserRepository.GetPaginatedUsersAsync(System.Int32,System.Int32)">
             <summary>
                 Получить пагинированный список пользователей
+            </summary>
+        </member>
+        <member name="T:TrackIt.Infrastructure.Interfaces.IUnitOfWork">
+            <summary>
+                Паттерн UnitOfWork
+            </summary>
+        </member>
+        <member name="P:TrackIt.Infrastructure.Interfaces.IUnitOfWork.Users">
+            <summary>
+                Пользователи
+            </summary>
+        </member>
+        <member name="P:TrackIt.Infrastructure.Interfaces.IUnitOfWork.Transactions">
+            <summary>
+                Транзакции
+            </summary>
+        </member>
+        <member name="M:TrackIt.Infrastructure.Interfaces.IUnitOfWork.SaveChangesAsync">
+            <summary>
+                Сохранить изменения
             </summary>
         </member>
     </members>

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 using TrackIt.Application.DTOs;
 using TrackIt.Application.Interfaces;
 using TrackIt.Domain.Entities;
-using TrackIt.Domain.Interfaces;
 
 namespace TrackIt.Infrastructure.Services;
 
@@ -19,6 +18,9 @@ public class UserContext : IUserContext
         _httpContextAccessor = httpContextAccessor;
         _unitOfWork = unitOfWork;
     }
+
+    /// <inheritdoc />
+    public Guid UserId { get; private set; }
 
     /// <inheritdoc />
     public string? Email => _httpContextAccessor.HttpContext?.User.Claims
@@ -43,6 +45,7 @@ public class UserContext : IUserContext
 
         if (user != null)
         {
+            UserId = user.Id;
             return MapToUserDto(user);
         }
 
@@ -57,6 +60,7 @@ public class UserContext : IUserContext
         await _unitOfWork.Users.AddAsync(user);
         await _unitOfWork.SaveChangesAsync();
 
+        UserId = user.Id;
         return MapToUserDto(user);
     }
     
