@@ -5,7 +5,7 @@ using TrackIt.Domain.Common;
 namespace TrackIt.Application.Features.Budgets.Queries;
 
 /// <summary>
-///     Запрос на получение категорий.
+///     Запрос на получение лимита.
 /// </summary>
 public class GetBudgetQuery : PagedQuery, IRequest<IEnumerable<BudgetDto>>
 {
