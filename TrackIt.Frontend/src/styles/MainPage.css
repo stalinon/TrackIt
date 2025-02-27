@@ -1,0 +1,198 @@
+.main_page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+.main_page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 1%;
+  opacity: 0;
+  animation: fadeInHeader 1s forwards; /* Анимация появления шапки */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень для шапки */
+}
+
+@keyframes fadeInHeader {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.main_page__header__buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.main_page__header__button {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-color: #edaa4c;
+  color: #fff;
+  cursor: pointer;
+}
+
+.main_page__header > img {
+  width: 90px;
+  height: 90px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.main_page__body {
+  background-color: #f0f0f0;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  animation: fadeInBody 1s 0.5s forwards;
+}
+
+@keyframes fadeInBody {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.main_page__body__text {
+  margin: 5%;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.5;
+  opacity: 0;
+  animation: slideInText 1s 0.8s forwards;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideInText {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.main_page__body__photo {
+  background-image: url("../main_page_img.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 60%;
+  height: 100%;
+  opacity: 0;
+  animation: fadeInImage 1s 1s forwards;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeInImage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Адаптивность для мобильных устройств и планшетов */
+@media (max-width: 1024px) {
+  .main_page__header {
+    padding: 2%;
+  }
+
+  .main_page__header__buttons {
+    gap: 15px;
+  }
+
+  .main_page__body {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main_page__body__text {
+    font-size: 20px;
+    text-align: center;
+    margin: 10%;
+  }
+
+  .main_page__body__photo {
+    width: 100%;
+    height: 50%;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main_page__header {
+    padding: 3%;
+  }
+
+  .main_page__header > img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .main_page__header__button {
+    padding: 12px 25px;
+    font-size: 16px;
+  }
+
+  .main_page__body__text {
+    font-size: 18px;
+    text-align: center;
+    margin: 10%;
+  }
+
+  .main_page__body__photo {
+    width: 100%;
+    height: 50%;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main_page__header {
+    padding: 4%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main_page__header__buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .main_page__header__button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .main_page__body__text {
+    font-size: 16px;
+    text-align: center;
+    margin: 5%;
+  }
+
+  .main_page__body__photo {
+    width: 100%;
+    height: 40%;
+    margin-top: 20px;
+  }
+}
