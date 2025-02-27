@@ -114,6 +114,11 @@
                 Модель лимита бюджета
             </summary>
         </member>
+        <member name="P:TrackIt.Application.DTOs.Budgets.BudgetDto.Id">
+            <summary>
+                Уникальный идентификатор
+            </summary>
+        </member>
         <member name="P:TrackIt.Application.DTOs.Budgets.BudgetDto.LimitAmount">
             <summary>
                 Величина лимита
@@ -202,6 +207,11 @@
         <member name="T:TrackIt.Application.DTOs.PlannedPayments.PlannedPaymentDto">
             <summary>
                 Модель запланированной платы
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.PlannedPayments.PlannedPaymentDto.Id">
+            <summary>
+                Уникальный идентификатор
             </summary>
         </member>
         <member name="P:TrackIt.Application.DTOs.PlannedPayments.PlannedPaymentDto.Amount">
