@@ -7,14 +7,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Handlers\" />
-      <Folder Include="Services\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="Serilog" Version="4.2.1-dev-02340" />
       <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
       <PackageReference Include="Serilog.Sinks.Console" Version="6.0.1-dev-00953" />
+      <PackageReference Include="Telegram.Bot" Version="22.4.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TrackIt.Application\TrackIt.Application.csproj" />
     </ItemGroup>
 
 </Project>
