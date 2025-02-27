@@ -1,0 +1,1256 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "TrackIt API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/analytics/balance": {
+      "get": {
+        "tags": ["Analytics"],
+        "summary": "Получение общего баланса пользователя",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/GetBalanceQuery"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/analytics/category-spending": {
+      "get": {
+        "tags": ["Analytics"],
+        "summary": "Получение расходов по категориям",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/GetCategorySpendingQuery"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/analytics/monthly-trend": {
+      "get": {
+        "tags": ["Analytics"],
+        "summary": "Получение динамики расходов за месяц",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/GetDailySpendingDtoQuery"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/analytics/monthly-average": {
+      "get": {
+        "tags": ["Analytics"],
+        "summary": "Получение среднего уровня месячных расходов",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/GetMonthlyAverageDtoQuery"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/analytics/top-categories": {
+      "get": {
+        "tags": ["Analytics"],
+        "summary": "Получение топ-3 самых затратных категорий",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/GetTopCategoryQuery"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/budgets": {
+      "post": {
+        "tags": ["Budget"],
+        "summary": "Создание лимита",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBudgetCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBudgetCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBudgetCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Budget"],
+        "summary": "Получение всех лимитов",
+        "parameters": [
+          {
+            "name": "category_id",
+            "in": "query",
+            "description": "Идентификатор категории",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Номер страницы",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Предел",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/budgets/{id}": {
+      "put": {
+        "tags": ["Budget"],
+        "summary": "Обновление лимита",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBudgetCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBudgetCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBudgetCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Budget"],
+        "summary": "Удаление лимита",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Budget"],
+        "summary": "Получение лимита по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailedCategoryDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailedCategoryDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailedCategoryDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/categories": {
+      "post": {
+        "tags": ["Categories"],
+        "summary": "Создание категории",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCategoryCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCategoryCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCategoryCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Categories"],
+        "summary": "Получение всех категорий",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Номер страницы",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Предел",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/categories/{id}": {
+      "put": {
+        "tags": ["Categories"],
+        "summary": "Обновление категории",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCategoryCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCategoryCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCategoryCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Categories"],
+        "summary": "Удаление категории",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Categories"],
+        "summary": "Получение категории по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailedCategoryDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailedCategoryDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailedCategoryDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/payments": {
+      "post": {
+        "tags": ["PlannedPayment"],
+        "summary": "Создание платежа",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePlannedPaymentCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePlannedPaymentCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePlannedPaymentCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": ["PlannedPayment"],
+        "summary": "Получение всех платежей",
+        "parameters": [
+          {
+            "name": "category_id",
+            "in": "query",
+            "description": "Идентификатор категории",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Номер страницы",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Предел",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/payments/{id}": {
+      "put": {
+        "tags": ["PlannedPayment"],
+        "summary": "Обновление платежа",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePlannedPaymentCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePlannedPaymentCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePlannedPaymentCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["PlannedPayment"],
+        "summary": "Удаление платежа",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": ["PlannedPayment"],
+        "summary": "Получение платежа по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailedCategoryDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailedCategoryDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailedCategoryDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/transactions": {
+      "post": {
+        "tags": ["Transaction"],
+        "summary": "Создание транзакции",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTransactionCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTransactionCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTransactionCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Transaction"],
+        "summary": "Получение всех транзакций",
+        "parameters": [
+          {
+            "name": "category_id",
+            "in": "query",
+            "description": "Идентификатор категории",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Номер страницы",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Предел",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TransactionDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TransactionDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TransactionDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/transactions/{id}": {
+      "put": {
+        "tags": ["Transaction"],
+        "summary": "Обновление транзакции",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTransactionCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTransactionCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTransactionCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Transaction"],
+        "summary": "Удаление транзакции",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Transaction"],
+        "summary": "Получение транзакции по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailedTransactionDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailedTransactionDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailedTransactionDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/profile": {
+      "get": {
+        "tags": ["User"],
+        "summary": "Получить профиль текущего пользователя",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CategoryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Уникальный идентификатор категории",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "description": "Название категории",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/CategoryType"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "Идентификатор пользователя",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Модель категории"
+      },
+      "CategoryType": {
+        "enum": [1, -1],
+        "type": "integer",
+        "description": "Тип категории",
+        "format": "int32"
+      },
+      "CreateBudgetCommand": {
+        "type": "object",
+        "properties": {
+          "category_id": {
+            "type": "string",
+            "description": "Идентификатор категории",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Величина лимита",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Запрос на создание запланированного платежа"
+      },
+      "CreateCategoryCommand": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Название категории",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/CategoryType"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Запрос на создание категории"
+      },
+      "CreatePlannedPaymentCommand": {
+        "type": "object",
+        "properties": {
+          "category_id": {
+            "type": "string",
+            "description": "Идентификатор категории",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Объем оплаты",
+            "format": "double"
+          },
+          "due_date": {
+            "type": "string",
+            "description": "Дата",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string",
+            "description": "Описание",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Запрос на создание запланированного платежа"
+      },
+      "CreateTransactionCommand": {
+        "type": "object",
+        "properties": {
+          "category_id": {
+            "type": "string",
+            "description": "Идентификатор категории.",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Сумма транзакции.",
+            "format": "double"
+          },
+          "description": {
+            "type": "string",
+            "description": "Описание транзакции.",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "description": "Дата транзакции.",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Команда для создания новой транзакции."
+      },
+      "DetailedCategoryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Уникальный идентификатор категории",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "description": "Название категории",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/CategoryType"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "Идентификатор пользователя",
+            "format": "uuid"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Дата создания",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "Дата обновления",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Детализированная модель категории"
+      },
+      "DetailedTransactionDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Уникальный идентификатор транзакции.",
+            "format": "uuid"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "Уникальный идентификатор пользователя.",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Сумма транзакции.",
+            "format": "double"
+          },
+          "date": {
+            "type": "string",
+            "description": "Дата транзакции.",
+            "format": "date-time"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Дата создания",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "Дата обновления",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string",
+            "description": "Описание",
+            "nullable": true
+          },
+          "category_id": {
+            "type": "string",
+            "description": "Идентификатор категории",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Детализированная модель транзакции"
+      },
+      "GetBalanceQuery": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "Запрос на получение общего баланса."
+      },
+      "GetCategorySpendingQuery": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "Получить траты по категориям"
+      },
+      "GetDailySpendingDtoQuery": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "Получить траты по дням"
+      },
+      "GetMonthlyAverageDtoQuery": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "Получить средние месячные траты"
+      },
+      "GetTopCategoryQuery": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "Получить топ категорий по тратам"
+      },
+      "TransactionDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Уникальный идентификатор транзакции.",
+            "format": "uuid"
+          },
+          "user_id": {
+            "type": "string",
+            "description": "Уникальный идентификатор пользователя.",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Сумма транзакции.",
+            "format": "double"
+          },
+          "date": {
+            "type": "string",
+            "description": "Дата транзакции.",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Модель транзакции"
+      },
+      "UpdateBudgetCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Идентификатор запланированного платежа",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Величина лимита",
+            "format": "double"
+          },
+          "category_id": {
+            "type": "string",
+            "description": "Идентификатор категории",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Запрос на обновление запланированного платежа"
+      },
+      "UpdateCategoryCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Уникальный идентификатор категории",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "description": "Название категории",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/CategoryType"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Запрос на обновление категории"
+      },
+      "UpdatePlannedPaymentCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Идентификатор запланированного платежа",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Объем оплаты",
+            "format": "double"
+          },
+          "due_date": {
+            "type": "string",
+            "description": "Дата",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string",
+            "description": "Описание",
+            "nullable": true
+          },
+          "category_id": {
+            "type": "string",
+            "description": "Идентификатор категории",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Запрос на обновление запланированного платежа"
+      },
+      "UpdateTransactionCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Уникальный идентификатор транзакции.",
+            "format": "uuid"
+          },
+          "category_id": {
+            "type": "string",
+            "description": "Уникальный идентификатор категории.",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Сумма транзакции.",
+            "format": "double"
+          },
+          "description": {
+            "type": "string",
+            "description": "Описание транзакции.",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "description": "Дата транзакции.",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Команда для обновления транзакции."
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Введите ваш JWT-токен в формате: Bearer {token}",
+        "scheme": "Bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ]
+}
