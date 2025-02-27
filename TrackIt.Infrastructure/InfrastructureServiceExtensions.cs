@@ -38,6 +38,7 @@ public static class InfrastructureServiceExtensions
         services.AddScoped<ITransactionService, TransactionService>();
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<IPlannedPaymentService, PlannedPaymentService>();
+        services.AddScoped<IBudgetService, BudgetService>();
         
         services.AddHttpContextAccessor();
         services.AddScoped<IUserContext, UserContext>();

@@ -7,7 +7,7 @@ using TrackIt.Domain.Entities;
 namespace TrackIt.Infrastructure.Services;
 
 /// <inheritdoc cref="ITransactionService" />
-internal sealed class TransactionService(IUnitOfWork unitOfWork, IUserContext userContext) : ITransactionService
+internal sealed class TransactionService(IUnitOfWork unitOfWork, IUserContext userContext, IBudgetService budgetService) : ITransactionService
 {
     /// <inheritdoc />
     public async Task<TransactionDto> CreateAsync(CreateTransactionCommand command, CancellationToken cancellationToken)
@@ -26,6 +26,8 @@ internal sealed class TransactionService(IUnitOfWork unitOfWork, IUserContext us
         // Добавляем в БД
         await unitOfWork.Transactions.AddAsync(transaction);
         await unitOfWork.SaveChangesAsync();
+        
+        await budgetService.CheckLimitAsync(transaction.Id, cancellationToken);
 
         // Возвращаем DTO
         return new TransactionDto
@@ -73,6 +75,8 @@ internal sealed class TransactionService(IUnitOfWork unitOfWork, IUserContext us
 
         unitOfWork.Transactions.Update(transaction);
         await unitOfWork.SaveChangesAsync();
+        
+        await budgetService.CheckLimitAsync(transaction.Id, cancellationToken);
 
         // Возвращаем обновленный объект
         return new TransactionDto

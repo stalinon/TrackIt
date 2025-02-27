@@ -1,12 +1,13 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using TrackIt.Application.Interfaces.Repositories;
+using TrackIt.Domain.Common;
 using TrackIt.Infrastructure.Persistence;
 
 namespace TrackIt.Infrastructure.Repositories;
 
 /// <inheritdoc cref="IGenericRepository{T}" />
-internal class GenericRepository<T> : IGenericRepository<T> where T : class
+internal class GenericRepository<T> : IGenericRepository<T> where T : class, IBaseEntity
 {
     protected readonly ApplicationDbContext Context;
     protected readonly DbSet<T> DbSet;
@@ -17,29 +18,48 @@ internal class GenericRepository<T> : IGenericRepository<T> where T : class
         Context = context;
         DbSet = context.Set<T>();
     }
+    
+    /// <inheritdoc />
+    public virtual IQueryable<T> GetQuery() => DbSet;
 
     /// <inheritdoc />
-    public async Task<T?> GetByIdAsync(Guid id) => await DbSet.FindAsync(id);
+    public async Task<T?> GetByIdAsync(Guid id) => await GetQuery().FirstOrDefaultAsync(e => e.Id == id);
 
     /// <inheritdoc />
-    public async Task<IEnumerable<T>> GetAllAsync() => await DbSet.ToListAsync();
+    public async Task<IEnumerable<T>> GetAllAsync() => await GetQuery().ToListAsync();
 
     /// <inheritdoc />
-    public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate) => await DbSet.Where(predicate).ToListAsync();
+    public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate) => await GetQuery().Where(predicate).ToListAsync();
 
     /// <inheritdoc />
-    public async Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate) => await DbSet.AnyAsync(predicate);
+    public async Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate) => await GetQuery().AnyAsync(predicate);
 
     /// <inheritdoc />
-    public async Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null) => predicate == null ? await DbSet.CountAsync() : await DbSet.CountAsync(predicate);
+    public async Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null) => predicate == null ? await GetQuery().CountAsync() : await GetQuery().CountAsync(predicate);
 
     /// <inheritdoc />
     public async Task<IEnumerable<T>> GetPaginatedAsync(int pageIndex, int pageSize, Expression<Func<T, bool>>? filter = null, Expression<Func<T, object>>? orderBy = null, bool orderByDescending = false)
     {
-        IQueryable<T> query = DbSet;
+        var query = GetQuery();
 
-        if (filter != null) query = query.Where(filter);
-        if (orderBy != null) query = orderByDescending ? query.OrderByDescending(orderBy) : query.OrderBy(orderBy);
+        if (filter != null)
+        {
+            query = query.Where(filter);
+        }
+
+        if (orderBy == null)
+        {
+            return await query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+        }
+
+        if (orderByDescending)
+        {
+            query = query.OrderByDescending(orderBy);
+        }
+        else
+        {
+            query = query.OrderBy(orderBy);
+        }
 
         return await query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
     }

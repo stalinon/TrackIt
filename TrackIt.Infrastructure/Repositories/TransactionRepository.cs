@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using TrackIt.Application.Interfaces.Repositories;
 using TrackIt.Domain.Entities;
 using TrackIt.Infrastructure.Persistence;
@@ -16,5 +17,11 @@ internal sealed class TransactionRepository : GenericRepository<TransactionEntit
     public TransactionRepository(ApplicationDbContext context) : base(context)
     {
         _context = context;
+    }
+    
+    /// <inheritdoc />
+    public override IQueryable<TransactionEntity> GetQuery()
+    {
+        return DbSet.Include(e => e.Category).ThenInclude(e => e.Budgets);
     }
 }

@@ -28,6 +28,11 @@ public interface IUnitOfWork : IDisposable
     IPlannedPaymentRepository PlannedPayments { get; }
     
     /// <summary>
+    ///     Лимиты бюджета
+    /// </summary>
+    IBudgetRepository Budgets { get; }
+    
+    /// <summary>
     ///     Сохранить изменения
     /// </summary>
     Task<int> SaveChangesAsync();
