@@ -8,6 +8,11 @@ namespace TrackIt.Application.Interfaces.Repositories;
 public interface IGenericRepository<T> where T : class
 {
     /// <summary>
+    ///     Получить сэт
+    /// </summary>
+    IQueryable<T> GetQuery();
+    
+    /// <summary>
     ///     Получить сущность по идентификатору
     /// </summary>
     Task<T?> GetByIdAsync(Guid id);

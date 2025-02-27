@@ -10,6 +10,7 @@
 
     <ItemGroup>
       <Folder Include="Common\" />
+      <Folder Include="Features\Budgets\Validators\" />
       <Folder Include="Features\Categories\Validators\" />
       <Folder Include="Features\PlannedPayments\Validators\" />
       <Folder Include="Features\Transactions\Validators\" />
