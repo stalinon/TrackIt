@@ -18,6 +18,9 @@ public class UnitOfWork : IUnitOfWork
     
     /// <inheritdoc />
     public ICategoryRepository Categories { get; }
+    
+    /// <inheritdoc />
+    public IPlannedPaymentRepository PlannedPayments { get; }
 
     /// <inheritdoc cref="UnitOfWork" />
     public UnitOfWork(ApplicationDbContext context)
@@ -26,6 +29,7 @@ public class UnitOfWork : IUnitOfWork
         Transactions = new TransactionRepository(_context);
         Users = new UserRepository(_context);
         Categories = new CategoryRepository(_context);
+        PlannedPayments = new PlannedPaymentRepository(_context);
     }
 
     /// <inheritdoc />
