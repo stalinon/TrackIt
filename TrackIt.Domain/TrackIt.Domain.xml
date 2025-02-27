@@ -128,6 +128,11 @@
                 Транзакции
             </summary>
         </member>
+        <member name="P:TrackIt.Domain.Entities.CategoryEntity.PlannedPayments">
+            <summary>
+                Запланированные платежи
+            </summary>
+        </member>
         <member name="P:TrackIt.Domain.Entities.CategoryEntity.Budgets">
             <summary>
                 Бюджеты
@@ -167,6 +172,11 @@
                 Описание
             </summary>
         </member>
+        <member name="P:TrackIt.Domain.Entities.PlannedPaymentEntity.ScheduleId">
+            <summary>
+                Идентификатор расписания
+            </summary>
+        </member>
         <member name="P:TrackIt.Domain.Entities.PlannedPaymentEntity.UserId">
             <summary>
                 Идентификатор пользователя
@@ -175,6 +185,16 @@
         <member name="P:TrackIt.Domain.Entities.PlannedPaymentEntity.User">
             <summary>
                 Пользователь
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.PlannedPaymentEntity.CategoryId">
+            <summary>
+                Идентификатор категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Domain.Entities.PlannedPaymentEntity.Category">
+            <summary>
+                Категория
             </summary>
         </member>
         <member name="M:TrackIt.Domain.Entities.PlannedPaymentEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{TrackIt.Domain.Entities.PlannedPaymentEntity})">
@@ -347,97 +367,6 @@
         <member name="F:TrackIt.Domain.Enums.CategoryType.INCOME">
             <summary>
                 Доход
-            </summary>
-        </member>
-        <member name="T:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1">
-            <summary>
-                Репозиторий
-            </summary>
-        </member>
-        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.GetByIdAsync(System.Guid)">
-            <summary>
-                Получить сущность по идентификатору
-            </summary>
-        </member>
-        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.GetAllAsync">
-            <summary>
-                Получить все сущности
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
-            <summary>
-                Найти сущности
-            </summary>
-        </member>
-        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.GetPaginatedAsync(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Boolean)">
-            <summary>
-                Получить пагинированный список сущностей (сортировки, фильтрации и прочее)
-            </summary>
-        </member>
-        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.ExistsAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
-            <summary>
-                Существуют ли сущности
-            </summary>
-        </member>
-        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
-            <summary>
-                Посчитать сущности
-            </summary>
-        </member>
-        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.AddAsync(`0)">
-            <summary>
-                Добавить сущности
-            </summary>
-        </member>
-        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.Update(`0)">
-            <summary>
-                Обновить сущность
-            </summary>
-        </member>
-        <member name="M:TrackIt.Domain.Interfaces.Repositories.IGenericRepository`1.Remove(`0)">
-            <summary>
-                Удалить сущность
-            </summary>
-        </member>
-        <member name="T:TrackIt.Domain.Interfaces.Repositories.ITransactionRepository">
-            <summary>
-                Интерфейс репозитория для работы с транзакциями.
-            </summary>
-        </member>
-        <member name="T:TrackIt.Domain.Interfaces.Repositories.IUserRepository">
-            <summary>
-                Репозиторий пользователей
-            </summary>
-        </member>
-        <member name="M:TrackIt.Domain.Interfaces.Repositories.IUserRepository.GetByEmailAsync(System.String)">
-            <summary>
-                Получить пользователя по почте
-            </summary>
-        </member>
-        <member name="M:TrackIt.Domain.Interfaces.Repositories.IUserRepository.GetPaginatedUsersAsync(System.Int32,System.Int32)">
-            <summary>
-                Получить пагинированный список пользователей
-            </summary>
-        </member>
-        <member name="T:TrackIt.Infrastructure.Interfaces.IUnitOfWork">
-            <summary>
-                Паттерн UnitOfWork
-            </summary>
-        </member>
-        <member name="P:TrackIt.Infrastructure.Interfaces.IUnitOfWork.Users">
-            <summary>
-                Пользователи
-            </summary>
-        </member>
-        <member name="P:TrackIt.Infrastructure.Interfaces.IUnitOfWork.Transactions">
-            <summary>
-                Транзакции
-            </summary>
-        </member>
-        <member name="M:TrackIt.Infrastructure.Interfaces.IUnitOfWork.SaveChangesAsync">
-            <summary>
-                Сохранить изменения
             </summary>
         </member>
     </members>

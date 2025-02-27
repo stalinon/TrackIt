@@ -1,21 +1,20 @@
 using Microsoft.EntityFrameworkCore;
 using TrackIt.Application.DTOs.Analytics;
 using TrackIt.Application.Interfaces;
-using TrackIt.Application.Interfaces.Repositories;
 using TrackIt.Domain.Enums;
 
 namespace TrackIt.Infrastructure.Services;
 
 /// <inheritdoc cref="IFinanceAnalyticsService" />
 internal sealed class FinanceAnalyticsService(
-	ITransactionRepository transactionRepository, 
+	IUnitOfWork unitOfWork, 
 	IUserContext userContext) : IFinanceAnalyticsService
 {
 	/// <inheritdoc />
 	public async Task<BalanceDto> GetBalanceAsync(CancellationToken cancellationToken)
 	{
 		// Вычисляем баланс на стороне БД
-		var result = await transactionRepository
+		var result = await unitOfWork.Transactions
 			.GetQuery()
 			.Where(t => t.UserId == userContext.UserId)
 			.GroupBy(t => t.Category.Type)
@@ -43,7 +42,7 @@ internal sealed class FinanceAnalyticsService(
 	public async Task<IEnumerable<CategorySpendingDto>> GetSpendingByCategoryAsync(CancellationToken cancellationToken)
 	{
 		// Группируем расходы по категориям на стороне БД
-		var result = await transactionRepository
+		var result = await unitOfWork.Transactions
 			.GetQuery()
 			.Where(t => t.UserId == userContext.UserId && t.Category.Type == CategoryType.EXPENSE)
 			.GroupBy(t => t.Category.Name)
@@ -62,7 +61,7 @@ internal sealed class FinanceAnalyticsService(
 	public async Task<IEnumerable<DailySpendingDto>> GetMonthlySpendingTrendAsync(int year, int month, CancellationToken cancellationToken)
 	{
 		// Группируем расходы по дням месяца на стороне БД
-		var result = await transactionRepository
+		var result = await unitOfWork.Transactions
 			.GetQuery()
 			.Where(t => t.UserId == userContext.UserId && t.Date.Year == year && t.Date.Month == month)
 			.GroupBy(t => t.Date.Day)
@@ -81,7 +80,7 @@ internal sealed class FinanceAnalyticsService(
 	public async Task<MonthlyAverageDto> GetMonthlyAverageSpendingAsync(CancellationToken cancellationToken)
 	{
 		// Группируем расходы по месяцам на стороне БД
-		var result = await transactionRepository
+		var result = await unitOfWork.Transactions
 			.GetQuery()
 			.Where(t => t.UserId == userContext.UserId && t.Category.Type == CategoryType.EXPENSE)
 			.GroupBy(t => new { t.Date.Year, t.Date.Month })
@@ -101,7 +100,7 @@ internal sealed class FinanceAnalyticsService(
 	public async Task<IEnumerable<TopCategoryDto>> GetTopExpensiveCategoriesAsync(CancellationToken cancellationToken)
 	{
 		// Группируем и берем топ-3 самых затратных категорий на стороне БД
-		var result = await transactionRepository
+		var result = await unitOfWork.Transactions
 			.GetQuery()
 			.Where(t => t.UserId == userContext.UserId && t.Category.Type == CategoryType.EXPENSE)
 			.GroupBy(t => t.Category.Name)

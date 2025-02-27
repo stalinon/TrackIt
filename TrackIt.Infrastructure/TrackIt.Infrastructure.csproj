@@ -12,5 +12,8 @@
         <PackageReference Include="Hangfire.PostgreSql" Version="1.20.10" />
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.2" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Migrations\" />
+    </ItemGroup>
 
 </Project>

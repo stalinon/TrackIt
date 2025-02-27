@@ -34,6 +34,216 @@
                 Добавляет поддержку авторизации в приложение
             </summary>
         </member>
+        <member name="T:TrackIt.Application.DTOs.Analytics.BalanceDto">
+            <summary>
+                Модель общего баланса
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Analytics.BalanceDto.TotalIncome">
+            <summary>
+                Сумма всех доходов
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Analytics.BalanceDto.TotalExpense">
+            <summary>
+                Сумма всех расходов
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Analytics.BalanceDto.Balance">
+            <summary>
+                Баланс
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.DTOs.Analytics.CategorySpendingDto">
+            <summary>
+                Модель траты по категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Analytics.CategorySpendingDto.CategoryName">
+            <summary>
+                Название категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Analytics.CategorySpendingDto.TotalSpent">
+            <summary>
+                Всего потрачено
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.DTOs.Analytics.DailySpendingDto">
+            <summary>
+                Модель дневных трат
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Analytics.DailySpendingDto.Day">
+            <summary>
+                Номер дня
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Analytics.DailySpendingDto.TotalSpent">
+            <summary>
+                Всего потрачено
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.DTOs.Analytics.MonthlyAverageDto">
+            <summary>
+                Модель средних затрат
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Analytics.MonthlyAverageDto.AverageMonthlySpending">
+            <summary>
+                Средние затраты
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.DTOs.Analytics.TopCategoryDto">
+            <summary>
+                Модель самых затратных категорий
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Analytics.TopCategoryDto.CategoryName">
+            <summary>
+                Название категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Analytics.TopCategoryDto.TotalSpent">
+            <summary>
+                Всего потрачено
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.DTOs.Budgets.BudgetDto">
+            <summary>
+                Модель лимита бюджета
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Budgets.BudgetDto.LimitAmount">
+            <summary>
+                Величина лимита
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Budgets.BudgetDto.CategoryId">
+            <summary>
+                Идентификатор категории
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.DTOs.Budgets.DetailedBudgetDto">
+            <summary>
+                Детализированная модель лимита бюджета
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Budgets.DetailedBudgetDto.CreatedAt">
+            <summary>
+                Дата создания
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Budgets.DetailedBudgetDto.UpdatedAt">
+            <summary>
+                Дата обновления
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.DTOs.Categories.CategoryDto">
+            <summary>
+                Модель категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Categories.CategoryDto.Id">
+            <summary>
+                Уникальный идентификатор категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Categories.CategoryDto.Name">
+            <summary>
+                Название категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Categories.CategoryDto.Type">
+            <summary>
+                Тип категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Categories.CategoryDto.UserId">
+            <summary>
+                Идентификатор пользователя
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.DTOs.Categories.DetailedCategoryDto">
+            <summary>
+                Детализированная модель категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Categories.DetailedCategoryDto.CreatedAt">
+            <summary>
+                Дата создания
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Categories.DetailedCategoryDto.UpdatedAt">
+            <summary>
+                Дата обновления
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.DTOs.PlannedPayments.DetailedPlannedPaymentDto">
+            <summary>
+                Детализированная модель запланированной платы
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.PlannedPayments.DetailedPlannedPaymentDto.Description">
+            <summary>
+                Описание
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.PlannedPayments.DetailedPlannedPaymentDto.CreatedAt">
+            <summary>
+                Дата создания
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.PlannedPayments.DetailedPlannedPaymentDto.UpdatedAt">
+            <summary>
+                Дата обновления
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.DTOs.PlannedPayments.PlannedPaymentDto">
+            <summary>
+                Модель запланированной платы
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.PlannedPayments.PlannedPaymentDto.Amount">
+            <summary>
+                Объем оплаты
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.PlannedPayments.PlannedPaymentDto.DueDate">
+            <summary>
+                Дата
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.PlannedPayments.PlannedPaymentDto.CategoryId">
+            <summary>
+                Идентификатор категории
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.DTOs.Transactions.DetailedTransactionDto">
+            <summary>
+                Детализированная модель транзакции
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Transactions.DetailedTransactionDto.CreatedAt">
+            <summary>
+                Дата создания
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Transactions.DetailedTransactionDto.UpdatedAt">
+            <summary>
+                Дата обновления
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Transactions.DetailedTransactionDto.Description">
+            <summary>
+                Описание
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.Transactions.DetailedTransactionDto.CategoryId">
+            <summary>
+                Идентификатор категории
+            </summary>
+        </member>
         <member name="T:TrackIt.Application.DTOs.Transactions.TransactionDto">
             <summary>
                 Модель транзакции
@@ -79,14 +289,504 @@
                 Дата создания
             </summary>
         </member>
+        <member name="T:TrackIt.Application.Features.Analytics.Queries.GetBalanceQuery">
+            <summary>
+                Запрос на получение общего баланса.
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Analytics.Queries.GetBalanceQueryHandler">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Analytics.Queries.GetBalanceQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Analytics.Queries.GetBalanceQueryHandler.#ctor(TrackIt.Application.Interfaces.IFinanceAnalyticsService)">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Analytics.Queries.GetBalanceQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Analytics.Queries.GetBalanceQueryHandler.Handle(TrackIt.Application.Features.Analytics.Queries.GetBalanceQuery,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Analytics.Queries.GetCategorySpendingQuery">
+            <summary>
+                Получить траты по категориям
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Analytics.Queries.GetCategorySpendingQueryHandler">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Analytics.Queries.GetCategorySpendingQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Analytics.Queries.GetCategorySpendingQueryHandler.#ctor(TrackIt.Application.Interfaces.IFinanceAnalyticsService)">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Analytics.Queries.GetCategorySpendingQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Analytics.Queries.GetCategorySpendingQueryHandler.Handle(TrackIt.Application.Features.Analytics.Queries.GetCategorySpendingQuery,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Analytics.Queries.GetDailySpendingDtoQuery">
+            <summary>
+                Получить траты по дням
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Analytics.Queries.GetDailySpendingDtoQueryHandler">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Analytics.Queries.GetDailySpendingDtoQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Analytics.Queries.GetDailySpendingDtoQueryHandler.#ctor(TrackIt.Application.Interfaces.IFinanceAnalyticsService)">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Analytics.Queries.GetDailySpendingDtoQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Analytics.Queries.GetDailySpendingDtoQueryHandler.Handle(TrackIt.Application.Features.Analytics.Queries.GetDailySpendingDtoQuery,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Analytics.Queries.GetMonthlyAverageDtoQuery">
+            <summary>
+                Получить средние месячные траты
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Analytics.Queries.GetMonthlyAverageDtoQueryHandler">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Analytics.Queries.GetMonthlyAverageDtoQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Analytics.Queries.GetMonthlyAverageDtoQueryHandler.#ctor(TrackIt.Application.Interfaces.IFinanceAnalyticsService)">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Analytics.Queries.GetMonthlyAverageDtoQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Analytics.Queries.GetMonthlyAverageDtoQueryHandler.Handle(TrackIt.Application.Features.Analytics.Queries.GetMonthlyAverageDtoQuery,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Analytics.Queries.GetTopCategoryQuery">
+            <summary>
+                Получить топ категорий по тратам
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Analytics.Queries.GetTopCategoryQueryHandler">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Analytics.Queries.GetTopCategoryQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Analytics.Queries.GetTopCategoryQueryHandler.#ctor(TrackIt.Application.Interfaces.IFinanceAnalyticsService)">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Analytics.Queries.GetTopCategoryQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Analytics.Queries.GetTopCategoryQueryHandler.Handle(TrackIt.Application.Features.Analytics.Queries.GetTopCategoryQuery,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Budgets.Commands.CreateBudgetCommand">
+            <summary>
+                Запрос на создание запланированного платежа
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Budgets.Commands.CreateBudgetCommand.CategoryId">
+            <summary>
+                Идентификатор категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Budgets.Commands.CreateBudgetCommand.LimitAmount">
+            <summary>
+                Величина лимита
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Budgets.Commands.CreateBudgetCommandHandler">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Budgets.Commands.CreateBudgetCommand" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Budgets.Commands.CreateBudgetCommandHandler.#ctor(TrackIt.Application.Interfaces.IBudgetService)">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Budgets.Commands.CreateBudgetCommand" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Budgets.Commands.CreateBudgetCommandHandler.Handle(TrackIt.Application.Features.Budgets.Commands.CreateBudgetCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Budgets.Commands.DeleteBudgetCommand">
+            <summary>
+                Запрос на удаление запланированного платежа
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Budgets.Commands.DeleteBudgetCommand.BudgetId">
+            <summary>
+                Идентификатор запланированного платежа
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Budgets.Commands.DeleteBudgetCommandHandler">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Budgets.Commands.DeleteBudgetCommand"/>
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Budgets.Commands.DeleteBudgetCommandHandler.#ctor(TrackIt.Application.Interfaces.IBudgetService)">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Budgets.Commands.DeleteBudgetCommand"/>
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Budgets.Commands.DeleteBudgetCommandHandler.Handle(TrackIt.Application.Features.Budgets.Commands.DeleteBudgetCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Budgets.Commands.UpdateBudgetCommand">
+            <summary>
+                Запрос на обновление запланированного платежа
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Budgets.Commands.UpdateBudgetCommand.BudgetId">
+            <summary>
+                Идентификатор запланированного платежа
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Budgets.Commands.UpdateBudgetCommand.LimitAmount">
+            <summary>
+                Величина лимита
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Budgets.Commands.UpdateBudgetCommand.CategoryId">
+            <summary>
+                Идентификатор категории
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Budgets.Commands.UpdateBudgetCommandHandler">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Budgets.Commands.UpdateBudgetCommand"/>
+            </summary> 
+        </member>
+        <member name="M:TrackIt.Application.Features.Budgets.Commands.UpdateBudgetCommandHandler.#ctor(TrackIt.Application.Interfaces.IBudgetService)">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Budgets.Commands.UpdateBudgetCommand"/>
+            </summary> 
+        </member>
+        <member name="M:TrackIt.Application.Features.Budgets.Commands.UpdateBudgetCommandHandler.Handle(TrackIt.Application.Features.Budgets.Commands.UpdateBudgetCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Budgets.Queries.GetBudgetByIdQuery">
+            <summary>
+                Запрос на получение платежа по ID.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Budgets.Queries.GetBudgetByIdQuery.BudgetId">
+            <summary>
+                Идентификатор платежа
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Budgets.Queries.GetBudgetByIdQueryHandler">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Budgets.Queries.GetBudgetByIdQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Budgets.Queries.GetBudgetByIdQueryHandler.#ctor(TrackIt.Application.Interfaces.IBudgetService)">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Budgets.Queries.GetBudgetByIdQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Budgets.Queries.GetBudgetByIdQueryHandler.Handle(TrackIt.Application.Features.Budgets.Queries.GetBudgetByIdQuery,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Budgets.Queries.GetBudgetQuery">
+            <summary>
+                Запрос на получение лимита.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Budgets.Queries.GetBudgetQuery.CategoryId">
+            <summary>
+                Идентификатор категории
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Budgets.Queries.GetBudgetQueryHandler">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Budgets.Queries.GetBudgetQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Budgets.Queries.GetBudgetQueryHandler.#ctor(TrackIt.Application.Interfaces.IBudgetService)">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Budgets.Queries.GetBudgetQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Budgets.Queries.GetBudgetQueryHandler.Handle(TrackIt.Application.Features.Budgets.Queries.GetBudgetQuery,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Categories.Commands.CreateCategoryCommand">
+            <summary>
+                Запрос на создание категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Categories.Commands.CreateCategoryCommand.Name">
+            <summary>
+                Название категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Categories.Commands.CreateCategoryCommand.Type">
+            <summary>
+                Тип категории
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Categories.Commands.CreateCategoryCommandHandler">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Categories.Commands.CreateCategoryCommand" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Categories.Commands.CreateCategoryCommandHandler.#ctor(TrackIt.Application.Interfaces.ICategoryService)">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Categories.Commands.CreateCategoryCommand" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Categories.Commands.CreateCategoryCommandHandler.Handle(TrackIt.Application.Features.Categories.Commands.CreateCategoryCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Categories.Commands.DeleteCategoryCommand">
+            <summary>
+                Запрос на удаление категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Categories.Commands.DeleteCategoryCommand.CategoryId">
+            <summary>
+                Идентификатор категории
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Categories.Commands.DeleteCategoryCommandHandler">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Categories.Commands.DeleteCategoryCommand"/>
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Categories.Commands.DeleteCategoryCommandHandler.#ctor(TrackIt.Application.Interfaces.ICategoryService)">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Categories.Commands.DeleteCategoryCommand"/>
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Categories.Commands.DeleteCategoryCommandHandler.Handle(TrackIt.Application.Features.Categories.Commands.DeleteCategoryCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Categories.Commands.UpdateCategoryCommand">
+            <summary>
+                Запрос на обновление категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Categories.Commands.UpdateCategoryCommand.CategoryId">
+            <summary>
+                Уникальный идентификатор категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Categories.Commands.UpdateCategoryCommand.Name">
+            <summary>
+                Название категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Categories.Commands.UpdateCategoryCommand.Type">
+            <summary>
+                Тип категории
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Categories.Commands.UpdateCategoryCommandHandler">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Categories.Commands.UpdateCategoryCommand"/>
+            </summary> 
+        </member>
+        <member name="M:TrackIt.Application.Features.Categories.Commands.UpdateCategoryCommandHandler.#ctor(TrackIt.Application.Interfaces.ICategoryService)">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Categories.Commands.UpdateCategoryCommand"/>
+            </summary> 
+        </member>
+        <member name="M:TrackIt.Application.Features.Categories.Commands.UpdateCategoryCommandHandler.Handle(TrackIt.Application.Features.Categories.Commands.UpdateCategoryCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Categories.Queries.GetCategoriesQuery">
+            <summary>
+                Запрос на получение категорий.
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Categories.Queries.GetCategoriesQueryHandlerHandler">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Categories.Queries.GetCategoriesQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Categories.Queries.GetCategoriesQueryHandlerHandler.#ctor(TrackIt.Application.Interfaces.ICategoryService)">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Categories.Queries.GetCategoriesQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Categories.Queries.GetCategoriesQueryHandlerHandler.Handle(TrackIt.Application.Features.Categories.Queries.GetCategoriesQuery,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.Categories.Queries.GetCategoryByIdQuery">
+            <summary>
+                Запрос на получение категории по ID.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Categories.Queries.GetCategoryByIdQuery.CategoryId">
+            <summary>
+                Идентификатор категории
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Categories.Queries.GetCategoryByIdQueryHandler">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Categories.Queries.GetCategoryByIdQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Categories.Queries.GetCategoryByIdQueryHandler.#ctor(TrackIt.Application.Interfaces.ICategoryService)">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Categories.Queries.GetCategoryByIdQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Categories.Queries.GetCategoryByIdQueryHandler.Handle(TrackIt.Application.Features.Categories.Queries.GetCategoryByIdQuery,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.PlannedPayments.Commands.CreatePlannedPaymentCommand">
+            <summary>
+                Запрос на создание запланированного платежа
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.PlannedPayments.Commands.CreatePlannedPaymentCommand.CategoryId">
+            <summary>
+                Идентификатор категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.PlannedPayments.Commands.CreatePlannedPaymentCommand.Amount">
+            <summary>
+                Объем оплаты
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.PlannedPayments.Commands.CreatePlannedPaymentCommand.DueDate">
+            <summary>
+                Дата
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.PlannedPayments.Commands.CreatePlannedPaymentCommand.Description">
+            <summary>
+                Описание
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.PlannedPayments.Commands.CreatePlannedPaymentCommandHandler">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.PlannedPayments.Commands.CreatePlannedPaymentCommand" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.PlannedPayments.Commands.CreatePlannedPaymentCommandHandler.#ctor(TrackIt.Application.Interfaces.IPlannedPaymentService)">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.PlannedPayments.Commands.CreatePlannedPaymentCommand" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.PlannedPayments.Commands.CreatePlannedPaymentCommandHandler.Handle(TrackIt.Application.Features.PlannedPayments.Commands.CreatePlannedPaymentCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.PlannedPayments.Commands.DeletePlannedPaymentCommand">
+            <summary>
+                Запрос на удаление запланированного платежа
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.PlannedPayments.Commands.DeletePlannedPaymentCommand.PlannedPaymentId">
+            <summary>
+                Идентификатор запланированного платежа
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.PlannedPayments.Commands.DeletePlannedPaymentCommandHandler">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.PlannedPayments.Commands.DeletePlannedPaymentCommand"/>
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.PlannedPayments.Commands.DeletePlannedPaymentCommandHandler.#ctor(TrackIt.Application.Interfaces.IPlannedPaymentService)">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.PlannedPayments.Commands.DeletePlannedPaymentCommand"/>
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.PlannedPayments.Commands.DeletePlannedPaymentCommandHandler.Handle(TrackIt.Application.Features.PlannedPayments.Commands.DeletePlannedPaymentCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.PlannedPayments.Commands.UpdatePlannedPaymentCommand">
+            <summary>
+                Запрос на обновление запланированного платежа
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.PlannedPayments.Commands.UpdatePlannedPaymentCommand.PlannedPaymentId">
+            <summary>
+                Идентификатор запланированного платежа
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.PlannedPayments.Commands.UpdatePlannedPaymentCommand.Amount">
+            <summary>
+                Объем оплаты
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.PlannedPayments.Commands.UpdatePlannedPaymentCommand.DueDate">
+            <summary>
+                Дата
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.PlannedPayments.Commands.UpdatePlannedPaymentCommand.Description">
+            <summary>
+                Описание
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.PlannedPayments.Commands.UpdatePlannedPaymentCommand.CategoryId">
+            <summary>
+                Идентификатор категории
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.PlannedPayments.Commands.UpdatePlannedPaymentCommandHandler">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.PlannedPayments.Commands.UpdatePlannedPaymentCommand"/>
+            </summary> 
+        </member>
+        <member name="M:TrackIt.Application.Features.PlannedPayments.Commands.UpdatePlannedPaymentCommandHandler.#ctor(TrackIt.Application.Interfaces.IPlannedPaymentService)">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.PlannedPayments.Commands.UpdatePlannedPaymentCommand"/>
+            </summary> 
+        </member>
+        <member name="M:TrackIt.Application.Features.PlannedPayments.Commands.UpdatePlannedPaymentCommandHandler.Handle(TrackIt.Application.Features.PlannedPayments.Commands.UpdatePlannedPaymentCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentByIdQuery">
+            <summary>
+                Запрос на получение платежа по ID.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentByIdQuery.PlannedPaymentId">
+            <summary>
+                Идентификатор платежа
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentByIdQueryHandler">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentByIdQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentByIdQueryHandler.#ctor(TrackIt.Application.Interfaces.IPlannedPaymentService)">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentByIdQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentByIdQueryHandler.Handle(TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentByIdQuery,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentQuery">
+            <summary>
+                Запрос на получение категорий.
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentQuery.CategoryId">
+            <summary>
+                Идентификатор категории
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentQueryHandler">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentQueryHandler.#ctor(TrackIt.Application.Interfaces.IPlannedPaymentService)">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentQuery" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentQueryHandler.Handle(TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentQuery,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
         <member name="T:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand">
             <summary>
                 Команда для создания новой транзакции.
-            </summary>
-        </member>
-        <member name="P:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand.UserId">
-            <summary>
-                Уникальный идентификатор пользователя.
             </summary>
         </member>
         <member name="P:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand.CategoryId">
@@ -114,8 +814,10 @@
                 Обработчик команды <see cref="T:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand"/>.
             </summary>
         </member>
-        <member name="M:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommandHandler.#ctor(TrackIt.Infrastructure.Interfaces.IUnitOfWork)">
-            <inheritdoc cref="T:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommandHandler" />
+        <member name="M:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommandHandler.#ctor(TrackIt.Application.Interfaces.ITransactionService)">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand"/>.
+            </summary>
         </member>
         <member name="M:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommandHandler.Handle(TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand,System.Threading.CancellationToken)">
             <inheritdoc />
@@ -130,18 +832,15 @@
                 Уникальный идентификатор транзакции.
             </summary>
         </member>
-        <member name="P:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommand.UserId">
-            <summary>
-                Уникальный идентификатор пользователя.
-            </summary>
-        </member>
         <member name="T:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommandHandler">
             <summary>
                 Обработчик команды <see cref="T:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommand"/>.
             </summary>
         </member>
-        <member name="M:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommandHandler.#ctor(TrackIt.Infrastructure.Interfaces.IUnitOfWork)">
-            <inheritdoc cref="T:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommandHandler" />
+        <member name="M:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommandHandler.#ctor(TrackIt.Application.Interfaces.ITransactionService)">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommand"/>.
+            </summary>
         </member>
         <member name="M:TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommandHandler.Handle(TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommand,System.Threading.CancellationToken)">
             <inheritdoc />
@@ -154,11 +853,6 @@
         <member name="P:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand.TransactionId">
             <summary>
                 Уникальный идентификатор транзакции.
-            </summary>
-        </member>
-        <member name="P:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand.UserId">
-            <summary>
-                Уникальный идентификатор пользователя.
             </summary>
         </member>
         <member name="P:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand.CategoryId">
@@ -186,8 +880,10 @@
                 Обработчик команды <see cref="T:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand"/>.
             </summary>
         </member>
-        <member name="M:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommandHandler.#ctor(TrackIt.Infrastructure.Interfaces.IUnitOfWork)">
-            <inheritdoc cref="T:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommandHandler" />
+        <member name="M:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommandHandler.#ctor(TrackIt.Application.Interfaces.ITransactionService)">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand"/>.
+            </summary>
         </member>
         <member name="M:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommandHandler.Handle(TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand,System.Threading.CancellationToken)">
             <inheritdoc />
@@ -202,18 +898,15 @@
                 Уникальный идентификатор транзакции.
             </summary>
         </member>
-        <member name="P:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQuery.UserId">
-            <summary>
-                Уникальный идентификатор пользователя.
-            </summary>
-        </member>
         <member name="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQueryHandler">
             <summary>
                 Обработчик запроса <see cref="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQuery"/>.
             </summary>
         </member>
-        <member name="M:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQueryHandler.#ctor(TrackIt.Infrastructure.Interfaces.IUnitOfWork)">
-            <inheritdoc cref="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQueryHandler" />
+        <member name="M:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQueryHandler.#ctor(TrackIt.Application.Interfaces.ITransactionService)">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQuery"/>.
+            </summary>
         </member>
         <member name="M:TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQueryHandler.Handle(TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQuery,System.Threading.CancellationToken)">
             <inheritdoc />
@@ -223,9 +916,9 @@
                 Запрос на получение всех транзакций пользователя.
             </summary>
         </member>
-        <member name="P:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQuery.UserId">
+        <member name="P:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQuery.CategoryId">
             <summary>
-                Уникальный идентификатор пользователя.
+                Идентификатор категории
             </summary>
         </member>
         <member name="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQueryHandler">
@@ -233,30 +926,226 @@
                 Обработчик запроса <see cref="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQuery"/>.
             </summary>
         </member>
-        <member name="M:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQueryHandler.#ctor(TrackIt.Infrastructure.Interfaces.IUnitOfWork)">
-            <inheritdoc cref="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQueryHandler" />
+        <member name="M:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQueryHandler.#ctor(TrackIt.Application.Interfaces.ITransactionService)">
+            <summary>
+                Обработчик запроса <see cref="T:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQuery"/>.
+            </summary>
         </member>
         <member name="M:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQueryHandler.Handle(TrackIt.Application.Features.Transactions.Queries.GetTransactionsQuery,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
-        <member name="T:TrackIt.Application.Features.Transactions.Validators.CreateTransactionValidator">
+        <member name="T:TrackIt.Application.Interfaces.IBudgetService">
             <summary>
-                Валидатор команды <see cref="T:TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand"/>.
+                Сервис лимитов на бюджет
             </summary>
         </member>
-        <member name="M:TrackIt.Application.Features.Transactions.Validators.CreateTransactionValidator.#ctor">
+        <member name="M:TrackIt.Application.Interfaces.IBudgetService.CreateAsync(TrackIt.Application.Features.Budgets.Commands.CreateBudgetCommand,System.Threading.CancellationToken)">
             <summary>
-                Инициализирует новый экземпляр <see cref="T:TrackIt.Application.Features.Transactions.Validators.CreateTransactionValidator"/>.
+                Создать лимит
             </summary>
         </member>
-        <member name="T:TrackIt.Application.Features.Transactions.Validators.UpdateTransactionValidator">
+        <member name="M:TrackIt.Application.Interfaces.IBudgetService.DeleteAsync(TrackIt.Application.Features.Budgets.Commands.DeleteBudgetCommand,System.Threading.CancellationToken)">
             <summary>
-                Валидатор команды <see cref="T:TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand"/>.
+                Удалить лимит
             </summary>
         </member>
-        <member name="M:TrackIt.Application.Features.Transactions.Validators.UpdateTransactionValidator.#ctor">
+        <member name="M:TrackIt.Application.Interfaces.IBudgetService.UpdateAsync(TrackIt.Application.Features.Budgets.Commands.UpdateBudgetCommand,System.Threading.CancellationToken)">
             <summary>
-                Инициализирует новый экземпляр <see cref="T:TrackIt.Application.Features.Transactions.Validators.UpdateTransactionValidator"/>.
+                Обновить лимит
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IBudgetService.GetByIdAsync(TrackIt.Application.Features.Budgets.Queries.GetBudgetByIdQuery,System.Threading.CancellationToken)">
+            <summary>
+                Получить лимит
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IBudgetService.ListAsync(TrackIt.Application.Features.Budgets.Queries.GetBudgetQuery,System.Threading.CancellationToken)">
+            <summary>
+                Получить список лимитов
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IBudgetService.CheckLimitAsync(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+                Проверить лимит
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TrackIt.Application.Interfaces.ICategoryService">
+            <summary>
+                Сервис категорий
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.ICategoryService.CreateAsync(TrackIt.Application.Features.Categories.Commands.CreateCategoryCommand,System.Threading.CancellationToken)">
+            <summary>
+                Создать категорию
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.ICategoryService.DeleteAsync(TrackIt.Application.Features.Categories.Commands.DeleteCategoryCommand,System.Threading.CancellationToken)">
+            <summary>
+                Удалить категорию
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.ICategoryService.UpdateAsync(TrackIt.Application.Features.Categories.Commands.UpdateCategoryCommand,System.Threading.CancellationToken)">
+            <summary>
+                Обновить категорию
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.ICategoryService.GetByIdAsync(TrackIt.Application.Features.Categories.Queries.GetCategoryByIdQuery,System.Threading.CancellationToken)">
+            <summary>
+                Получить категорию
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.ICategoryService.ListAsync(TrackIt.Application.Features.Categories.Queries.GetCategoriesQuery,System.Threading.CancellationToken)">
+            <summary>
+                Получить список категорий
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Interfaces.IFinanceAnalyticsService">
+            <summary>
+                Интерфейс сервиса аналитики финансовых операций
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IFinanceAnalyticsService.GetBalanceAsync(System.Threading.CancellationToken)">
+            <summary>
+                Получить общий баланс пользователя
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IFinanceAnalyticsService.GetSpendingByCategoryAsync(System.Threading.CancellationToken)">
+            <summary>
+                Группировка расходов по категориям
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IFinanceAnalyticsService.GetMonthlySpendingTrendAsync(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Динамика расходов за месяц
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IFinanceAnalyticsService.GetMonthlyAverageSpendingAsync(System.Threading.CancellationToken)">
+            <summary>
+                Прогнозирование средних расходов в месяц
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IFinanceAnalyticsService.GetTopExpensiveCategoriesAsync(System.Threading.CancellationToken)">
+            <summary>
+                Самые затратные категории (топ-3)
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Interfaces.IPlannedPaymentService">
+            <summary>
+                Сервис запланированных оплат
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IPlannedPaymentService.CreateAsync(TrackIt.Application.Features.PlannedPayments.Commands.CreatePlannedPaymentCommand,System.Threading.CancellationToken)">
+            <summary>
+                Создать запланированyю оплату
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IPlannedPaymentService.DeleteAsync(TrackIt.Application.Features.PlannedPayments.Commands.DeletePlannedPaymentCommand,System.Threading.CancellationToken)">
+            <summary>
+                Удалить запланированyю оплату
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IPlannedPaymentService.UpdateAsync(TrackIt.Application.Features.PlannedPayments.Commands.UpdatePlannedPaymentCommand,System.Threading.CancellationToken)">
+            <summary>
+                Обновить запланированyю оплату
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IPlannedPaymentService.GetByIdAsync(TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentByIdQuery,System.Threading.CancellationToken)">
+            <summary>
+                Получить запланированyю оплату
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IPlannedPaymentService.ListAsync(TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentQuery,System.Threading.CancellationToken)">
+            <summary>
+                Получить список запланированных оплат
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Interfaces.ITelegramBotAdapter">
+            <summary>
+                Адаптер для работы с Tg
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.ITelegramBotAdapter.SendMessageAsync(System.Int64,System.String)">
+            <summary>
+                Отправить сообщение
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Interfaces.ITelegramNotificationService">
+            <summary>
+                Сервис уведомлений через Telegram
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.ITelegramNotificationService.SendNotificationAsync(System.Guid,System.String,System.Threading.CancellationToken)">
+            <summary>
+                Отправить уведомление пользователю о предстоящем платеже
+            </summary>
+            <param name="userId">Идентификатор пользователя</param>
+            <param name="message">Сообщение</param>
+            <param name="cancellationToken">Токен отмены</param>
+        </member>
+        <member name="T:TrackIt.Application.Interfaces.ITransactionService">
+            <summary>
+                Сервис транзакций
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.ITransactionService.CreateAsync(TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand,System.Threading.CancellationToken)">
+            <summary>
+                Создать транзакцию
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.ITransactionService.DeleteAsync(TrackIt.Application.Features.Transactions.Commands.DeleteTransactionCommand,System.Threading.CancellationToken)">
+            <summary>
+                Удалить транзакцию
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.ITransactionService.UpdateAsync(TrackIt.Application.Features.Transactions.Commands.UpdateTransactionCommand,System.Threading.CancellationToken)">
+            <summary>
+                Обновить транзакцию
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.ITransactionService.GetByIdAsync(TrackIt.Application.Features.Transactions.Queries.GetTransactionByIdQuery,System.Threading.CancellationToken)">
+            <summary>
+                Получить транзакцию
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.ITransactionService.ListAsync(TrackIt.Application.Features.Transactions.Queries.GetTransactionsQuery,System.Threading.CancellationToken)">
+            <summary>
+                Получить список транзакций
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Interfaces.IUnitOfWork">
+            <summary>
+                Паттерн UnitOfWork
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Interfaces.IUnitOfWork.Users">
+            <summary>
+                Пользователи
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Interfaces.IUnitOfWork.Transactions">
+            <summary>
+                Транзакции
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Interfaces.IUnitOfWork.Categories">
+            <summary>
+                Категории
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Interfaces.IUnitOfWork.PlannedPayments">
+            <summary>
+                Запланированные платежи
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Interfaces.IUnitOfWork.Budgets">
+            <summary>
+                Лимиты бюджета
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IUnitOfWork.SaveChangesAsync">
+            <summary>
+                Сохранить изменения
             </summary>
         </member>
         <member name="T:TrackIt.Application.Interfaces.IUserContext">
@@ -294,12 +1183,93 @@
                 Получить пользователя по его почте
             </summary>
         </member>
-        <member name="M:TrackIt.Application.Interfaces.IUserService.CreateUserAsync(System.String)">
+        <member name="T:TrackIt.Application.Interfaces.Repositories.IBudgetRepository">
             <summary>
-                Создать нового пользователя
+                Сервис лимитов бюджета
             </summary>
         </member>
-        <member name="M:TrackIt.Application.Interfaces.IUserService.GetPaginatedUsersAsync(System.Int32,System.Int32)">
+        <member name="T:TrackIt.Application.Interfaces.Repositories.ICategoryRepository">
+            <summary>
+                Репозиторий категорий
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Interfaces.Repositories.IGenericRepository`1">
+            <summary>
+                Репозиторий
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.Repositories.IGenericRepository`1.GetQuery">
+            <summary>
+                Получить сэт
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.Repositories.IGenericRepository`1.GetByIdAsync(System.Guid)">
+            <summary>
+                Получить сущность по идентификатору
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.Repositories.IGenericRepository`1.GetAllAsync">
+            <summary>
+                Получить все сущности
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.Repositories.IGenericRepository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+                Найти сущности
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.Repositories.IGenericRepository`1.GetPaginatedAsync(System.Int32,System.Int32,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Boolean)">
+            <summary>
+                Получить пагинированный список сущностей (сортировки, фильтрации и прочее)
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.Repositories.IGenericRepository`1.ExistsAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+                Существуют ли сущности
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.Repositories.IGenericRepository`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+                Посчитать сущности
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.Repositories.IGenericRepository`1.AddAsync(`0)">
+            <summary>
+                Добавить сущности
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.Repositories.IGenericRepository`1.Update(`0)">
+            <summary>
+                Обновить сущность
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.Repositories.IGenericRepository`1.Remove(`0)">
+            <summary>
+                Удалить сущность
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Interfaces.Repositories.IPlannedPaymentRepository">
+            <summary>
+                Интерфейс репозитория для работы с платежами.
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Interfaces.Repositories.ITransactionRepository">
+            <summary>
+                Интерфейс репозитория для работы с транзакциями.
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Interfaces.Repositories.IUserRepository">
+            <summary>
+                Репозиторий пользователей
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.Repositories.IUserRepository.GetByEmailAsync(System.String)">
+            <summary>
+                Получить пользователя по почте
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.Repositories.IUserRepository.GetPaginatedUsersAsync(System.Int32,System.Int32)">
             <summary>
                 Получить пагинированный список пользователей
             </summary>

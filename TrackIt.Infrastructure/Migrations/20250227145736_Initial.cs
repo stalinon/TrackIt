@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TrackIt.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,8 +18,7 @@ namespace TrackIt.Infrastructure.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
-                    email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
-                    password_hash = table.Column<string>(type: "text", nullable: false)
+                    email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,29 +41,6 @@ namespace TrackIt.Infrastructure.Migrations
                     table.PrimaryKey("PK_categories", x => x.id);
                     table.ForeignKey(
                         name: "FK_categories_users_user_id",
-                        column: x => x.user_id,
-                        principalTable: "users",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "planned_payments",
-                columns: table => new
-                {
-                    id = table.Column<Guid>(type: "uuid", nullable: false),
-                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
-                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
-                    amount = table.Column<decimal>(type: "numeric", nullable: false),
-                    due_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    description = table.Column<string>(type: "text", nullable: false),
-                    user_id = table.Column<Guid>(type: "uuid", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_planned_payments", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_planned_payments_users_user_id",
                         column: x => x.user_id,
                         principalTable: "users",
                         principalColumn: "id",
@@ -122,6 +98,37 @@ namespace TrackIt.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "planned_payments",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    amount = table.Column<decimal>(type: "numeric", nullable: false),
+                    due_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    description = table.Column<string>(type: "text", nullable: false),
+                    schedule_id = table.Column<string>(type: "text", nullable: true),
+                    user_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    category_id = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_planned_payments", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_planned_payments_categories_category_id",
+                        column: x => x.category_id,
+                        principalTable: "categories",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_planned_payments_users_user_id",
+                        column: x => x.user_id,
+                        principalTable: "users",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "transactions",
                 columns: table => new
                 {
@@ -129,7 +136,8 @@ namespace TrackIt.Infrastructure.Migrations
                     created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     amount = table.Column<decimal>(type: "numeric", nullable: false),
-                    description = table.Column<string>(type: "text", nullable: false),
+                    description = table.Column<string>(type: "text", nullable: true),
+                    date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     user_id = table.Column<Guid>(type: "uuid", nullable: false),
                     category_id = table.Column<Guid>(type: "uuid", nullable: true)
                 },
@@ -161,9 +169,15 @@ namespace TrackIt.Infrastructure.Migrations
                 column: "user_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_categories_user_id",
+                name: "IX_categories_unique",
                 table: "categories",
-                column: "user_id");
+                columns: new[] { "user_id", "name", "type" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_planned_payments_category_id",
+                table: "planned_payments",
+                column: "category_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_planned_payments_user_id",

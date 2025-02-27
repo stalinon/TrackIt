@@ -4,13 +4,155 @@
         <name>TrackIt.API</name>
     </assembly>
     <members>
+        <member name="T:TrackIt.API.Controllers.AnalyticsController">
+            <summary>
+                Контроллер аналитики финансов
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.AnalyticsController.#ctor(MediatR.IMediator)">
+            <summary>
+                Контроллер аналитики финансов
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.AnalyticsController.GetBalance(TrackIt.Application.Features.Analytics.Queries.GetBalanceQuery,System.Threading.CancellationToken)">
+            <summary>
+                Получение общего баланса пользователя
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.AnalyticsController.GetCategorySpending(TrackIt.Application.Features.Analytics.Queries.GetCategorySpendingQuery,System.Threading.CancellationToken)">
+            <summary>
+                Получение расходов по категориям
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.AnalyticsController.GetDailySpending(TrackIt.Application.Features.Analytics.Queries.GetDailySpendingDtoQuery,System.Threading.CancellationToken)">
+            <summary>
+                Получение динамики расходов за месяц
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.AnalyticsController.GetMonthlyAverageSpending(TrackIt.Application.Features.Analytics.Queries.GetMonthlyAverageDtoQuery,System.Threading.CancellationToken)">
+            <summary>
+                Получение среднего уровня месячных расходов
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.AnalyticsController.GetTopExpensiveCategories(TrackIt.Application.Features.Analytics.Queries.GetTopCategoryQuery,System.Threading.CancellationToken)">
+            <summary>
+                Получение топ-3 самых затратных категорий
+            </summary>
+        </member>
+        <member name="T:TrackIt.API.Controllers.BudgetController">
+            <summary>
+                Контроллер лимитов бюджета
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.BudgetController.#ctor(MediatR.IMediator)">
+            <summary>
+                Контроллер лимитов бюджета
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.BudgetController.Create(TrackIt.Application.Features.Budgets.Commands.CreateBudgetCommand)">
+            <summary>
+                Создание лимита
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.BudgetController.Update(System.Guid,TrackIt.Application.Features.Budgets.Commands.UpdateBudgetCommand)">
+            <summary>
+                Обновление лимита
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.BudgetController.Delete(System.Guid)">
+            <summary>
+                Удаление лимита
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.BudgetController.GetAll(TrackIt.Application.Features.Budgets.Queries.GetBudgetQuery)">
+            <summary>
+                Получение всех лимитов
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.BudgetController.GetById(System.Guid)">
+            <summary>
+                Получение лимита по ID
+            </summary>
+        </member>
+        <member name="T:TrackIt.API.Controllers.CategoriesController">
+            <summary>
+                Контроллер категорий
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.CategoriesController.#ctor(MediatR.IMediator)">
+            <summary>
+                Контроллер категорий
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.CategoriesController.Create(TrackIt.Application.Features.Categories.Commands.CreateCategoryCommand)">
+            <summary>
+                Создание категории
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.CategoriesController.Update(System.Guid,TrackIt.Application.Features.Categories.Commands.UpdateCategoryCommand)">
+            <summary>
+                Обновление категории
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.CategoriesController.Delete(System.Guid)">
+            <summary>
+                Удаление категории
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.CategoriesController.GetAll(TrackIt.Application.Features.Categories.Queries.GetCategoriesQuery)">
+            <summary>
+                Получение всех категорий
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.CategoriesController.GetById(System.Guid)">
+            <summary>
+                Получение категории по ID
+            </summary>
+        </member>
+        <member name="T:TrackIt.API.Controllers.PlannedPaymentController">
+            <summary>
+                Контроллер платежей
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.PlannedPaymentController.#ctor(MediatR.IMediator)">
+            <summary>
+                Контроллер платежей
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.PlannedPaymentController.Create(TrackIt.Application.Features.PlannedPayments.Commands.CreatePlannedPaymentCommand)">
+            <summary>
+                Создание платежа
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.PlannedPaymentController.Update(System.Guid,TrackIt.Application.Features.PlannedPayments.Commands.UpdatePlannedPaymentCommand)">
+            <summary>
+                Обновление платежа
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.PlannedPaymentController.Delete(System.Guid)">
+            <summary>
+                Удаление платежа
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.PlannedPaymentController.GetAll(TrackIt.Application.Features.PlannedPayments.Queries.GetPlannedPaymentQuery)">
+            <summary>
+                Получение всех платежей
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.PlannedPaymentController.GetById(System.Guid)">
+            <summary>
+                Получение платежа по ID
+            </summary>
+        </member>
         <member name="T:TrackIt.API.Controllers.TransactionController">
             <summary>
                 Контроллер транзакций
             </summary>
         </member>
-        <member name="M:TrackIt.API.Controllers.TransactionController.#ctor(MediatR.IMediator,TrackIt.Application.Interfaces.IUserContext)">
-            <inheritdoc cref="T:TrackIt.API.Controllers.TransactionController" />
+        <member name="M:TrackIt.API.Controllers.TransactionController.#ctor(MediatR.IMediator)">
+            <summary>
+                Контроллер транзакций
+            </summary>
         </member>
         <member name="M:TrackIt.API.Controllers.TransactionController.Create(TrackIt.Application.Features.Transactions.Commands.CreateTransactionCommand)">
             <summary>
@@ -27,7 +169,7 @@
                 Удаление транзакции
             </summary>
         </member>
-        <member name="M:TrackIt.API.Controllers.TransactionController.GetAll(System.Int32,System.Int32)">
+        <member name="M:TrackIt.API.Controllers.TransactionController.GetAll(TrackIt.Application.Features.Transactions.Queries.GetTransactionsQuery)">
             <summary>
                 Получение всех транзакций
             </summary>

@@ -103,7 +103,9 @@ namespace TrackIt.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId", "Name", "Type")
+                        .IsUnique()
+                        .HasDatabaseName("IX_categories_unique");
 
                     b.ToTable("categories");
                 });
@@ -118,6 +120,10 @@ namespace TrackIt.Infrastructure.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("numeric")
                         .HasColumnName("amount");
+
+                    b.Property<Guid?>("CategoryId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("category_id");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -134,6 +140,10 @@ namespace TrackIt.Infrastructure.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("due_date");
 
+                    b.Property<string>("ScheduleId")
+                        .HasColumnType("text")
+                        .HasColumnName("schedule_id");
+
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
@@ -145,6 +155,8 @@ namespace TrackIt.Infrastructure.Migrations
                         .HasColumnName("user_id");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("UserId");
 
@@ -207,8 +219,11 @@ namespace TrackIt.Infrastructure.Migrations
                         .HasColumnName("created_at")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("date");
+
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("description");
 
@@ -292,11 +307,18 @@ namespace TrackIt.Infrastructure.Migrations
 
             modelBuilder.Entity("TrackIt.Domain.Entities.PlannedPaymentEntity", b =>
                 {
+                    b.HasOne("TrackIt.Domain.Entities.CategoryEntity", "Category")
+                        .WithMany("PlannedPayments")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("TrackIt.Domain.Entities.UserEntity", "User")
                         .WithMany("PlannedPayments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Category");
 
                     b.Navigation("User");
                 });
@@ -333,6 +355,8 @@ namespace TrackIt.Infrastructure.Migrations
             modelBuilder.Entity("TrackIt.Domain.Entities.CategoryEntity", b =>
                 {
                     b.Navigation("Budgets");
+
+                    b.Navigation("PlannedPayments");
 
                     b.Navigation("Transactions");
                 });
