@@ -44,7 +44,6 @@ public static class InfrastructureServiceExtensions
         services.AddHttpContextAccessor();
         services.AddScoped<IUserContext, UserContext>();
         
-        
         services.AddHangfire(config
             => config.UsePostgreSqlStorage(o
                 => o.UseNpgsqlConnection(connectionString)));

@@ -27,6 +27,7 @@
     <ItemGroup>
       <ProjectReference Include="..\TrackIt.Application\TrackIt.Application.csproj" />
       <ProjectReference Include="..\TrackIt.Infrastructure\TrackIt.Infrastructure.csproj" />
+      <ProjectReference Include="..\TrackIt.TelegramBot\TrackIt.TelegramBot.csproj" />
     </ItemGroup>
 
     <ItemGroup>
