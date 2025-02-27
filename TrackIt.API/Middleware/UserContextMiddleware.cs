@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using TrackIt.Application.Interfaces;
 
 namespace TrackIt.API.Middleware;
@@ -18,6 +19,13 @@ public class UserContextMiddleware
     /// <inheritdoc cref="UserContextMiddleware" />
     public async Task Invoke(HttpContext context, IUserContext userContext)
     {
+        var endpoint = context.GetEndpoint();
+        if (endpoint?.Metadata.GetMetadata<AuthorizeAttribute>() == null)
+        {
+            await _next(context);
+            return;
+        }
+        
         try
         {
             // Загружаем пользователя перед выполнением запроса

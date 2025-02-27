@@ -14,15 +14,16 @@ builder.Services.AddKeycloakAuthentication(builder.Configuration);
 builder.Services.AddKeycloakAuthorization();
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddTelegramBotServices(builder.Configuration);
+builder.Services.AddControllers();
 
 var app = builder.Build();
-app.UseMiddleware<UserContextMiddleware>();
+app.ConfigureSwagger();
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseHttpsRedirection();
 app.UseInfrastructureServices();
 app.UseTelegramBotServices();
-app.ConfigureSwagger();
-app.UseHttpsRedirection();
+app.MapControllers();
 
+app.UseMiddleware<UserContextMiddleware>();
 app.Run();

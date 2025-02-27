@@ -29,6 +29,7 @@ internal sealed class BudgetService(IUnitOfWork unitOfWork, IUserContext userCon
         // Возвращаем DTO
         return new BudgetDto
         {
+            Id = entity.Id,
             CategoryId = entity.CategoryId,
             LimitAmount = entity.LimitAmount,
         };
@@ -71,6 +72,7 @@ internal sealed class BudgetService(IUnitOfWork unitOfWork, IUserContext userCon
         // Возвращаем обновленный объект
         return new BudgetDto
         {
+            Id = entity.Id,
             CategoryId = entity.CategoryId,
             LimitAmount = entity.LimitAmount,
         };
@@ -87,6 +89,7 @@ internal sealed class BudgetService(IUnitOfWork unitOfWork, IUserContext userCon
 
         return new DetailedBudgetDto
         {
+            Id = entity.Id,
             CategoryId = entity.CategoryId,
             LimitAmount = entity.LimitAmount,
             CreatedAt = entity.CreatedAt,
@@ -105,6 +108,7 @@ internal sealed class BudgetService(IUnitOfWork unitOfWork, IUserContext userCon
 
         return limits.Select(entity => new BudgetDto
         {
+            Id = entity.Id,
             CategoryId = entity.CategoryId,
             LimitAmount = entity.LimitAmount,
         }).ToList();
@@ -119,7 +123,7 @@ internal sealed class BudgetService(IUnitOfWork unitOfWork, IUserContext userCon
         if (limit != null)
         {
             var from = transaction.Date.AddDays(-transaction.Date.Day);
-            var to  = transaction.Date;
+            var to = transaction.Date;
             var amount = await unitOfWork.Transactions.GetQuery()
                 .Where(e => e.UserId == userContext.UserId && e.Date < to && e.Date >= from)
                 .SumAsync(e => e.Amount, cancellationToken: cancellationToken);

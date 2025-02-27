@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using TrackIt.Application.DTOs.Transactions;
 using TrackIt.Domain.Common;
 
@@ -12,5 +13,6 @@ public class GetTransactionsQuery : PagedQuery, IRequest<IEnumerable<Transaction
     /// <summary>
     ///     Идентификатор категории
     /// </summary>
+    [FromQuery(Name = "category_id")]
     public Guid? CategoryId { get; set; } = null;
 }

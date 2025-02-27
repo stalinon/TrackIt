@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using MediatR;
 using TrackIt.Application.DTOs.Categories;
 using TrackIt.Domain.Enums;
@@ -12,10 +13,12 @@ public class CreateCategoryCommand : IRequest<CategoryDto>
     /// <summary>
     ///     Название категории
     /// </summary>
+    [JsonPropertyName("name")]
     public string Name { get; set; } = default!;
     
     /// <summary>
     ///     Тип категории
     /// </summary>
+    [JsonPropertyName("type")]
     public CategoryType Type { get; set; }
 }

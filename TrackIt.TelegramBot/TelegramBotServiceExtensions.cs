@@ -19,7 +19,7 @@ public static class TelegramBotServiceExtensions
         this IServiceCollection services, 
         IConfiguration configuration)
     {
-        var botToken = configuration.GetValue<string>("TelegramBot:BotToken");
+        var botToken = configuration["TelegramBot:Token"];
         services.AddSingleton<TelegramBotAdapter>(o
             => new TelegramBotAdapter(botToken!, o.GetRequiredService<ILogger<TelegramBotAdapter>>()));
         services.AddSingleton<ITelegramBotAdapter>(o => o.GetRequiredService<TelegramBotAdapter>());

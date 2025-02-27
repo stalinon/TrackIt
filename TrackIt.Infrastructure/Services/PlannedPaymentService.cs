@@ -37,6 +37,7 @@ internal sealed class PlannedPaymentService(IUnitOfWork unitOfWork, IUserContext
         // Возвращаем DTO
         return new PlannedPaymentDto
         {
+            Id = payment.Id,
             Amount = payment.Amount,
             DueDate = payment.DueDate,
             CategoryId = command.CategoryId,
@@ -86,6 +87,7 @@ internal sealed class PlannedPaymentService(IUnitOfWork unitOfWork, IUserContext
         // Возвращаем обновленный объект
         return new PlannedPaymentDto
         {
+            Id = payment.Id,
             Amount = payment.Amount,
             DueDate = payment.DueDate,
             CategoryId = command.CategoryId,
@@ -104,6 +106,7 @@ internal sealed class PlannedPaymentService(IUnitOfWork unitOfWork, IUserContext
 
         return new DetailedPlannedPaymentDto
         {
+            Id = payment.Id,
             Amount = payment.Amount,
             DueDate = payment.DueDate,
             Description = payment.Description,
@@ -124,6 +127,7 @@ internal sealed class PlannedPaymentService(IUnitOfWork unitOfWork, IUserContext
 
         return payments.Select(payment => new PlannedPaymentDto
         {
+            Id = payment.Id,
             DueDate = payment.DueDate,
             Amount = payment.Amount,
             CategoryId = payment.CategoryId,

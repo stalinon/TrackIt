@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using TrackIt.Application.DTOs.PlannedPayments;
 
 namespace TrackIt.Application.Features.PlannedPayments.Queries;
@@ -11,5 +12,6 @@ public class GetPlannedPaymentByIdQuery : IRequest<DetailedPlannedPaymentDto?>
     /// <summary>
     ///     Идентификатор платежа
     /// </summary>
+    [FromQuery(Name = "id")]
     public Guid PlannedPaymentId { get; set; }
 }

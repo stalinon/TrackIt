@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using TrackIt.Application.DTOs.Budgets;
 using TrackIt.Domain.Common;
 
@@ -12,5 +13,6 @@ public class GetBudgetQuery : PagedQuery, IRequest<IEnumerable<BudgetDto>>
     /// <summary>
     ///     Идентификатор категории
     /// </summary>
+    [FromQuery(Name = "category_id")]
     public Guid? CategoryId { get; set; }
 }

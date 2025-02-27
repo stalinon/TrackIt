@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using MediatR;
 
 namespace TrackIt.Application.Features.Budgets.Commands;
@@ -10,5 +11,6 @@ public class DeleteBudgetCommand : IRequest<bool>
     /// <summary>
     ///     Идентификатор запланированного платежа
     /// </summary>
+    [JsonPropertyName("id")]
     public Guid BudgetId { get; set; }
 }
