@@ -6,11 +6,6 @@ namespace TrackIt.Application.DTOs.PlannedPayments;
 public class PlannedPaymentDto
 {
     /// <summary>
-    ///     Идентификатор категории
-    /// </summary>
-    public Guid CategoryId { get; set; }
-    
-    /// <summary>
     ///     Объем оплаты
     /// </summary>
     public decimal Amount { get; set; }
@@ -19,4 +14,9 @@ public class PlannedPaymentDto
     ///     Дата
     /// </summary>
     public DateTime DueDate { get; set; }
+    
+    /// <summary>
+    ///     Идентификатор категории
+    /// </summary>
+    public Guid? CategoryId { get; set; }
 }

@@ -1,3 +1,6 @@
+using Hangfire;
+using Hangfire.PostgreSql;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,17 +37,32 @@ public static class InfrastructureServiceExtensions
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<ITransactionService, TransactionService>();
         services.AddScoped<ICategoryService, CategoryService>();
+        services.AddScoped<IPlannedPaymentService, PlannedPaymentService>();
         
         services.AddHttpContextAccessor();
         services.AddScoped<IUserContext, UserContext>();
+        
+        
+        services.AddHangfire(config
+            => config.UsePostgreSqlStorage(o
+                => o.UseNpgsqlConnection(connectionString)));
+        services.AddHangfireServer();
 
         return services;
     }
 
     /// <summary>
-    ///     Запустить заполнение БД
+    ///     Конфигурировать сервисы инфраструктуры
     /// </summary>
-    public static void ExecuteDatabaseSeed(this IServiceProvider serviceProvider)
+    public static WebApplication UseInfrastructureServices(this WebApplication app)
+    {
+        app.UseHangfireDashboard();
+        
+        app.Services.ExecuteDatabaseSeed();
+        return app;
+    }
+
+    private static void ExecuteDatabaseSeed(this IServiceProvider serviceProvider)
     {
         serviceProvider.ApplyMigrations<ApplicationDbContext>();
         

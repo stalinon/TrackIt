@@ -18,7 +18,7 @@ app.UseMiddleware<UserContextMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.Services.ExecuteDatabaseSeed();
+app.UseInfrastructureServices();
 app.ConfigureSwagger();
 app.UseHttpsRedirection();
 

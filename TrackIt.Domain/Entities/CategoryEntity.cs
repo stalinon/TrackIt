@@ -54,6 +54,11 @@ public class CategoryEntity : IBaseEntity
     public ICollection<TransactionEntity> Transactions { get; set; } = default!;
     
     /// <summary>
+    ///     Запланированные платежи
+    /// </summary>
+    public ICollection<PlannedPaymentEntity> PlannedPayments { get; set; } = default!;
+    
+    /// <summary>
     ///     Бюджеты
     /// </summary>
     public ICollection<BudgetEntity> Budgets { get; set; } = default!;
@@ -82,6 +87,11 @@ public class CategoryEntity : IBaseEntity
         builder.HasOne(c => c.User)
             .WithMany(u => u.Categories)
             .HasForeignKey(c => c.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(c => c.Transactions)
+            .WithOne(u => u.Category)
+            .HasForeignKey(c => c.CategoryId)
             .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasIndex(c => new {c.UserId, c.Name, c.Type})

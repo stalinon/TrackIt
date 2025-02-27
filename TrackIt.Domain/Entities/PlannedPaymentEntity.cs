@@ -40,6 +40,12 @@ public class PlannedPaymentEntity : IBaseEntity
     /// </summary>
     [Column("description")]
     public string Description { get; set; } = default!;
+
+    /// <summary>
+    ///     Идентификатор расписания
+    /// </summary>
+    [Column("schedule_id")]
+    public string? ScheduleId { get; set; }
     
     /// <summary>
     ///     Идентификатор пользователя
@@ -51,6 +57,17 @@ public class PlannedPaymentEntity : IBaseEntity
     ///     Пользователь
     /// </summary>
     public UserEntity User { get; set; } = default!;
+    
+    /// <summary>
+    ///     Идентификатор категории
+    /// </summary>
+    [Column("category_id")]
+    public Guid? CategoryId { get; set; }
+
+    /// <summary>
+    ///     Категория
+    /// </summary>
+    public CategoryEntity Category { get; set; } = default!;
 
     /// <summary>
     ///     Настройка сущности
@@ -74,6 +91,11 @@ public class PlannedPaymentEntity : IBaseEntity
         builder.HasOne(pp => pp.User)
             .WithMany(u => u.PlannedPayments)
             .HasForeignKey(pp => pp.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(pp => pp.Category)
+            .WithMany(u => u.PlannedPayments)
+            .HasForeignKey(pp => pp.CategoryId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

@@ -27,4 +27,9 @@ public class UpdatePlannedPaymentCommand : IRequest<PlannedPaymentDto>
     ///     Описание
     /// </summary>
     public string Description { get; set; } = default!;
+    
+    /// <summary>
+    ///     Идентификатор категории
+    /// </summary>
+    public Guid? CategoryId { get; set; }
 }

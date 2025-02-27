@@ -11,5 +11,5 @@ public class GetPlannedPaymentByIdQuery : IRequest<DetailedPlannedPaymentDto?>
     /// <summary>
     ///     Идентификатор платежа
     /// </summary>
-    public Guid CategoryId { get; set; }
+    public Guid PlannedPaymentId { get; set; }
 }
