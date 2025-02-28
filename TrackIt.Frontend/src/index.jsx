@@ -12,7 +12,8 @@ import App from "./App"; // Создадим App.jsx, который будет 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const keycloakProviderInitConfig = {
-  initOptions: { 
+  initOptions: {
+    onLoad: "optional",
     checkLoginIframe: false,
     redirectUri: window.location.origin,
   },
