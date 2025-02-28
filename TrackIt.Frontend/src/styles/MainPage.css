@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
-  padding: 1%;
+  padding: 0 1%;
   opacity: 0;
   animation: fadeInHeader 1s forwards; /* Анимация появления шапки */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень для шапки */
@@ -36,8 +36,6 @@
   padding: 15px 30px;
   border-radius: 5px;
   border: 2px solid transparent;
-  background-color: #edaa4c;
-  color: #fff;
   cursor: pointer;
 }
 

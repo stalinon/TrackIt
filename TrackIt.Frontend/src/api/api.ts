@@ -1,8 +1,9 @@
 import axios from "axios";
+import apiConfig from "../configs/apiConfig";
 
-const instance = axios.create({
-  baseURL: "http://localhost:5132", // Укажите URL вашего бэкенда
-  timeout: 10000,
+const api = axios.create({
+  baseURL: apiConfig.baseURL,
+  timeout: apiConfig.timeout,
 });
 
-export default instance;
+export default api;
