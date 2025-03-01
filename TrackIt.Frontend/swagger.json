@@ -20,7 +20,24 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BalanceDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BalanceDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BalanceDto"
+                }
+              }
+            }
           }
         }
       }
@@ -40,7 +57,33 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategorySpendingDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategorySpendingDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategorySpendingDto"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -60,7 +103,33 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DailySpendingDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DailySpendingDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DailySpendingDto"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -80,7 +149,24 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonthlyAverageDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonthlyAverageDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonthlyAverageDto"
+                }
+              }
+            }
           }
         }
       }
@@ -100,7 +186,33 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TopCategoryDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TopCategoryDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TopCategoryDto"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -129,8 +241,25 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BudgetDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BudgetDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BudgetDto"
+                }
+              }
+            }
           }
         }
       },
@@ -174,7 +303,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CategoryDto"
+                    "$ref": "#/components/schemas/BudgetDto"
                   }
                 }
               },
@@ -182,7 +311,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CategoryDto"
+                    "$ref": "#/components/schemas/BudgetDto"
                   }
                 }
               },
@@ -190,7 +319,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CategoryDto"
+                    "$ref": "#/components/schemas/BudgetDto"
                   }
                 }
               }
@@ -279,17 +408,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/DetailedCategoryDto"
+                  "$ref": "#/components/schemas/DetailedBudgetDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DetailedCategoryDto"
+                  "$ref": "#/components/schemas/DetailedBudgetDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DetailedCategoryDto"
+                  "$ref": "#/components/schemas/DetailedBudgetDto"
                 }
               }
             }
@@ -321,8 +450,25 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryDto"
+                }
+              }
+            }
           }
         }
       },
@@ -504,8 +650,25 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannedPaymentDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannedPaymentDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannedPaymentDto"
+                }
+              }
+            }
           }
         }
       },
@@ -549,7 +712,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CategoryDto"
+                    "$ref": "#/components/schemas/PlannedPaymentDto"
                   }
                 }
               },
@@ -557,7 +720,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CategoryDto"
+                    "$ref": "#/components/schemas/PlannedPaymentDto"
                   }
                 }
               },
@@ -565,7 +728,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CategoryDto"
+                    "$ref": "#/components/schemas/PlannedPaymentDto"
                   }
                 }
               }
@@ -654,17 +817,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/DetailedCategoryDto"
+                  "$ref": "#/components/schemas/DetailedPlannedPaymentDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DetailedCategoryDto"
+                  "$ref": "#/components/schemas/DetailedPlannedPaymentDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DetailedCategoryDto"
+                  "$ref": "#/components/schemas/DetailedPlannedPaymentDto"
                 }
               }
             }
@@ -696,8 +859,25 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionDto"
+                }
+              }
+            }
           }
         }
       },
@@ -870,7 +1050,24 @@
         "summary": "Получить профиль текущего пользователя",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDto"
+                }
+              }
+            }
           }
         }
       }
@@ -878,6 +1075,51 @@
   },
   "components": {
     "schemas": {
+      "BalanceDto": {
+        "type": "object",
+        "properties": {
+          "total_income": {
+            "type": "number",
+            "description": "Сумма всех доходов",
+            "format": "double"
+          },
+          "total_expense": {
+            "type": "number",
+            "description": "Сумма всех расходов",
+            "format": "double"
+          },
+          "balance": {
+            "type": "number",
+            "description": "Баланс",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Модель общего баланса"
+      },
+      "BudgetDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Уникальный идентификатор",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Величина лимита",
+            "format": "double"
+          },
+          "category_id": {
+            "type": "string",
+            "description": "Идентификатор категории",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Модель лимита бюджета"
+      },
       "CategoryDto": {
         "type": "object",
         "properties": {
@@ -902,6 +1144,23 @@
         },
         "additionalProperties": false,
         "description": "Модель категории"
+      },
+      "CategorySpendingDto": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "Название категории",
+            "nullable": true
+          },
+          "total_spent": {
+            "type": "number",
+            "description": "Всего потрачено",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Модель траты по категории"
       },
       "CategoryType": {
         "enum": [1, -1],
@@ -995,6 +1254,56 @@
         "additionalProperties": false,
         "description": "Команда для создания новой транзакции."
       },
+      "DailySpendingDto": {
+        "type": "object",
+        "properties": {
+          "day": {
+            "type": "integer",
+            "description": "Номер дня",
+            "format": "int32"
+          },
+          "total_spent": {
+            "type": "number",
+            "description": "Всего потрачено",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Модель дневных трат"
+      },
+      "DetailedBudgetDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Уникальный идентификатор",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Величина лимита",
+            "format": "double"
+          },
+          "category_id": {
+            "type": "string",
+            "description": "Идентификатор категории",
+            "format": "uuid",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Дата создания",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "Дата обновления",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Детализированная модель лимита бюджета"
+      },
       "DetailedCategoryDto": {
         "type": "object",
         "properties": {
@@ -1029,6 +1338,49 @@
         },
         "additionalProperties": false,
         "description": "Детализированная модель категории"
+      },
+      "DetailedPlannedPaymentDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Уникальный идентификатор",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Объем оплаты",
+            "format": "double"
+          },
+          "due_date": {
+            "type": "string",
+            "description": "Дата",
+            "format": "date-time"
+          },
+          "category_id": {
+            "type": "string",
+            "description": "Идентификатор категории",
+            "format": "uuid",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "Описание",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Дата создания",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "Дата обновления",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Детализированная модель запланированной платы"
       },
       "DetailedTransactionDto": {
         "type": "object",
@@ -1102,6 +1454,63 @@
         "type": "object",
         "additionalProperties": false,
         "description": "Получить топ категорий по тратам"
+      },
+      "MonthlyAverageDto": {
+        "type": "object",
+        "properties": {
+          "average_month_spent": {
+            "type": "number",
+            "description": "Средние затраты",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Модель средних затрат"
+      },
+      "PlannedPaymentDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Уникальный идентификатор",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Объем оплаты",
+            "format": "double"
+          },
+          "due_date": {
+            "type": "string",
+            "description": "Дата",
+            "format": "date-time"
+          },
+          "category_id": {
+            "type": "string",
+            "description": "Идентификатор категории",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Модель запланированной платы"
+      },
+      "TopCategoryDto": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "Название категории",
+            "nullable": true
+          },
+          "total_spent": {
+            "type": "number",
+            "description": "Всего потрачено",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Модель самых затратных категорий"
       },
       "TransactionDto": {
         "type": "object",
@@ -1237,6 +1646,28 @@
         },
         "additionalProperties": false,
         "description": "Команда для обновления транзакции."
+      },
+      "UserDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Идентификатор",
+            "format": "uuid"
+          },
+          "email": {
+            "type": "string",
+            "description": "Электронная почта",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Дата создания",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Модель пользователя"
       }
     },
     "securitySchemes": {

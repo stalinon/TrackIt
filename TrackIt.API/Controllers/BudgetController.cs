@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TrackIt.Application.DTOs.Budgets;
 using TrackIt.Application.DTOs.Categories;
 using TrackIt.Application.Features.Budgets.Commands;
 using TrackIt.Application.Features.Budgets.Queries;
@@ -16,6 +17,7 @@ public class BudgetController(IMediator mediator) : ControllerBase
     /// <summary>
     ///     Создание лимита
     /// </summary>
+    [ProducesResponseType(typeof(BudgetDto), 204)]
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateBudgetCommand command)
     {
@@ -52,6 +54,7 @@ public class BudgetController(IMediator mediator) : ControllerBase
     ///     Получение всех лимитов
     /// </summary>
     [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<BudgetDto>), 200)]
     public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAll([FromQuery] GetBudgetQuery query)
     {
         var transactions = await mediator.Send(query);
@@ -62,6 +65,7 @@ public class BudgetController(IMediator mediator) : ControllerBase
     ///     Получение лимита по ID
     /// </summary>
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(DetailedBudgetDto), 200)]
     public async Task<ActionResult<DetailedCategoryDto>> GetById(Guid id)
     {
         var query = new GetBudgetByIdQuery

@@ -1,11 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Dashboard.css";
 import { Button, Layout } from "antd";
 import logo from "../black_on_white.png";
 import Sider from "antd/es/layout/Sider";
-import { Content, Header } from "antd/es/layout/layout";
+import { Content } from "antd/es/layout/layout";
 import { UserApi } from "../api/generated";
 import api from "../api/api";
+
+import DashboardContent from "./DashboardContent";
+import TransactionsContent from "./TransactionsContent";
+import LimitsContent from "./LimitsContent";
+import PlannedPaymentsContent from "./PlannedPaymentsContent";
 
 const userApi = new UserApi(undefined, api.defaults.baseURL, api);
 
@@ -19,29 +24,62 @@ const getUserProfile = async () => {
 };
 
 const Dashboard = () => {
+  const [activePage, setActivePage] = useState("dashboard");
+
   useEffect(() => {
-    // Вызов функции для получения данных профиля при монтировании компонента
     getUserProfile();
-  }, []); // Пустой массив означает, что эффект сработает только при первом рендере
+  }, []);
+
+  // Функция для рендеринга контента в зависимости от активной страницы
+  const renderContent = () => {
+    switch (activePage) {
+      case "dashboard":
+        return <DashboardContent />;
+      case "transactions":
+        return <TransactionsContent />;
+      case "limits":
+        return <LimitsContent />;
+      case "plannedPayments":
+        return <PlannedPaymentsContent />;
+      default:
+        return <DashboardContent />;
+    }
+  };
 
   return (
     <Layout className="layout">
       <Sider className="layout__sider" width={350}>
         <img className="layout__sider__logo" src={logo} alt="logo" />
-        <Button className="layout__sider__btn" type="text">
+        <Button
+          className="layout__sider__btn"
+          type="text"
+          onClick={() => setActivePage("dashboard")}
+        >
           Dashboard
         </Button>
-        <Button className="layout__sider__btn" type="text">
+        <Button
+          className="layout__sider__btn"
+          type="text"
+          onClick={() => setActivePage("transactions")}
+        >
           Transactions
         </Button>
-        <Button className="layout__sider__btn" type="text">
+        <Button
+          className="layout__sider__btn"
+          type="text"
+          onClick={() => setActivePage("limits")}
+        >
           Limits
         </Button>
-        <Button className="layout__sider__btn" type="text">
+        <Button
+          className="layout__sider__btn"
+          type="text"
+          onClick={() => setActivePage("plannedPayments")}
+        >
           Planned payments
         </Button>
       </Sider>
-      <Content></Content>
+      <Content className="layout__content">{renderContent()}</Content>
     </Layout>
   );
 };

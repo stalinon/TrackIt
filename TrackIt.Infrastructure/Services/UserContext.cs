@@ -20,7 +20,8 @@ public class UserContext : IUserContext
     }
 
     /// <inheritdoc />
-    public Guid UserId { get; private set; }
+    public Guid UserId =>
+        _unitOfWork.Users.GetQuery().Where(u => u.Email == Email).Select(u => u.Id).First();
 
     /// <inheritdoc />
     public string? Email => _httpContextAccessor.HttpContext?.User.Claims
@@ -45,7 +46,6 @@ public class UserContext : IUserContext
 
         if (user != null)
         {
-            UserId = user.Id;
             return MapToUserDto(user);
         }
 
@@ -60,7 +60,6 @@ public class UserContext : IUserContext
         await _unitOfWork.Users.AddAsync(user);
         await _unitOfWork.SaveChangesAsync();
 
-        UserId = user.Id;
         return MapToUserDto(user);
     }
     

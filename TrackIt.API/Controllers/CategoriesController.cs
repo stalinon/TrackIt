@@ -17,6 +17,7 @@ public class CategoriesController(IMediator mediator) : ControllerBase
     ///     Создание категории
     /// </summary>
     [HttpPost]
+    [ProducesResponseType(typeof(CategoryDto), 204)]
     public async Task<IActionResult> Create([FromBody] CreateCategoryCommand command)
     {
         var result = await mediator.Send(command);
@@ -52,6 +53,7 @@ public class CategoriesController(IMediator mediator) : ControllerBase
     ///     Получение всех категорий
     /// </summary>
     [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<CategoryDto>), 200)]
     public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAll([FromQuery] GetCategoriesQuery query)
     {
         var transactions = await mediator.Send(query);
@@ -62,6 +64,7 @@ public class CategoriesController(IMediator mediator) : ControllerBase
     ///     Получение категории по ID
     /// </summary>
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(DetailedCategoryDto), 200)]
     public async Task<ActionResult<DetailedCategoryDto>> GetById(Guid id)
     {
         var query = new GetCategoryByIdQuery()

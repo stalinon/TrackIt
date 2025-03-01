@@ -1,8 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TrackIt.Application.DTOs.Categories;
-using TrackIt.Application.Features.Categories.Commands;
-using TrackIt.Application.Features.Categories.Queries;
+using TrackIt.Application.DTOs.PlannedPayments;
 using TrackIt.Application.Features.PlannedPayments.Commands;
 using TrackIt.Application.Features.PlannedPayments.Queries;
 
@@ -19,6 +18,7 @@ public class PlannedPaymentController(IMediator mediator) : ControllerBase
     ///     Создание платежа
     /// </summary>
     [HttpPost]
+    [ProducesResponseType(typeof(PlannedPaymentDto), 204)]
     public async Task<IActionResult> Create([FromBody] CreatePlannedPaymentCommand command)
     {
         var result = await mediator.Send(command);
@@ -54,7 +54,8 @@ public class PlannedPaymentController(IMediator mediator) : ControllerBase
     ///     Получение всех платежей
     /// </summary>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAll([FromQuery] GetPlannedPaymentQuery query)
+    [ProducesResponseType(typeof(IEnumerable<PlannedPaymentDto>), 200)]
+    public async Task<ActionResult<IEnumerable<PlannedPaymentDto>>> GetAll([FromQuery] GetPlannedPaymentQuery query)
     {
         var transactions = await mediator.Send(query);
         return Ok(transactions);
@@ -64,6 +65,7 @@ public class PlannedPaymentController(IMediator mediator) : ControllerBase
     ///     Получение платежа по ID
     /// </summary>
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(DetailedPlannedPaymentDto), 200)]
     public async Task<ActionResult<DetailedCategoryDto>> GetById(Guid id)
     {
         var query = new GetPlannedPaymentByIdQuery
