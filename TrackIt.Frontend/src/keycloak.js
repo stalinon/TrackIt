@@ -4,7 +4,7 @@ import Keycloak from "keycloak-js";
 const keycloakConfig = {
   url: "http://localhost:8180",
   realm: "TrackIt",
-  clientId: "trackit-api"
+  clientId: "trackit-api",
 };
 
 // Создаем один экземпляр (Singleton)

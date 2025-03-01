@@ -17,6 +17,7 @@ public class TransactionController(IMediator mediator) : ControllerBase
     ///     Создание транзакции
     /// </summary>
     [HttpPost]
+    [ProducesResponseType(typeof(TransactionDto), 204)]
     public async Task<IActionResult> Create([FromBody] CreateTransactionCommand command)
     {
         var result = await mediator.Send(command);
@@ -52,6 +53,7 @@ public class TransactionController(IMediator mediator) : ControllerBase
     ///     Получение всех транзакций
     /// </summary>
     [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<TransactionDto>), 200)]
     public async Task<ActionResult<IEnumerable<TransactionDto>>> GetAll([FromQuery] GetTransactionsQuery query)
     {
         var transactions = await mediator.Send(query);
@@ -62,6 +64,7 @@ public class TransactionController(IMediator mediator) : ControllerBase
     ///     Получение транзакции по ID
     /// </summary>
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(DetailedTransactionDto), 200)]
     public async Task<ActionResult<DetailedTransactionDto>> GetById(Guid id)
     {
         var query = new GetTransactionByIdQuery

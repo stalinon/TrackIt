@@ -12,14 +12,28 @@ import App from "./App"; // Создадим App.jsx, который будет 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const keycloakProviderInitConfig = {
-  initOptions: { 
+  initOptions: {
+    onLoad: "optional",
     checkLoginIframe: false,
     redirectUri: window.location.origin,
   },
 };
 
+const handleEvent = (event, error) => {
+  console.log("Keycloak event:", event, error);
+};
+
+const handleTokens = (tokens) => {
+  console.log("Keycloak token:", tokens.token);
+};
+
 root.render(
-  <ReactKeycloakProvider authClient={keycloak} {...keycloakProviderInitConfig}>
+  <ReactKeycloakProvider
+    authClient={keycloak}
+    initOptions={keycloakProviderInitConfig.initOptions}
+    onEvent={handleEvent}
+    onTokens={handleTokens}
+  >
     <React.StrictMode>
       <Provider store={store}>
         <App /> {/* Показываем либо MainPage, либо Dashboard */}

@@ -24,6 +24,56 @@ import type { RequestArgs } from './base';
 import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerMap } from './base';
 
 /**
+ * Модель общего баланса
+ * @export
+ * @interface BalanceDto
+ */
+export interface BalanceDto {
+    /**
+     * Сумма всех доходов
+     * @type {number}
+     * @memberof BalanceDto
+     */
+    'total_income'?: number;
+    /**
+     * Сумма всех расходов
+     * @type {number}
+     * @memberof BalanceDto
+     */
+    'total_expense'?: number;
+    /**
+     * Баланс
+     * @type {number}
+     * @memberof BalanceDto
+     */
+    'balance'?: number;
+}
+/**
+ * Модель лимита бюджета
+ * @export
+ * @interface BudgetDto
+ */
+export interface BudgetDto {
+    /**
+     * Уникальный идентификатор
+     * @type {string}
+     * @memberof BudgetDto
+     */
+    'id'?: string;
+    /**
+     * Величина лимита
+     * @type {number}
+     * @memberof BudgetDto
+     */
+    'amount'?: number;
+    /**
+     * Идентификатор категории
+     * @type {string}
+     * @memberof BudgetDto
+     */
+    'category_id'?: string | null;
+}
+/**
  * Модель категории
  * @export
  * @interface CategoryDto
@@ -56,6 +106,25 @@ export interface CategoryDto {
 }
 
 
+/**
+ * Модель траты по категории
+ * @export
+ * @interface CategorySpendingDto
+ */
+export interface CategorySpendingDto {
+    /**
+     * Название категории
+     * @type {string}
+     * @memberof CategorySpendingDto
+     */
+    'category'?: string | null;
+    /**
+     * Всего потрачено
+     * @type {number}
+     * @memberof CategorySpendingDto
+     */
+    'total_spent'?: number;
+}
 /**
  * Тип категории
  * @export
@@ -173,6 +242,62 @@ export interface CreateTransactionCommand {
     'date'?: string;
 }
 /**
+ * Модель дневных трат
+ * @export
+ * @interface DailySpendingDto
+ */
+export interface DailySpendingDto {
+    /**
+     * Номер дня
+     * @type {number}
+     * @memberof DailySpendingDto
+     */
+    'day'?: number;
+    /**
+     * Всего потрачено
+     * @type {number}
+     * @memberof DailySpendingDto
+     */
+    'total_spent'?: number;
+}
+/**
+ * Детализированная модель лимита бюджета
+ * @export
+ * @interface DetailedBudgetDto
+ */
+export interface DetailedBudgetDto {
+    /**
+     * Уникальный идентификатор
+     * @type {string}
+     * @memberof DetailedBudgetDto
+     */
+    'id'?: string;
+    /**
+     * Величина лимита
+     * @type {number}
+     * @memberof DetailedBudgetDto
+     */
+    'amount'?: number;
+    /**
+     * Идентификатор категории
+     * @type {string}
+     * @memberof DetailedBudgetDto
+     */
+    'category_id'?: string | null;
+    /**
+     * Дата создания
+     * @type {string}
+     * @memberof DetailedBudgetDto
+     */
+    'created_at'?: string;
+    /**
+     * Дата обновления
+     * @type {string}
+     * @memberof DetailedBudgetDto
+     */
+    'updated_at'?: string;
+}
+/**
  * Детализированная модель категории
  * @export
  * @interface DetailedCategoryDto
@@ -217,6 +342,55 @@ export interface DetailedCategoryDto {
 }
 
 
+/**
+ * Детализированная модель запланированной платы
+ * @export
+ * @interface DetailedPlannedPaymentDto
+ */
+export interface DetailedPlannedPaymentDto {
+    /**
+     * Уникальный идентификатор
+     * @type {string}
+     * @memberof DetailedPlannedPaymentDto
+     */
+    'id'?: string;
+    /**
+     * Объем оплаты
+     * @type {number}
+     * @memberof DetailedPlannedPaymentDto
+     */
+    'amount'?: number;
+    /**
+     * Дата
+     * @type {string}
+     * @memberof DetailedPlannedPaymentDto
+     */
+    'due_date'?: string;
+    /**
+     * Идентификатор категории
+     * @type {string}
+     * @memberof DetailedPlannedPaymentDto
+     */
+    'category_id'?: string | null;
+    /**
+     * Описание
+     * @type {string}
+     * @memberof DetailedPlannedPaymentDto
+     */
+    'description'?: string | null;
+    /**
+     * Дата создания
+     * @type {string}
+     * @memberof DetailedPlannedPaymentDto
+     */
+    'created_at'?: string;
+    /**
+     * Дата обновления
+     * @type {string}
+     * @memberof DetailedPlannedPaymentDto
+     */
+    'updated_at'?: string;
+}
 /**
  * Детализированная модель транзакции
  * @export
@@ -271,6 +445,69 @@ export interface DetailedTransactionDto {
      * @memberof DetailedTransactionDto
      */
     'category_id'?: string | null;
+}
+/**
+ * Модель средних затрат
+ * @export
+ * @interface MonthlyAverageDto
+ */
+export interface MonthlyAverageDto {
+    /**
+     * Средние затраты
+     * @type {number}
+     * @memberof MonthlyAverageDto
+     */
+    'average_month_spent'?: number;
+}
+/**
+ * Модель запланированной платы
+ * @export
+ * @interface PlannedPaymentDto
+ */
+export interface PlannedPaymentDto {
+    /**
+     * Уникальный идентификатор
+     * @type {string}
+     * @memberof PlannedPaymentDto
+     */
+    'id'?: string;
+    /**
+     * Объем оплаты
+     * @type {number}
+     * @memberof PlannedPaymentDto
+     */
+    'amount'?: number;
+    /**
+     * Дата
+     * @type {string}
+     * @memberof PlannedPaymentDto
+     */
+    'due_date'?: string;
+    /**
+     * Идентификатор категории
+     * @type {string}
+     * @memberof PlannedPaymentDto
+     */
+    'category_id'?: string | null;
+}
+/**
+ * Модель самых затратных категорий
+ * @export
+ * @interface TopCategoryDto
+ */
+export interface TopCategoryDto {
+    /**
+     * Название категории
+     * @type {string}
+     * @memberof TopCategoryDto
+     */
+    'category'?: string | null;
+    /**
+     * Всего потрачено
+     * @type {number}
+     * @memberof TopCategoryDto
+     */
+    'total_spent'?: number;
 }
 /**
  * Модель транзакции
@@ -428,6 +665,31 @@ export interface UpdateTransactionCommand {
      * @memberof UpdateTransactionCommand
      */
     'date'?: string;
+}
+/**
+ * Модель пользователя
+ * @export
+ * @interface UserDto
+ */
+export interface UserDto {
+    /**
+     * Идентификатор
+     * @type {string}
+     * @memberof UserDto
+     */
+    'id'?: string;
+    /**
+     * Электронная почта
+     * @type {string}
+     * @memberof UserDto
+     */
+    'email'?: string | null;
+    /**
+     * Дата создания
+     * @type {string}
+     * @memberof UserDto
+     */
+    'createdAt'?: string;
 }
 
 /**
@@ -658,7 +920,7 @@ export const AnalyticsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAnalyticsBalanceGet(query?: object, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async apiAnalyticsBalanceGet(query?: object, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BalanceDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiAnalyticsBalanceGet(query, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AnalyticsApi.apiAnalyticsBalanceGet']?.[localVarOperationServerIndex]?.url;
@@ -671,7 +933,7 @@ export const AnalyticsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAnalyticsCategorySpendingGet(query?: object, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async apiAnalyticsCategorySpendingGet(query?: object, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CategorySpendingDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiAnalyticsCategorySpendingGet(query, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AnalyticsApi.apiAnalyticsCategorySpendingGet']?.[localVarOperationServerIndex]?.url;
@@ -684,7 +946,7 @@ export const AnalyticsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAnalyticsMonthlyAverageGet(query?: object, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async apiAnalyticsMonthlyAverageGet(query?: object, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MonthlyAverageDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiAnalyticsMonthlyAverageGet(query, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AnalyticsApi.apiAnalyticsMonthlyAverageGet']?.[localVarOperationServerIndex]?.url;
@@ -697,7 +959,7 @@ export const AnalyticsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAnalyticsMonthlyTrendGet(query?: object, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async apiAnalyticsMonthlyTrendGet(query?: object, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<DailySpendingDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiAnalyticsMonthlyTrendGet(query, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AnalyticsApi.apiAnalyticsMonthlyTrendGet']?.[localVarOperationServerIndex]?.url;
@@ -710,7 +972,7 @@ export const AnalyticsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAnalyticsTopCategoriesGet(query?: object, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async apiAnalyticsTopCategoriesGet(query?: object, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TopCategoryDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiAnalyticsTopCategoriesGet(query, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AnalyticsApi.apiAnalyticsTopCategoriesGet']?.[localVarOperationServerIndex]?.url;
@@ -733,7 +995,7 @@ export const AnalyticsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAnalyticsBalanceGet(query?: object, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        apiAnalyticsBalanceGet(query?: object, options?: RawAxiosRequestConfig): AxiosPromise<BalanceDto> {
             return localVarFp.apiAnalyticsBalanceGet(query, options).then((request) => request(axios, basePath));
         },
         /**
@@ -743,7 +1005,7 @@ export const AnalyticsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAnalyticsCategorySpendingGet(query?: object, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        apiAnalyticsCategorySpendingGet(query?: object, options?: RawAxiosRequestConfig): AxiosPromise<Array<CategorySpendingDto>> {
             return localVarFp.apiAnalyticsCategorySpendingGet(query, options).then((request) => request(axios, basePath));
         },
         /**
@@ -753,7 +1015,7 @@ export const AnalyticsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAnalyticsMonthlyAverageGet(query?: object, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        apiAnalyticsMonthlyAverageGet(query?: object, options?: RawAxiosRequestConfig): AxiosPromise<MonthlyAverageDto> {
             return localVarFp.apiAnalyticsMonthlyAverageGet(query, options).then((request) => request(axios, basePath));
         },
         /**
@@ -763,7 +1025,7 @@ export const AnalyticsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAnalyticsMonthlyTrendGet(query?: object, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        apiAnalyticsMonthlyTrendGet(query?: object, options?: RawAxiosRequestConfig): AxiosPromise<Array<DailySpendingDto>> {
             return localVarFp.apiAnalyticsMonthlyTrendGet(query, options).then((request) => request(axios, basePath));
         },
         /**
@@ -773,7 +1035,7 @@ export const AnalyticsApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAnalyticsTopCategoriesGet(query?: object, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        apiAnalyticsTopCategoriesGet(query?: object, options?: RawAxiosRequestConfig): AxiosPromise<Array<TopCategoryDto>> {
             return localVarFp.apiAnalyticsTopCategoriesGet(query, options).then((request) => request(axios, basePath));
         },
     };
@@ -1079,7 +1341,7 @@ export const BudgetApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiBudgetsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CategoryDto>>> {
+        async apiBudgetsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BudgetDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiBudgetsGet(categoryId, page, limit, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BudgetApi.apiBudgetsGet']?.[localVarOperationServerIndex]?.url;
@@ -1105,7 +1367,7 @@ export const BudgetApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiBudgetsIdGet(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DetailedCategoryDto>> {
+        async apiBudgetsIdGet(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DetailedBudgetDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiBudgetsIdGet(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BudgetApi.apiBudgetsIdGet']?.[localVarOperationServerIndex]?.url;
@@ -1132,7 +1394,7 @@ export const BudgetApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiBudgetsPost(createBudgetCommand?: CreateBudgetCommand, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async apiBudgetsPost(createBudgetCommand?: CreateBudgetCommand, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BudgetDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiBudgetsPost(createBudgetCommand, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BudgetApi.apiBudgetsPost']?.[localVarOperationServerIndex]?.url;
@@ -1157,7 +1419,7 @@ export const BudgetApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiBudgetsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<CategoryDto>> {
+        apiBudgetsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<BudgetDto>> {
             return localVarFp.apiBudgetsGet(categoryId, page, limit, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1177,7 +1439,7 @@ export const BudgetApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiBudgetsIdGet(id: string, options?: RawAxiosRequestConfig): AxiosPromise<DetailedCategoryDto> {
+        apiBudgetsIdGet(id: string, options?: RawAxiosRequestConfig): AxiosPromise<DetailedBudgetDto> {
             return localVarFp.apiBudgetsIdGet(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1198,7 +1460,7 @@ export const BudgetApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiBudgetsPost(createBudgetCommand?: CreateBudgetCommand, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        apiBudgetsPost(createBudgetCommand?: CreateBudgetCommand, options?: RawAxiosRequestConfig): AxiosPromise<BudgetDto> {
             return localVarFp.apiBudgetsPost(createBudgetCommand, options).then((request) => request(axios, basePath));
         },
     };
@@ -1554,7 +1816,7 @@ export const CategoriesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiCategoriesPost(createCategoryCommand?: CreateCategoryCommand, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async apiCategoriesPost(createCategoryCommand?: CreateCategoryCommand, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CategoryDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiCategoriesPost(createCategoryCommand, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CategoriesApi.apiCategoriesPost']?.[localVarOperationServerIndex]?.url;
@@ -1619,7 +1881,7 @@ export const CategoriesApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiCategoriesPost(createCategoryCommand?: CreateCategoryCommand, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        apiCategoriesPost(createCategoryCommand?: CreateCategoryCommand, options?: RawAxiosRequestConfig): AxiosPromise<CategoryDto> {
             return localVarFp.apiCategoriesPost(createCategoryCommand, options).then((request) => request(axios, basePath));
         },
     };
@@ -1927,7 +2189,7 @@ export const PlannedPaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiPaymentsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CategoryDto>>> {
+        async apiPaymentsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PlannedPaymentDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiPaymentsGet(categoryId, page, limit, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PlannedPaymentApi.apiPaymentsGet']?.[localVarOperationServerIndex]?.url;
@@ -1953,7 +2215,7 @@ export const PlannedPaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiPaymentsIdGet(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DetailedCategoryDto>> {
+        async apiPaymentsIdGet(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DetailedPlannedPaymentDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiPaymentsIdGet(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PlannedPaymentApi.apiPaymentsIdGet']?.[localVarOperationServerIndex]?.url;
@@ -1980,7 +2242,7 @@ export const PlannedPaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiPaymentsPost(createPlannedPaymentCommand?: CreatePlannedPaymentCommand, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async apiPaymentsPost(createPlannedPaymentCommand?: CreatePlannedPaymentCommand, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlannedPaymentDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiPaymentsPost(createPlannedPaymentCommand, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PlannedPaymentApi.apiPaymentsPost']?.[localVarOperationServerIndex]?.url;
@@ -2005,7 +2267,7 @@ export const PlannedPaymentApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiPaymentsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<CategoryDto>> {
+        apiPaymentsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<PlannedPaymentDto>> {
             return localVarFp.apiPaymentsGet(categoryId, page, limit, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2025,7 +2287,7 @@ export const PlannedPaymentApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiPaymentsIdGet(id: string, options?: RawAxiosRequestConfig): AxiosPromise<DetailedCategoryDto> {
+        apiPaymentsIdGet(id: string, options?: RawAxiosRequestConfig): AxiosPromise<DetailedPlannedPaymentDto> {
             return localVarFp.apiPaymentsIdGet(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2046,7 +2308,7 @@ export const PlannedPaymentApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiPaymentsPost(createPlannedPaymentCommand?: CreatePlannedPaymentCommand, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        apiPaymentsPost(createPlannedPaymentCommand?: CreatePlannedPaymentCommand, options?: RawAxiosRequestConfig): AxiosPromise<PlannedPaymentDto> {
             return localVarFp.apiPaymentsPost(createPlannedPaymentCommand, options).then((request) => request(axios, basePath));
         },
     };
@@ -2408,7 +2670,7 @@ export const TransactionApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiTransactionsPost(createTransactionCommand?: CreateTransactionCommand, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async apiTransactionsPost(createTransactionCommand?: CreateTransactionCommand, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiTransactionsPost(createTransactionCommand, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['TransactionApi.apiTransactionsPost']?.[localVarOperationServerIndex]?.url;
@@ -2474,7 +2736,7 @@ export const TransactionApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiTransactionsPost(createTransactionCommand?: CreateTransactionCommand, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        apiTransactionsPost(createTransactionCommand?: CreateTransactionCommand, options?: RawAxiosRequestConfig): AxiosPromise<TransactionDto> {
             return localVarFp.apiTransactionsPost(createTransactionCommand, options).then((request) => request(axios, basePath));
         },
     };
@@ -2609,7 +2871,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiUsersProfileGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async apiUsersProfileGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiUsersProfileGet(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['UserApi.apiUsersProfileGet']?.[localVarOperationServerIndex]?.url;
@@ -2631,7 +2893,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiUsersProfileGet(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        apiUsersProfileGet(options?: RawAxiosRequestConfig): AxiosPromise<UserDto> {
             return localVarFp.apiUsersProfileGet(options).then((request) => request(axios, basePath));
         },
     };

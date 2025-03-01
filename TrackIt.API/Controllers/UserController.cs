@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TrackIt.Application.DTOs;
 using TrackIt.Application.Interfaces;
 
 namespace TrackIt.API.Controllers;
@@ -31,6 +32,7 @@ public class UserController : ControllerBase
     ///     Получить профиль текущего пользователя
     /// </summary>
     [HttpGet("profile")]
+    [ProducesResponseType(typeof(UserDto), 200)]
     public async Task<IActionResult> GetUserProfile()
     {
         var userEmail = GetUserEmail();

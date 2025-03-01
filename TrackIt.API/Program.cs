@@ -16,6 +16,16 @@ builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddTelegramBotServices(builder.Configuration);
 builder.Services.AddControllers();
 
+const string allowFrontend = "AllowFrontend";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(allowFrontend,
+        policy => policy.WithOrigins("http://localhost:3000")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+});
+
 var app = builder.Build();
 app.ConfigureSwagger();
 app.UseAuthentication();
@@ -24,6 +34,7 @@ app.UseHttpsRedirection();
 app.UseInfrastructureServices();
 app.UseTelegramBotServices();
 app.MapControllers();
+app.UseCors(allowFrontend);
 
 app.UseMiddleware<UserContextMiddleware>();
 app.Run();
