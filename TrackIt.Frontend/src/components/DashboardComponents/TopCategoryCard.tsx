@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AnalyticsApi, TopCategoryDto } from "../../api/generated";
 import api from "../../api/api";
-import { Card, Col, Row, Statistic, Typography, Avatar } from "antd";
+import { Card, Flex, Statistic, Typography, Avatar } from "antd";
 import CountUp from "react-countup";
 import { TrophyOutlined } from "@ant-design/icons";
 
@@ -29,8 +29,8 @@ const TopCategoryCard = () => {
   }, []);
 
   return (
-    <Card variant="borderless">
-      <Col span={1}>
+    <Card variant="borderless" style={{ height: "10%" }}>
+      <Flex gap="large" align="center">
         <Avatar
           size={60}
           icon={<TrophyOutlined />}
@@ -41,31 +41,26 @@ const TopCategoryCard = () => {
             color: "black",
           }}
         />
-      </Col>
-      <Col span={20}>
-        <Title
-          level={5}
-          style={{ textAlign: "center", marginBottom: 14, marginTop: 4 }}
-        >
-          Top categories by spend
-        </Title>
-        <Row gutter={42} justify="center" style={{ marginTop: 20 }}>
-          {categories.length > 0 ? (
-            categories.map((category, i) => (
-              <Col key={i}>
+        <Flex vertical>
+          <Title level={5} style={{ marginBottom: 14, marginTop: 4 }}>
+            Top categories by spend
+          </Title>
+          <Flex gap="large">
+            {categories.length > 0 ? (
+              categories.map((category, i) => (
                 <Statistic
                   title={category.category}
                   value={category.total_spent}
                   precision={2}
                   formatter={formatter}
                 />
-              </Col>
-            ))
-          ) : (
-            <p>Нет данных</p>
-          )}
-        </Row>
-      </Col>
+              ))
+            ) : (
+              <p>Нет данных</p>
+            )}
+          </Flex>
+        </Flex>
+      </Flex>
     </Card>
   );
 };

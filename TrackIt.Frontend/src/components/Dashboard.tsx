@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../styles/Dashboard.css";
 import { Button, Layout } from "antd";
 import logo from "../black_on_white.png";
 import Sider from "antd/es/layout/Sider";
@@ -11,6 +10,8 @@ import DashboardContent from "./DashboardContent";
 import TransactionsContent from "./TransactionsContent";
 import LimitsContent from "./LimitsContent";
 import PlannedPaymentsContent from "./PlannedPaymentsContent";
+
+import "../styles/Dashboard.css";
 
 // Импортируем иконки
 import {

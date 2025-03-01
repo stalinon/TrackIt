@@ -33,7 +33,7 @@ const CategorySpendingCard = () => {
   }, []);
 
   return (
-    <Card variant="borderless">
+    <Card variant="borderless" style={{ width: "40%" }}>
       <Col span={24}>
         <Title level={5} style={{ textAlign: "center", marginBottom: 8 }}>
           Category Spendings (Last Month)
