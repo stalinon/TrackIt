@@ -30,7 +30,11 @@ const MonthlyAverageCard = () => {
 
   return (
     <Card variant="borderless">
-      <Row gutter={42} justify="center" style={{ marginTop: 32 }}>
+      <Row
+        gutter={42}
+        justify="center"
+        style={{ marginTop: 28, marginBottom: 20 }}
+      >
         <Col>
           <Statistic
             title="Average monthly spending"

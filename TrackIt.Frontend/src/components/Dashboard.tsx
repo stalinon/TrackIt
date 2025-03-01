@@ -12,6 +12,14 @@ import TransactionsContent from "./TransactionsContent";
 import LimitsContent from "./LimitsContent";
 import PlannedPaymentsContent from "./PlannedPaymentsContent";
 
+// Импортируем иконки
+import {
+  HomeOutlined,
+  CreditCardOutlined,
+  SafetyCertificateOutlined,
+  CalendarOutlined,
+} from "@ant-design/icons";
+
 const userApi = new UserApi(undefined, api.defaults.baseURL, api);
 
 const getUserProfile = async () => {
@@ -54,6 +62,7 @@ const Dashboard = () => {
           className="layout__sider__btn"
           type="text"
           onClick={() => setActivePage("dashboard")}
+          icon={<HomeOutlined />}
         >
           Dashboard
         </Button>
@@ -61,6 +70,7 @@ const Dashboard = () => {
           className="layout__sider__btn"
           type="text"
           onClick={() => setActivePage("transactions")}
+          icon={<CreditCardOutlined />}
         >
           Transactions
         </Button>
@@ -68,6 +78,7 @@ const Dashboard = () => {
           className="layout__sider__btn"
           type="text"
           onClick={() => setActivePage("limits")}
+          icon={<SafetyCertificateOutlined />}
         >
           Limits
         </Button>
@@ -75,6 +86,7 @@ const Dashboard = () => {
           className="layout__sider__btn"
           type="text"
           onClick={() => setActivePage("plannedPayments")}
+          icon={<CalendarOutlined />}
         >
           Planned payments
         </Button>

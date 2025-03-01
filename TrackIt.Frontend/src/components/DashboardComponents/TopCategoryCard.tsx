@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { AnalyticsApi, TopCategoryDto } from "../../api/generated";
 import api from "../../api/api";
-import { Card, Col, Row, Statistic, Typography } from "antd";
+import { Card, Col, Row, Statistic, Typography, Avatar } from "antd";
 import CountUp from "react-countup";
+import { TrophyOutlined } from "@ant-design/icons";
 
 const { Title } = Typography;
 
@@ -29,28 +30,42 @@ const TopCategoryCard = () => {
 
   return (
     <Card variant="borderless">
-      <Title
-        level={5}
-        style={{ textAlign: "center", marginBottom: 8, marginTop: 2 }}
-      >
-        Top categories by spend
-      </Title>
-      <Row gutter={42} justify="center">
-        {categories.length > 0 ? (
-          categories.map((category, i) => (
-            <Col key={i}>
-              <Statistic
-                title={category.category}
-                value={category.total_spent}
-                precision={2}
-                formatter={formatter}
-              />
-            </Col>
-          ))
-        ) : (
-          <p>Нет данных</p>
-        )}
-      </Row>
+      <Col span={1}>
+        <Avatar
+          size={60}
+          icon={<TrophyOutlined />}
+          style={{
+            backgroundColor: "#f5f5f5",
+            borderRadius: "10px",
+            padding: "10px",
+            color: "black",
+          }}
+        />
+      </Col>
+      <Col span={20}>
+        <Title
+          level={5}
+          style={{ textAlign: "center", marginBottom: 14, marginTop: 4 }}
+        >
+          Top categories by spend
+        </Title>
+        <Row gutter={42} justify="center" style={{ marginTop: 20 }}>
+          {categories.length > 0 ? (
+            categories.map((category, i) => (
+              <Col key={i}>
+                <Statistic
+                  title={category.category}
+                  value={category.total_spent}
+                  precision={2}
+                  formatter={formatter}
+                />
+              </Col>
+            ))
+          ) : (
+            <p>Нет данных</p>
+          )}
+        </Row>
+      </Col>
     </Card>
   );
 };
