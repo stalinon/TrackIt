@@ -1158,6 +1158,21 @@
                 Сохранить изменения
             </summary>
         </member>
+        <member name="M:TrackIt.Application.Interfaces.IUnitOfWork.BeginTransactionAsync">
+            <summary>
+                Начать транзакцию
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IUnitOfWork.CommitTransactionAsync">
+            <summary>
+                Закоммитить транзакцию
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IUnitOfWork.RollbackTransactionAsync">
+            <summary>
+                Откатить транзакцию
+            </summary>
+        </member>
         <member name="T:TrackIt.Application.Interfaces.IUserContext">
             <summary>
                 Контекст пользователей

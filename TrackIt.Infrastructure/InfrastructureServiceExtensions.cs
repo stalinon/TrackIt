@@ -30,7 +30,9 @@ public static class InfrastructureServiceExtensions
 
         // Добавляем DbContext в контейнер зависимостей
         services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseNpgsql(connectionString));
+        {
+            options.UseNpgsql(connectionString);
+        });
         
         services.AddTransient<DatabaseSeeder>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();

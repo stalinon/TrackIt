@@ -65,6 +65,10 @@ public class UserEntity : IBaseEntity
             .IsRequired()
             .HasMaxLength(256);
 
+        builder.HasIndex(u => u.Email)
+            .HasDatabaseName("IX_users_email_unique")
+            .IsUnique();
+
         builder.Property(u => u.CreatedAt)
             .HasDefaultValueSql("CURRENT_TIMESTAMP");
 

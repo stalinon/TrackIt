@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TrackIt.Application.DTOs.Budgets;
 using TrackIt.Application.DTOs.Categories;
@@ -12,6 +13,7 @@ namespace TrackIt.API.Controllers;
 /// </summary>
 [Route("api/budgets")]
 [ApiController]
+[Authorize]
 public class BudgetController(IMediator mediator) : ControllerBase
 {
     /// <summary>

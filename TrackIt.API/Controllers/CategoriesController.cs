@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TrackIt.Application.DTOs.Categories;
 using TrackIt.Application.Features.Categories.Commands;
@@ -11,6 +12,7 @@ namespace TrackIt.API.Controllers;
 /// </summary>
 [Route("api/categories")]
 [ApiController]
+[Authorize]
 public class CategoriesController(IMediator mediator) : ControllerBase
 {
     /// <summary>

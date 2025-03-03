@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TrackIt.Application.DTOs.Categories;
 using TrackIt.Application.DTOs.PlannedPayments;
@@ -12,6 +13,7 @@ namespace TrackIt.API.Controllers;
 /// </summary>
 [Route("api/payments")]
 [ApiController]
+[Authorize]
 public class PlannedPaymentController(IMediator mediator) : ControllerBase
 {
     /// <summary>

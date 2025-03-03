@@ -42,26 +42,46 @@ public class UserContext : IUserContext
             throw new UnauthorizedAccessException("Email not found in token");
         }
 
+        // Проверяем еще раз внутри транзакции
         var user = await _unitOfWork.Users.GetByEmailAsync(Email);
-
         if (user != null)
         {
             return MapToUserDto(user);
         }
 
-        user = new UserEntity
+        // Блокируем создание нового пользователя внутри транзакции
+        await using (var transaction = await _unitOfWork.BeginTransactionAsync())
         {
-            Id = Guid.NewGuid(),
-            Email = Email!,
-            CreatedAt = DateTime.UtcNow,
-            UpdatedAt = DateTime.UtcNow
-        };
+            try
+            {
+                // Дважды проверяем, что пользователь не создался параллельно
+                user = await _unitOfWork.Users.GetByEmailAsync(Email);
+                if (user == null) // Если все еще нет, создаем
+                {
+                    user = new UserEntity
+                    {
+                        Id = Guid.NewGuid(),
+                        Email = Email!,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    };
 
-        await _unitOfWork.Users.AddAsync(user);
-        await _unitOfWork.SaveChangesAsync();
+                    await _unitOfWork.Users.AddAsync(user);
+
+                    // Фиксируем транзакцию
+                    await _unitOfWork.CommitTransactionAsync();
+                }
+            }
+            catch
+            {
+                await _unitOfWork.RollbackTransactionAsync();
+                throw;
+            }
+        }
 
         return MapToUserDto(user);
     }
+
     
     private static UserDto MapToUserDto(UserEntity user)
     {

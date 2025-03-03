@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TrackIt.Application.DTOs.Analytics;
 using TrackIt.Application.Features.Analytics.Queries;
@@ -10,6 +11,7 @@ namespace TrackIt.API.Controllers;
 /// </summary>
 [Route("api/analytics")]
 [ApiController]
+[Authorize]
 public class AnalyticsController(IMediator mediator) : ControllerBase
 {
 	/// <summary>

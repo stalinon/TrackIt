@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore.Storage;
 using TrackIt.Application.Interfaces;
 using TrackIt.Application.Interfaces.Repositories;
 using TrackIt.Infrastructure.Persistence;
@@ -9,6 +10,7 @@ namespace TrackIt.Infrastructure.Services;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly ApplicationDbContext _context;
+    private IDbContextTransaction? _currentTransaction;
     
     /// <inheritdoc />
     public IUserRepository Users { get; }
@@ -37,8 +39,63 @@ public class UnitOfWork : IUnitOfWork
     }
 
     /// <inheritdoc />
-    public async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync();
+    public async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync(); 
     
     /// <inheritdoc />
-    public void Dispose() => _context.Dispose();
+    public async Task<IDbContextTransaction> BeginTransactionAsync()
+    {
+        if (_currentTransaction != null)
+        {
+            throw new InvalidOperationException("Транзакция уже начата");
+        }
+
+        _currentTransaction = await _context.Database.BeginTransactionAsync();
+        return _currentTransaction;
+    }
+
+    /// <inheritdoc />
+    public async Task CommitTransactionAsync()
+    {
+        if (_currentTransaction == null)
+        {
+            throw new InvalidOperationException("Нет активной транзакции");
+        }
+
+        try
+        {
+            await _context.SaveChangesAsync();
+            await _currentTransaction.CommitAsync();
+        }
+        finally
+        {
+            _currentTransaction.Dispose();
+            _currentTransaction = null;
+        }
+    }
+
+    /// <inheritdoc />
+    public async Task RollbackTransactionAsync()
+    {
+        if (_currentTransaction == null)
+        {
+            throw new InvalidOperationException("Нет активной транзакции");
+        }
+
+        try
+        {
+            await _currentTransaction.RollbackAsync();
+        }
+        finally
+        {
+            _currentTransaction.Dispose();
+            _currentTransaction = null;
+        }
+    }
+
+    /// <inheritdoc />
+    public void Dispose()
+    {
+        _currentTransaction?.Dispose();
+        _context.Dispose();
+    }
 }

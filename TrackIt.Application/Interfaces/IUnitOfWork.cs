@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore.Storage;
 using TrackIt.Application.Interfaces.Repositories;
 
 namespace TrackIt.Application.Interfaces;
@@ -36,4 +37,19 @@ public interface IUnitOfWork : IDisposable
     ///     Сохранить изменения
     /// </summary>
     Task<int> SaveChangesAsync();
+    
+    /// <summary>
+    ///     Начать транзакцию
+    /// </summary>
+    Task<IDbContextTransaction> BeginTransactionAsync();
+
+    /// <summary>
+    ///     Закоммитить транзакцию
+    /// </summary>
+    Task CommitTransactionAsync();
+
+    /// <summary>
+    ///     Откатить транзакцию
+    /// </summary>
+    Task RollbackTransactionAsync();
 }

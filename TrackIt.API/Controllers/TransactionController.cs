@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TrackIt.Application.DTOs.Transactions;
 using TrackIt.Application.Features.Transactions.Commands;
@@ -11,6 +12,7 @@ namespace TrackIt.API.Controllers;
 /// </summary>
 [Route("api/transactions")]
 [ApiController]
+[Authorize]
 public class TransactionController(IMediator mediator) : ControllerBase
 {
     /// <summary>

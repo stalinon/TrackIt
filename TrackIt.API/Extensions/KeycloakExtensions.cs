@@ -17,7 +17,6 @@ public static class KeycloakExtensions
         var keycloakSettings = configuration.GetSection("Keycloak");
 
         var authority = keycloakSettings["Authority"];
-        var audience = keycloakSettings["Audience"];
         var requireHttpsMetadata = bool.Parse(keycloakSettings["RequireHttpsMetadata"] ?? "false");
         Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
 
@@ -25,15 +24,13 @@ public static class KeycloakExtensions
             .AddJwtBearer(options =>
             {
                 options.Authority = authority;
-                options.Audience = audience;
                 options.RequireHttpsMetadata = requireHttpsMetadata;
                 options.MetadataAddress = $"{authority}/.well-known/openid-configuration";
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidIssuer = authority,
-                    ValidateAudience = true,
-                    ValidAudience = audience,
+                    ValidateAudience = false,
                     ValidateLifetime = true
                 };
             });
