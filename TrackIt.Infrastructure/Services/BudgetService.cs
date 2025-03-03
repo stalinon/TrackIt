@@ -1,4 +1,6 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using TrackIt.Application.DTOs;
 using TrackIt.Application.DTOs.Budgets;
 using TrackIt.Application.Features.Budgets.Commands;
 using TrackIt.Application.Features.Budgets.Queries;
@@ -98,20 +100,27 @@ internal sealed class BudgetService(IUnitOfWork unitOfWork, IUserContext userCon
     }
 
     /// <inheritdoc />
-    public async Task<IEnumerable<BudgetDto>> ListAsync(GetBudgetQuery query, CancellationToken cancellationToken)
+    public async Task<PagedList<BudgetDto>> ListAsync(GetBudgetQuery query, CancellationToken cancellationToken)
     {
+        Expression<Func<BudgetEntity, bool>> filter = e => e.UserId == userContext.UserId;
         var limits = await unitOfWork.Budgets.GetPaginatedAsync(
             pageIndex: query.PageIndex,
             pageSize: query.Limit,
-            filter: e => e.UserId == userContext.UserId,
+            filter: filter,
             orderBy: e => e.UpdatedAt);
+        
+        var count = await unitOfWork.Budgets.CountAsync(filter);
 
-        return limits.Select(entity => new BudgetDto
+        return new()
         {
-            Id = entity.Id,
-            CategoryId = entity.CategoryId,
-            LimitAmount = entity.LimitAmount,
-        }).ToList();
+            Total = count,
+            Items = limits.Select(entity => new BudgetDto
+            {
+                Id = entity.Id,
+                CategoryId = entity.CategoryId,
+                LimitAmount = entity.LimitAmount,
+            })
+        };
     }
 
     /// <inheritdoc />

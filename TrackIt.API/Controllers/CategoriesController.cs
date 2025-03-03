@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TrackIt.Application.DTOs;
 using TrackIt.Application.DTOs.Categories;
 using TrackIt.Application.Features.Categories.Commands;
 using TrackIt.Application.Features.Categories.Queries;
@@ -55,8 +56,8 @@ public class CategoriesController(IMediator mediator) : ControllerBase
     ///     Получение всех категорий
     /// </summary>
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<CategoryDto>), 200)]
-    public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAll([FromQuery] GetCategoriesQuery query)
+    [ProducesResponseType(typeof(PagedList<CategoryDto>), 200)]
+    public async Task<ActionResult<PagedList<CategoryDto>>> GetAll([FromQuery] GetCategoriesQuery query)
     {
         var transactions = await mediator.Send(query);
         return Ok(transactions);

@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TrackIt.Application.DTOs;
 using TrackIt.Application.DTOs.Categories;
 using TrackIt.Application.DTOs.PlannedPayments;
 using TrackIt.Application.Features.PlannedPayments.Commands;
@@ -56,8 +57,8 @@ public class PlannedPaymentController(IMediator mediator) : ControllerBase
     ///     Получение всех платежей
     /// </summary>
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<PlannedPaymentDto>), 200)]
-    public async Task<ActionResult<IEnumerable<PlannedPaymentDto>>> GetAll([FromQuery] GetPlannedPaymentQuery query)
+    [ProducesResponseType(typeof(PagedList<PlannedPaymentDto>), 200)]
+    public async Task<ActionResult<PagedList<PlannedPaymentDto>>> GetAll([FromQuery] GetPlannedPaymentQuery query)
     {
         var transactions = await mediator.Send(query);
         return Ok(transactions);

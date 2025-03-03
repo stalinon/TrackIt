@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+using TrackIt.Application.DTOs;
 using TrackIt.Application.DTOs.Transactions;
 using TrackIt.Application.Features.Transactions.Commands;
 using TrackIt.Application.Features.Transactions.Queries;
@@ -112,20 +114,28 @@ internal sealed class TransactionService(IUnitOfWork unitOfWork, IUserContext us
     }
 
     /// <inheritdoc />
-    public async Task<IEnumerable<TransactionDto>> ListAsync(GetTransactionsQuery query, CancellationToken cancellationToken)
+    public async Task<PagedList<TransactionDto>> ListAsync(GetTransactionsQuery query, CancellationToken cancellationToken)
     {
+        Expression<Func<TransactionEntity, bool>> filter = e =>
+            e.UserId == userContext.UserId && (query.CategoryId == null || query.CategoryId == e.CategoryId);
         var transactions = await unitOfWork.Transactions.GetPaginatedAsync(
             pageIndex: query.PageIndex,
             pageSize: query.Limit,
-            filter: e => e.UserId == userContext.UserId && (query.CategoryId == null || query.CategoryId == e.CategoryId),
+            filter: filter,
             orderBy: e => e.Date);
+        
+        var count = await unitOfWork.Transactions.CountAsync(filter);
 
-        return transactions.Select(transaction => new TransactionDto
+        return new()
         {
-            Id = transaction.Id,
-            UserId = transaction.UserId,
-            Amount = transaction.Amount,
-            Date = transaction.Date
-        }).ToList();
+            Total = count,
+            Items = transactions.Select(transaction => new TransactionDto
+            {
+                Id = transaction.Id,
+                UserId = transaction.UserId,
+                Amount = transaction.Amount,
+                Date = transaction.Date
+            })
+        };
     }
 }

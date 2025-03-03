@@ -1,3 +1,4 @@
+using TrackIt.Application.DTOs;
 using TrackIt.Application.DTOs.Budgets;
 using TrackIt.Application.Features.Budgets.Commands;
 using TrackIt.Application.Features.Budgets.Queries;
@@ -32,7 +33,7 @@ public interface IBudgetService
     /// <summary>
     ///     Получить список лимитов
     /// </summary>
-    Task<IEnumerable<BudgetDto>> ListAsync(GetBudgetQuery query, CancellationToken cancellationToken);
+    Task<PagedList<BudgetDto>> ListAsync(GetBudgetQuery query, CancellationToken cancellationToken);
 
     /// <summary>
     ///     Проверить лимит

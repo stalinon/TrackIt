@@ -184,6 +184,21 @@
                 Дата обновления
             </summary>
         </member>
+        <member name="T:TrackIt.Application.DTOs.PagedList`1">
+            <summary>
+                Пагинированный список
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.PagedList`1.Items">
+            <summary>
+                Элементы
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.PagedList`1.Total">
+            <summary>
+                Всего элементов
+            </summary>
+        </member>
         <member name="T:TrackIt.Application.DTOs.PlannedPayments.DetailedPlannedPaymentDto">
             <summary>
                 Детализированная модель запланированной платы

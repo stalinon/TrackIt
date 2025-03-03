@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+using TrackIt.Application.DTOs;
 using TrackIt.Application.DTOs.Categories;
 using TrackIt.Application.Features.Categories.Commands;
 using TrackIt.Application.Features.Categories.Queries;
@@ -115,20 +117,27 @@ internal sealed class CategoryService(IUnitOfWork unitOfWork, IUserContext userC
     }
 
     /// <inheritdoc />
-    public async Task<IEnumerable<CategoryDto>> ListAsync(GetCategoriesQuery query, CancellationToken cancellationToken)
+    public async Task<PagedList<CategoryDto>> ListAsync(GetCategoriesQuery query, CancellationToken cancellationToken)
     {
+        Expression<Func<CategoryEntity, bool>> filter = e => e.UserId == userContext.UserId;
         var transactions = await unitOfWork.Categories.GetPaginatedAsync(
             pageIndex: query.PageIndex,
             pageSize: query.Limit,
-            filter: e => e.UserId == userContext.UserId,
+            filter: filter,
             orderBy: e => e.UpdatedAt);
+        
+        var count = await unitOfWork.Categories.CountAsync(filter);
 
-        return transactions.Select(category => new CategoryDto
+        return new()
         {
-            Id = category.Id,
-            UserId = category.UserId,
-            Name = category.Name,
-            Type = category.Type
-        }).ToList();
+            Total = count,
+            Items = transactions.Select(category => new CategoryDto
+            {
+                Id = category.Id,
+                UserId = category.UserId,
+                Name = category.Name,
+                Type = category.Type
+            })
+        };
     }
 }

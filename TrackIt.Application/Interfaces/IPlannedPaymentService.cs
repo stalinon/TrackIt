@@ -1,3 +1,4 @@
+using TrackIt.Application.DTOs;
 using TrackIt.Application.DTOs.PlannedPayments;
 using TrackIt.Application.Features.PlannedPayments.Commands;
 using TrackIt.Application.Features.PlannedPayments.Queries;
@@ -32,5 +33,5 @@ public interface IPlannedPaymentService
     /// <summary>
     ///     Получить список запланированных оплат
     /// </summary>
-    Task<IEnumerable<PlannedPaymentDto>> ListAsync(GetPlannedPaymentQuery query, CancellationToken cancellationToken);
+    Task<PagedList<PlannedPaymentDto>> ListAsync(GetPlannedPaymentQuery query, CancellationToken cancellationToken);
 }

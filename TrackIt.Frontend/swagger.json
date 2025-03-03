@@ -7,7 +7,9 @@
   "paths": {
     "/api/analytics/balance": {
       "get": {
-        "tags": ["Analytics"],
+        "tags": [
+          "Analytics"
+        ],
         "summary": "Получение общего баланса пользователя",
         "parameters": [
           {
@@ -44,7 +46,9 @@
     },
     "/api/analytics/category-spending": {
       "get": {
-        "tags": ["Analytics"],
+        "tags": [
+          "Analytics"
+        ],
         "summary": "Получение расходов по категориям",
         "parameters": [
           {
@@ -90,7 +94,9 @@
     },
     "/api/analytics/monthly-trend": {
       "get": {
-        "tags": ["Analytics"],
+        "tags": [
+          "Analytics"
+        ],
         "summary": "Получение динамики расходов за месяц",
         "parameters": [
           {
@@ -136,7 +142,9 @@
     },
     "/api/analytics/monthly-average": {
       "get": {
-        "tags": ["Analytics"],
+        "tags": [
+          "Analytics"
+        ],
         "summary": "Получение среднего уровня месячных расходов",
         "parameters": [
           {
@@ -173,7 +181,9 @@
     },
     "/api/analytics/top-categories": {
       "get": {
-        "tags": ["Analytics"],
+        "tags": [
+          "Analytics"
+        ],
         "summary": "Получение топ-3 самых затратных категорий",
         "parameters": [
           {
@@ -219,7 +229,9 @@
     },
     "/api/budgets": {
       "post": {
-        "tags": ["Budget"],
+        "tags": [
+          "Budget"
+        ],
         "summary": "Создание лимита",
         "requestBody": {
           "content": {
@@ -264,7 +276,9 @@
         }
       },
       "get": {
-        "tags": ["Budget"],
+        "tags": [
+          "Budget"
+        ],
         "summary": "Получение всех лимитов",
         "parameters": [
           {
@@ -301,26 +315,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BudgetDto"
-                  }
+                  "$ref": "#/components/schemas/BudgetDtoPagedList"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BudgetDto"
-                  }
+                  "$ref": "#/components/schemas/BudgetDtoPagedList"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BudgetDto"
-                  }
+                  "$ref": "#/components/schemas/BudgetDtoPagedList"
                 }
               }
             }
@@ -330,7 +335,9 @@
     },
     "/api/budgets/{id}": {
       "put": {
-        "tags": ["Budget"],
+        "tags": [
+          "Budget"
+        ],
         "summary": "Обновление лимита",
         "parameters": [
           {
@@ -369,7 +376,9 @@
         }
       },
       "delete": {
-        "tags": ["Budget"],
+        "tags": [
+          "Budget"
+        ],
         "summary": "Удаление лимита",
         "parameters": [
           {
@@ -389,7 +398,9 @@
         }
       },
       "get": {
-        "tags": ["Budget"],
+        "tags": [
+          "Budget"
+        ],
         "summary": "Получение лимита по ID",
         "parameters": [
           {
@@ -428,7 +439,9 @@
     },
     "/api/categories": {
       "post": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "Создание категории",
         "requestBody": {
           "content": {
@@ -473,7 +486,9 @@
         }
       },
       "get": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "Получение всех категорий",
         "parameters": [
           {
@@ -501,26 +516,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/CategoryDto"
-                  }
+                  "$ref": "#/components/schemas/CategoryDtoPagedList"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/CategoryDto"
-                  }
+                  "$ref": "#/components/schemas/CategoryDtoPagedList"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/CategoryDto"
-                  }
+                  "$ref": "#/components/schemas/CategoryDtoPagedList"
                 }
               }
             }
@@ -530,7 +536,9 @@
     },
     "/api/categories/{id}": {
       "put": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "Обновление категории",
         "parameters": [
           {
@@ -569,7 +577,9 @@
         }
       },
       "delete": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "Удаление категории",
         "parameters": [
           {
@@ -589,7 +599,9 @@
         }
       },
       "get": {
-        "tags": ["Categories"],
+        "tags": [
+          "Categories"
+        ],
         "summary": "Получение категории по ID",
         "parameters": [
           {
@@ -628,7 +640,9 @@
     },
     "/api/payments": {
       "post": {
-        "tags": ["PlannedPayment"],
+        "tags": [
+          "PlannedPayment"
+        ],
         "summary": "Создание платежа",
         "requestBody": {
           "content": {
@@ -673,7 +687,9 @@
         }
       },
       "get": {
-        "tags": ["PlannedPayment"],
+        "tags": [
+          "PlannedPayment"
+        ],
         "summary": "Получение всех платежей",
         "parameters": [
           {
@@ -710,26 +726,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/PlannedPaymentDto"
-                  }
+                  "$ref": "#/components/schemas/PlannedPaymentDtoPagedList"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/PlannedPaymentDto"
-                  }
+                  "$ref": "#/components/schemas/PlannedPaymentDtoPagedList"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/PlannedPaymentDto"
-                  }
+                  "$ref": "#/components/schemas/PlannedPaymentDtoPagedList"
                 }
               }
             }
@@ -739,7 +746,9 @@
     },
     "/api/payments/{id}": {
       "put": {
-        "tags": ["PlannedPayment"],
+        "tags": [
+          "PlannedPayment"
+        ],
         "summary": "Обновление платежа",
         "parameters": [
           {
@@ -778,7 +787,9 @@
         }
       },
       "delete": {
-        "tags": ["PlannedPayment"],
+        "tags": [
+          "PlannedPayment"
+        ],
         "summary": "Удаление платежа",
         "parameters": [
           {
@@ -798,7 +809,9 @@
         }
       },
       "get": {
-        "tags": ["PlannedPayment"],
+        "tags": [
+          "PlannedPayment"
+        ],
         "summary": "Получение платежа по ID",
         "parameters": [
           {
@@ -837,7 +850,9 @@
     },
     "/api/transactions": {
       "post": {
-        "tags": ["Transaction"],
+        "tags": [
+          "Transaction"
+        ],
         "summary": "Создание транзакции",
         "requestBody": {
           "content": {
@@ -882,7 +897,9 @@
         }
       },
       "get": {
-        "tags": ["Transaction"],
+        "tags": [
+          "Transaction"
+        ],
         "summary": "Получение всех транзакций",
         "parameters": [
           {
@@ -919,26 +936,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TransactionDto"
-                  }
+                  "$ref": "#/components/schemas/TransactionDtoPagedList"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TransactionDto"
-                  }
+                  "$ref": "#/components/schemas/TransactionDtoPagedList"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TransactionDto"
-                  }
+                  "$ref": "#/components/schemas/TransactionDtoPagedList"
                 }
               }
             }
@@ -948,7 +956,9 @@
     },
     "/api/transactions/{id}": {
       "put": {
-        "tags": ["Transaction"],
+        "tags": [
+          "Transaction"
+        ],
         "summary": "Обновление транзакции",
         "parameters": [
           {
@@ -987,7 +997,9 @@
         }
       },
       "delete": {
-        "tags": ["Transaction"],
+        "tags": [
+          "Transaction"
+        ],
         "summary": "Удаление транзакции",
         "parameters": [
           {
@@ -1007,7 +1019,9 @@
         }
       },
       "get": {
-        "tags": ["Transaction"],
+        "tags": [
+          "Transaction"
+        ],
         "summary": "Получение транзакции по ID",
         "parameters": [
           {
@@ -1046,7 +1060,9 @@
     },
     "/api/users/profile": {
       "get": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Получить профиль текущего пользователя",
         "responses": {
           "200": {
@@ -1120,6 +1136,26 @@
         "additionalProperties": false,
         "description": "Модель лимита бюджета"
       },
+      "BudgetDtoPagedList": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BudgetDto"
+            },
+            "description": "Элементы",
+            "nullable": true
+          },
+          "total": {
+            "type": "integer",
+            "description": "Всего элементов",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Пагинированный список"
+      },
       "CategoryDto": {
         "type": "object",
         "properties": {
@@ -1145,6 +1181,26 @@
         "additionalProperties": false,
         "description": "Модель категории"
       },
+      "CategoryDtoPagedList": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CategoryDto"
+            },
+            "description": "Элементы",
+            "nullable": true
+          },
+          "total": {
+            "type": "integer",
+            "description": "Всего элементов",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Пагинированный список"
+      },
       "CategorySpendingDto": {
         "type": "object",
         "properties": {
@@ -1163,7 +1219,10 @@
         "description": "Модель траты по категории"
       },
       "CategoryType": {
-        "enum": [1, -1],
+        "enum": [
+          1,
+          -1
+        ],
         "type": "integer",
         "description": "Тип категории",
         "format": "int32"
@@ -1495,6 +1554,26 @@
         "additionalProperties": false,
         "description": "Модель запланированной платы"
       },
+      "PlannedPaymentDtoPagedList": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlannedPaymentDto"
+            },
+            "description": "Элементы",
+            "nullable": true
+          },
+          "total": {
+            "type": "integer",
+            "description": "Всего элементов",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Пагинированный список"
+      },
       "TopCategoryDto": {
         "type": "object",
         "properties": {
@@ -1538,6 +1617,26 @@
         },
         "additionalProperties": false,
         "description": "Модель транзакции"
+      },
+      "TransactionDtoPagedList": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransactionDto"
+            },
+            "description": "Элементы",
+            "nullable": true
+          },
+          "total": {
+            "type": "integer",
+            "description": "Всего элементов",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Пагинированный список"
       },
       "UpdateBudgetCommand": {
         "type": "object",
@@ -1681,7 +1780,7 @@
   },
   "security": [
     {
-      "Bearer": []
+      "Bearer": [ ]
     }
   ]
 }

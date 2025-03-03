@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
-import { TransactionApi } from "../api/generated";
-import api from "../api/api";
+import React from "react";
+import TransactionsPage from "./TransactionsComponents/TransactionsPage";
 
-const TransactionsContent = () => <div>Контент для Transactions</div>;
+const TransactionsContent: React.FC = () => { return <TransactionsPage />; }
 
 export default TransactionsContent;

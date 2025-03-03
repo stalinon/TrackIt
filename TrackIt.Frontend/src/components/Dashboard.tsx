@@ -19,6 +19,7 @@ import {
   CreditCardOutlined,
   SafetyCertificateOutlined,
   CalendarOutlined,
+  AlignLeftOutlined
 } from "@ant-design/icons";
 
 const userApi = new UserApi(undefined, api.defaults.baseURL, api);
@@ -65,7 +66,7 @@ const Dashboard = () => {
           onClick={() => setActivePage("dashboard")}
           icon={<HomeOutlined />}
         >
-          Dashboard
+          &nbsp; Dashboard
         </Button>
         <Button
           className="layout__sider__btn"
@@ -73,7 +74,7 @@ const Dashboard = () => {
           onClick={() => setActivePage("transactions")}
           icon={<CreditCardOutlined />}
         >
-          Transactions
+          &nbsp; Transactions
         </Button>
         <Button
           className="layout__sider__btn"
@@ -81,7 +82,15 @@ const Dashboard = () => {
           onClick={() => setActivePage("limits")}
           icon={<SafetyCertificateOutlined />}
         >
-          Limits
+          &nbsp; Limits
+        </Button>
+        <Button
+          className="layout__sider__btn"
+          type="text"
+          onClick={() => setActivePage("categories")}
+          icon={<AlignLeftOutlined />}
+        >
+          &nbsp; Categories
         </Button>
         <Button
           className="layout__sider__btn"
@@ -89,7 +98,7 @@ const Dashboard = () => {
           onClick={() => setActivePage("plannedPayments")}
           icon={<CalendarOutlined />}
         >
-          Planned payments
+          &nbsp; Planned payments
         </Button>
       </Sider>
       <Content className="layout__content">{renderContent()}</Content>

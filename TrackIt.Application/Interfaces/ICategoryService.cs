@@ -1,3 +1,4 @@
+using TrackIt.Application.DTOs;
 using TrackIt.Application.DTOs.Categories;
 using TrackIt.Application.Features.Categories.Commands;
 using TrackIt.Application.Features.Categories.Queries;
@@ -32,6 +33,5 @@ public interface ICategoryService
     /// <summary>
     ///     Получить список категорий
     /// </summary>
-    Task<IEnumerable<CategoryDto>>
-        ListAsync(GetCategoriesQuery query, CancellationToken cancellationToken);
+    Task<PagedList<CategoryDto>> ListAsync(GetCategoriesQuery query, CancellationToken cancellationToken);
 }

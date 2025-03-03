@@ -1,4 +1,6 @@
+using System.Linq.Expressions;
 using Hangfire;
+using TrackIt.Application.DTOs;
 using TrackIt.Application.DTOs.PlannedPayments;
 using TrackIt.Application.Features.PlannedPayments.Commands;
 using TrackIt.Application.Features.PlannedPayments.Queries;
@@ -117,21 +119,29 @@ internal sealed class PlannedPaymentService(IUnitOfWork unitOfWork, IUserContext
     }
 
     /// <inheritdoc />
-    public async Task<IEnumerable<PlannedPaymentDto>> ListAsync(GetPlannedPaymentQuery query, CancellationToken cancellationToken)
+    public async Task<PagedList<PlannedPaymentDto>> ListAsync(GetPlannedPaymentQuery query, CancellationToken cancellationToken)
     {
+        Expression<Func<PlannedPaymentEntity, bool>> filter = e =>
+            e.UserId == userContext.UserId && (query.CategoryId == null || e.CategoryId == query.CategoryId);
         var payments = await unitOfWork.PlannedPayments.GetPaginatedAsync(
             pageIndex: query.PageIndex,
             pageSize: query.Limit,
-            filter: e => e.UserId == userContext.UserId && (query.CategoryId == null || e.CategoryId == query.CategoryId),
+            filter: filter,
             orderBy: e => e.DueDate);
+        
+        var count = await unitOfWork.PlannedPayments.CountAsync(filter);
 
-        return payments.Select(payment => new PlannedPaymentDto
+        return new()
         {
-            Id = payment.Id,
-            DueDate = payment.DueDate,
-            Amount = payment.Amount,
-            CategoryId = payment.CategoryId,
-        }).ToList();
+            Total = count,
+            Items = payments.Select(payment => new PlannedPaymentDto
+            {
+                Id = payment.Id,
+                DueDate = payment.DueDate,
+                Amount = payment.Amount,
+                CategoryId = payment.CategoryId,
+            })
+        };
     }
 
     private async Task DeleteReminderAsync(Guid paymentId, CancellationToken cancellationToken)

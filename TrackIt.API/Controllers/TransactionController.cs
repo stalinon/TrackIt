@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TrackIt.Application.DTOs;
 using TrackIt.Application.DTOs.Transactions;
 using TrackIt.Application.Features.Transactions.Commands;
 using TrackIt.Application.Features.Transactions.Queries;
@@ -55,8 +56,8 @@ public class TransactionController(IMediator mediator) : ControllerBase
     ///     Получение всех транзакций
     /// </summary>
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<TransactionDto>), 200)]
-    public async Task<ActionResult<IEnumerable<TransactionDto>>> GetAll([FromQuery] GetTransactionsQuery query)
+    [ProducesResponseType(typeof(PagedList<TransactionDto>), 200)]
+    public async Task<ActionResult<PagedList<TransactionDto>>> GetAll([FromQuery] GetTransactionsQuery query)
     {
         var transactions = await mediator.Send(query);
         return Ok(transactions);
