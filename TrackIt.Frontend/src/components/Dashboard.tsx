@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Layout } from "antd";
 import logo from "../black_on_white.png";
 import short_logo from "../black_on_white_short.png";
-import { UserApi } from "../api/generated";
-import api from "../api/api";
 
 import DashboardContent from "./DashboardContent";
 import TransactionsContent from "./TransactionsContent";
@@ -26,24 +24,9 @@ import {
 
 const { Header, Sider, Content } = Layout;
 
-const userApi = new UserApi(undefined, api.defaults.baseURL, api);
-
-const getUserProfile = async () => {
-  try {
-    const userProfile = await userApi.apiUsersProfileGet();
-    console.log("Данные профиля:", userProfile.data);
-  } catch (error) {
-    console.error("Ошибка получения профиля", error);
-  }
-};
-
 const Dashboard = () => {
   const [activePage, setActivePage] = useState("dashboard");
   const [collapsed, setCollapsed] = useState(false);
-
-  useEffect(() => {
-    getUserProfile();
-  }, []);
 
   // Функция для рендеринга контента в зависимости от активной страницы
   const renderContent = () => {
@@ -71,16 +54,17 @@ const Dashboard = () => {
         trigger={null}
         collapsible
         collapsed={collapsed}
-        style={{ alignItems: collapsed ? "center" : "" }}
       >
         <img
           className="layout__sider__logo"
           src={collapsed ? short_logo : logo}
           alt="logo"
+          style={{ marginLeft: collapsed ? "15px" : "0" }}
         />
         <Button
           className="layout__sider__btn"
           type="text"
+          style={{ justifyContent: collapsed ? "center" : "flex-start" }}
           onClick={() => setActivePage("dashboard")}
           icon={<HomeOutlined />}
         >
@@ -90,6 +74,7 @@ const Dashboard = () => {
         <Button
           className="layout__sider__btn"
           type="text"
+          style={{ justifyContent: collapsed ? "center" : "flex-start" }}
           onClick={() => setActivePage("categories")}
           icon={<AlignLeftOutlined />}
         >
@@ -99,6 +84,7 @@ const Dashboard = () => {
         <Button
           className="layout__sider__btn"
           type="text"
+          style={{ justifyContent: collapsed ? "center" : "flex-start" }}
           onClick={() => setActivePage("transactions")}
           icon={<CreditCardOutlined />}
         >
@@ -108,6 +94,7 @@ const Dashboard = () => {
         <Button
           className="layout__sider__btn"
           type="text"
+          style={{ justifyContent: collapsed ? "center" : "flex-start" }}
           onClick={() => setActivePage("limits")}
           icon={<SafetyCertificateOutlined />}
         >
@@ -117,6 +104,7 @@ const Dashboard = () => {
         <Button
           className="layout__sider__btn"
           type="text"
+          style={{ justifyContent: collapsed ? "center" : "flex-start" }}
           onClick={() => setActivePage("plannedPayments")}
           icon={<CalendarOutlined />}
         >
