@@ -15,7 +15,7 @@ const { Title } = Typography;
 const analyticsApi = new AnalyticsApi(undefined, api.defaults.baseURL, api);
 
 const formatter: StatisticProps["formatter"] = (value) => (
-  <CountUp end={value as number} separator="," />
+  <CountUp end={value as number} separator="." />
 );
 
 const BalanceCard = () => {
@@ -56,6 +56,7 @@ const BalanceCard = () => {
             <Statistic
               title="Total income"
               value={balance?.total_income ?? 0}
+              precision={2}
               formatter={formatter}
               valueStyle={{ color: "#3f8600" }}
               prefix={<ArrowUpOutlined />}

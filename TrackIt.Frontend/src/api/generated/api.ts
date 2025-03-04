@@ -74,6 +74,25 @@ export interface BudgetDto {
     'category_id'?: string | null;
 }
 /**
+ * Пагинированный список
+ * @export
+ * @interface BudgetDtoPagedList
+ */
+export interface BudgetDtoPagedList {
+    /**
+     * Элементы
+     * @type {Array<BudgetDto>}
+     * @memberof BudgetDtoPagedList
+     */
+    'items'?: Array<BudgetDto> | null;
+    /**
+     * Всего элементов
+     * @type {number}
+     * @memberof BudgetDtoPagedList
+     */
+    'total'?: number;
+}
+/**
  * Модель категории
  * @export
  * @interface CategoryDto
@@ -106,6 +125,25 @@ export interface CategoryDto {
 }
 
 
+/**
+ * Пагинированный список
+ * @export
+ * @interface CategoryDtoPagedList
+ */
+export interface CategoryDtoPagedList {
+    /**
+     * Элементы
+     * @type {Array<CategoryDto>}
+     * @memberof CategoryDtoPagedList
+     */
+    'items'?: Array<CategoryDto> | null;
+    /**
+     * Всего элементов
+     * @type {number}
+     * @memberof CategoryDtoPagedList
+     */
+    'total'?: number;
+}
 /**
  * Модель траты по категории
  * @export
@@ -491,6 +529,25 @@ export interface PlannedPaymentDto {
     'category_id'?: string | null;
 }
 /**
+ * Пагинированный список
+ * @export
+ * @interface PlannedPaymentDtoPagedList
+ */
+export interface PlannedPaymentDtoPagedList {
+    /**
+     * Элементы
+     * @type {Array<PlannedPaymentDto>}
+     * @memberof PlannedPaymentDtoPagedList
+     */
+    'items'?: Array<PlannedPaymentDto> | null;
+    /**
+     * Всего элементов
+     * @type {number}
+     * @memberof PlannedPaymentDtoPagedList
+     */
+    'total'?: number;
+}
+/**
  * Модель самых затратных категорий
  * @export
  * @interface TopCategoryDto
@@ -539,6 +596,25 @@ export interface TransactionDto {
      * @memberof TransactionDto
      */
     'date'?: string;
+}
+/**
+ * Пагинированный список
+ * @export
+ * @interface TransactionDtoPagedList
+ */
+export interface TransactionDtoPagedList {
+    /**
+     * Элементы
+     * @type {Array<TransactionDto>}
+     * @memberof TransactionDtoPagedList
+     */
+    'items'?: Array<TransactionDto> | null;
+    /**
+     * Всего элементов
+     * @type {number}
+     * @memberof TransactionDtoPagedList
+     */
+    'total'?: number;
 }
 /**
  * Запрос на обновление запланированного платежа
@@ -1341,7 +1417,7 @@ export const BudgetApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiBudgetsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<BudgetDto>>> {
+        async apiBudgetsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BudgetDtoPagedList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiBudgetsGet(categoryId, page, limit, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BudgetApi.apiBudgetsGet']?.[localVarOperationServerIndex]?.url;
@@ -1419,7 +1495,7 @@ export const BudgetApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiBudgetsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<BudgetDto>> {
+        apiBudgetsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<BudgetDtoPagedList> {
             return localVarFp.apiBudgetsGet(categoryId, page, limit, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1763,7 +1839,7 @@ export const CategoriesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiCategoriesGet(page?: number, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CategoryDto>>> {
+        async apiCategoriesGet(page?: number, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CategoryDtoPagedList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiCategoriesGet(page, limit, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['CategoriesApi.apiCategoriesGet']?.[localVarOperationServerIndex]?.url;
@@ -1840,7 +1916,7 @@ export const CategoriesApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiCategoriesGet(page?: number, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<CategoryDto>> {
+        apiCategoriesGet(page?: number, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<CategoryDtoPagedList> {
             return localVarFp.apiCategoriesGet(page, limit, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2189,7 +2265,7 @@ export const PlannedPaymentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiPaymentsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PlannedPaymentDto>>> {
+        async apiPaymentsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PlannedPaymentDtoPagedList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiPaymentsGet(categoryId, page, limit, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PlannedPaymentApi.apiPaymentsGet']?.[localVarOperationServerIndex]?.url;
@@ -2267,7 +2343,7 @@ export const PlannedPaymentApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiPaymentsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<PlannedPaymentDto>> {
+        apiPaymentsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<PlannedPaymentDtoPagedList> {
             return localVarFp.apiPaymentsGet(categoryId, page, limit, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2617,7 +2693,7 @@ export const TransactionApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiTransactionsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TransactionDto>>> {
+        async apiTransactionsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TransactionDtoPagedList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiTransactionsGet(categoryId, page, limit, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['TransactionApi.apiTransactionsGet']?.[localVarOperationServerIndex]?.url;
@@ -2695,7 +2771,7 @@ export const TransactionApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiTransactionsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<TransactionDto>> {
+        apiTransactionsGet(categoryId?: string, page?: number, limit?: number, options?: RawAxiosRequestConfig): AxiosPromise<TransactionDtoPagedList> {
             return localVarFp.apiTransactionsGet(categoryId, page, limit, options).then((request) => request(axios, basePath));
         },
         /**

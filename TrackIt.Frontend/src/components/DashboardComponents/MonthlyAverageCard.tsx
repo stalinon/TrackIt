@@ -11,7 +11,7 @@ const { Title } = Typography;
 const analyticsApi = new AnalyticsApi(undefined, api.defaults.baseURL, api);
 
 const formatter: StatisticProps["formatter"] = (value) => (
-  <CountUp end={value as number} separator="," />
+  <CountUp end={value as number} separator="." />
 );
 
 const MonthlyAverageCard = () => {

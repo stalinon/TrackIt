@@ -19,8 +19,7 @@ import {
   HomeOutlined,
   CreditCardOutlined,
   SafetyCertificateOutlined,
-  CalendarOutlined,
-  AlignLeftOutlined
+  CalendarOutlined
 } from "@ant-design/icons";
 
 const { Header, Sider, Content } = Layout;
@@ -68,7 +67,7 @@ const Dashboard = () => {
         trigger={null}
         collapsible
         collapsed={collapsed}
-        style={{ justifyContent: collapsed ? "center" : "" }}
+        style={{ justifyContent: "" }}
       >
         <img
           className="layout__sider__logo"

@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { BudgetApi } from "../api/generated";
-import api from "../api/api";
+import React from "react";
 
-const LimitsContent = () => <div>Контент для Limits</div>;
+const LimitsContent: React.FC = () => {
+  return <>Контент для Limits</>;
+};
 
 export default LimitsContent;

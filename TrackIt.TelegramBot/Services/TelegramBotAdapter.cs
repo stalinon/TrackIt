@@ -41,14 +41,21 @@ internal sealed class TelegramBotAdapter : ITelegramBotAdapter
     /// </summary>
     public void StartReceiving(CancellationToken cancellationToken)
     {
-        _botClient.StartReceiving(
-            UpdateHandler,
-            ErrorHandler,
-            new ReceiverOptions(),
-            cancellationToken
-        );
-        
-        _logger.LogInformation("Бот начал принимать сообщения...");
+        try
+        {
+            _botClient.StartReceiving(
+                UpdateHandler,
+                ErrorHandler,
+                new ReceiverOptions(),
+                cancellationToken
+            );
+
+            _logger.LogInformation("Бот начал принимать сообщения...");
+        }
+        catch
+        {
+            _logger.LogCritical("Не удалось авторизовать бота");
+        }
     }
 
     /// <summary>

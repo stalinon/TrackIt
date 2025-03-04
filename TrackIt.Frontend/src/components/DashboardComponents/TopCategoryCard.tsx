@@ -9,7 +9,7 @@ const { Title } = Typography;
 
 const analyticsApi = new AnalyticsApi(undefined, api.defaults.baseURL, api);
 
-const formatter = (value: number) => <CountUp end={value} separator="," />;
+const formatter = (value: number) => <CountUp end={value} separator="." />;
 
 const TopCategoryCard = () => {
   const [categories, setCategories] = useState<TopCategoryDto[]>([]);

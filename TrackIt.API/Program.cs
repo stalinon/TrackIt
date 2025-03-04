@@ -32,7 +32,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseHttpsRedirection();
 app.UseInfrastructureServices();
-app.UseTelegramBotServices();
+// app.UseTelegramBotServices();
 app.MapControllers();
 app.UseCors(allowFrontend);
 
