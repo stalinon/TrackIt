@@ -29,7 +29,7 @@ const TopCategoryCard = () => {
   }, []);
 
   return (
-    <Card variant="borderless" style={{ height: "10%" }}>
+    <Card variant="borderless">
       <Flex gap="large" align="center">
         <Avatar
           size={60}
@@ -49,6 +49,7 @@ const TopCategoryCard = () => {
             {categories.length > 0 ? (
               categories.map((category, i) => (
                 <Statistic
+                  key={i}
                   title={category.category}
                   value={category.total_spent}
                   precision={2}

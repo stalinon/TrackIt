@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Layout } from "antd";
 import logo from "../black_on_white.png";
-import Sider from "antd/es/layout/Sider";
-import { Content } from "antd/es/layout/layout";
+import short_logo from "../black_on_white_short.png";
 import { UserApi } from "../api/generated";
 import api from "../api/api";
 
@@ -15,12 +14,16 @@ import "../styles/Dashboard.css";
 
 // Импортируем иконки
 import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
   HomeOutlined,
   CreditCardOutlined,
   SafetyCertificateOutlined,
   CalendarOutlined,
   AlignLeftOutlined
 } from "@ant-design/icons";
+
+const { Header, Sider, Content } = Layout;
 
 const userApi = new UserApi(undefined, api.defaults.baseURL, api);
 
@@ -35,6 +38,7 @@ const getUserProfile = async () => {
 
 const Dashboard = () => {
   const [activePage, setActivePage] = useState("dashboard");
+  const [collapsed, setCollapsed] = useState(false);
 
   useEffect(() => {
     getUserProfile();
@@ -58,15 +62,27 @@ const Dashboard = () => {
 
   return (
     <Layout className="layout">
-      <Sider className="layout__sider" width={350}>
-        <img className="layout__sider__logo" src={logo} alt="logo" />
+      <Sider
+        className="layout__sider"
+        width={300}
+        trigger={null}
+        collapsible
+        collapsed={collapsed}
+        style={{ justifyContent: collapsed ? "center" : "" }}
+      >
+        <img
+          className="layout__sider__logo"
+          src={collapsed ? short_logo : logo}
+          alt="logo"
+        />
         <Button
           className="layout__sider__btn"
           type="text"
           onClick={() => setActivePage("dashboard")}
           icon={<HomeOutlined />}
         >
-          &nbsp; Dashboard
+          &nbsp;
+          {collapsed ? "" : "Dashboard"}
         </Button>
         <Button
           className="layout__sider__btn"
@@ -74,7 +90,8 @@ const Dashboard = () => {
           onClick={() => setActivePage("transactions")}
           icon={<CreditCardOutlined />}
         >
-          &nbsp; Transactions
+          &nbsp;
+          {collapsed ? "" : "Transactions"}
         </Button>
         <Button
           className="layout__sider__btn"
@@ -82,15 +99,8 @@ const Dashboard = () => {
           onClick={() => setActivePage("limits")}
           icon={<SafetyCertificateOutlined />}
         >
-          &nbsp; Limits
-        </Button>
-        <Button
-          className="layout__sider__btn"
-          type="text"
-          onClick={() => setActivePage("categories")}
-          icon={<AlignLeftOutlined />}
-        >
-          &nbsp; Categories
+          &nbsp;
+          {collapsed ? "" : "Limits"}
         </Button>
         <Button
           className="layout__sider__btn"
@@ -98,9 +108,22 @@ const Dashboard = () => {
           onClick={() => setActivePage("plannedPayments")}
           icon={<CalendarOutlined />}
         >
-          &nbsp; Planned payments
+          &nbsp;
+          {collapsed ? "" : "Planned payments"}
         </Button>
       </Sider>
+      <Header style={{ padding: 0, background: "#f0f0f0" }}>
+        <Button
+          type="text"
+          icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+          onClick={() => setCollapsed(!collapsed)}
+          style={{
+            fontSize: "16px",
+            width: 64,
+            height: 64,
+          }}
+        />
+      </Header>
       <Content className="layout__content">{renderContent()}</Content>
     </Layout>
   );

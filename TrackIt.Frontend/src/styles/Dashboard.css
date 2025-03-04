@@ -10,6 +10,7 @@
 
 .layout__sider {
   background-color: #fff;
+  display: flex;
 }
 
 .layout__sider__btn {
@@ -20,6 +21,7 @@
   border-bottom-left-radius: 0;
   font-size: 20px;
   padding: 5%;
+  padding-left: 12%;
   height: 5%;
 }
 

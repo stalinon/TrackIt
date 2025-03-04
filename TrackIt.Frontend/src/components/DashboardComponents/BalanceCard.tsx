@@ -36,7 +36,7 @@ const BalanceCard = () => {
   }, []);
 
   return (
-    <Card variant="borderless" style={{ height: "10%" }}>
+    <Card variant="borderless">
       <Flex gap="large" align="center">
         <Avatar
           size={60}

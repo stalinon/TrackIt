@@ -34,7 +34,7 @@ const DailySpendingCard = () => {
   }, []);
 
   return (
-    <Card variant="borderless" style={{ width: "40%" }}>
+    <Card variant="borderless">
       <Col span={24}>
         <Title level={5} style={{ textAlign: "center", marginBottom: 8 }}>
           Daily Spendings (Last Month)
