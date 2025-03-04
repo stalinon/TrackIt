@@ -23,10 +23,9 @@ const DailySpendingCard = () => {
     const fetchSpendings = async () => {
       try {
         const response = await analyticsApi.apiAnalyticsMonthlyTrendGet();
-        console.log("Дневные траты:", response.data);
         setSpendings(response.data || []);
       } catch (error) {
-        console.error("Ошибка получения трат", error);
+        console.error("Error while fetching spendings", error);
       }
     };
 

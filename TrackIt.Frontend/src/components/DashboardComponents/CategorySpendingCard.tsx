@@ -22,10 +22,9 @@ const CategorySpendingCard = () => {
     const fetchSpendings = async () => {
       try {
         const response = await analyticsApi.apiAnalyticsCategorySpendingGet();
-        console.log("Категорные траты:", response.data);
         setSpendings(response.data || []);
       } catch (error) {
-        console.error("Ошибка получения трат", error);
+        console.error("Error while fetching spendings", error);
       }
     };
 

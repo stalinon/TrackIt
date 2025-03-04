@@ -58,7 +58,7 @@ public class BudgetController(IMediator mediator) : ControllerBase
     /// </summary>
     [HttpGet]
     [ProducesResponseType(typeof(PagedList<BudgetDto>), 200)]
-    public async Task<ActionResult<PagedList<CategoryDto>>> GetAll([FromQuery] GetBudgetQuery query)
+    public async Task<ActionResult<PagedList<BudgetDto>>> GetAll([FromQuery] GetBudgetQuery query)
     {
         var transactions = await mediator.Send(query);
         return Ok(transactions);
@@ -69,7 +69,7 @@ public class BudgetController(IMediator mediator) : ControllerBase
     /// </summary>
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(DetailedBudgetDto), 200)]
-    public async Task<ActionResult<DetailedCategoryDto>> GetById(Guid id)
+    public async Task<ActionResult<DetailedBudgetDto>> GetById(Guid id)
     {
         var query = new GetBudgetByIdQuery
         {

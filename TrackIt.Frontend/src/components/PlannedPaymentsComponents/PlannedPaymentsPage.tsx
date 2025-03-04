@@ -1,10 +1,9 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import {
   Table,
   Button,
   Modal,
   Form,
-  Input,
   InputNumber,
   DatePicker,
   Select,
@@ -12,48 +11,51 @@ import {
 } from "antd";
 import { PlusOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import {
-  TransactionApi,
-  TransactionDto,
+  PlannedPaymentApi,
+  PlannedPaymentDto,
   CategoriesApi,
   CategoryDto,
 } from "../../api/generated";
 import api from "../../api/api";
 import dayjs from "dayjs";
 
-const transactionApi = new TransactionApi(undefined, api.defaults.baseURL, api);
+const plannedPaymentApi = new PlannedPaymentApi(
+  undefined,
+  api.defaults.baseURL,
+  api
+);
 const categoryApi = new CategoriesApi(undefined, api.defaults.baseURL, api);
 
-const TransactionsPage: React.FC = () => {
-  const [transactions, setTransactions] = useState<TransactionDto[]>([]);
+const PlannedPaymentsPage: React.FC = () => {
+  const [plannedPayments, setPlannedPayments] = useState<PlannedPaymentDto[]>(
+    []
+  );
   const [categories, setCategories] = useState<CategoryDto[]>([]);
   const [loading, setLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [editingTransaction, setEditingTransaction] =
-    useState<TransactionDto | null>(null);
+  const [editingPayment, setEditingPayment] =
+    useState<PlannedPaymentDto | null>(null);
 
-  // Фильтры
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>(
     undefined
   );
-
-  // Пагинация
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
 
   const [form] = Form.useForm();
 
-  const fetchTransactions = useCallback(async () => {
+  const fetchPlannedPayments = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await transactionApi.apiTransactionsGet(
+      const response = await plannedPaymentApi.apiPaymentsGet(
         selectedCategory,
         currentPage,
         10
       );
-      setTransactions(response.data.items);
+      setPlannedPayments(response.data.items);
       setTotalCount(response.data.total);
     } catch (error) {
-      message.error("Error while fetching transaction");
+      message.error("Error while fetching planned payments");
     }
     setLoading(false);
   }, [selectedCategory, currentPage]);
@@ -81,30 +83,22 @@ const TransactionsPage: React.FC = () => {
     }
   }, []);
 
-  const showModal = async (transaction?: TransactionDto) => {
-    setEditingTransaction(transaction || null);
+  const showModal = async (payment?: PlannedPaymentDto) => {
+    setEditingPayment(payment || null);
     setIsModalVisible(true);
 
-    if (transaction) {
+    if (payment) {
       try {
-        const response = await transactionApi.apiTransactionsIdGet(
-          transaction.id
-        );
-        const detailedTransaction = response.data;
-
-        const categoryResponse = await categoryApi.apiCategoriesIdGet(
-          detailedTransaction.category_id
-        );
-        const category = categoryResponse.data;
-
+        const response = await plannedPaymentApi.apiPaymentsIdGet(payment.id);
+        const detailedPayment = response.data;
         form.setFieldsValue({
-          amount: detailedTransaction.amount,
-          description: detailedTransaction.description,
-          category_id: category.id,
-          date: dayjs(detailedTransaction.date),
+          amount: detailedPayment.amount,
+          description: detailedPayment.description,
+          category_id: detailedPayment.category_id,
+          due_date: dayjs(detailedPayment.due_date),
         });
       } catch (error) {
-        message.error("Error while fetching transaction");
+        message.error("Error while fetching payments");
       }
     } else {
       form.resetFields();
@@ -113,51 +107,53 @@ const TransactionsPage: React.FC = () => {
 
   const handleCancel = () => {
     setIsModalVisible(false);
-    setEditingTransaction(null);
+    setEditingPayment(null);
     form.resetFields();
   };
 
   const handleOk = async () => {
     try {
       const values = await form.validateFields();
-      const formattedValues = { ...values, date: values.date.toISOString() };
+      const formattedValues = {
+        ...values,
+        due_date: values.due_date.toISOString(),
+      };
 
-      if (editingTransaction) {
-        await transactionApi.apiTransactionsIdPut(
-          editingTransaction.id,
+      if (editingPayment) {
+        await plannedPaymentApi.apiPaymentsIdPut(
+          editingPayment.id,
           formattedValues
         );
-        message.success("Transaction updated!");
+        message.success("Planned payment updated!");
       } else {
-        await transactionApi.apiTransactionsPost(formattedValues);
-        message.success("Transaction added!");
+        await plannedPaymentApi.apiPaymentsPost(formattedValues);
+        message.success("Planned payment created!");
       }
 
-      fetchTransactions();
+      fetchPlannedPayments();
       handleCancel();
     } catch (error) {
-      message.error("Error while saving transaction");
+      message.error("Error while saving payment");
     }
   };
 
   const handleDelete = async (id: string) => {
     try {
-      await transactionApi.apiTransactionsIdDelete(id);
-      message.success("Transaction removed!");
-      fetchTransactions();
+      await plannedPaymentApi.apiPaymentsIdDelete(id);
+      message.success("Planned payment removed!");
+      fetchPlannedPayments();
     } catch (error) {
-      message.error("Error while removing transaction");
+      message.error("Error while removing payment");
     }
   };
 
   useEffect(() => {
-    fetchTransactions();
+    fetchPlannedPayments();
     fetchCategories();
-  }, [selectedCategory, currentPage, fetchCategories, fetchTransactions]);
+  }, [selectedCategory, currentPage, fetchPlannedPayments, fetchCategories]);
 
   return (
     <div>
-      {/* Панель фильтров */}
       <div
         style={{
           marginBottom: 16,
@@ -184,20 +180,17 @@ const TransactionsPage: React.FC = () => {
           </Select>
         </div>
 
-        {/* Кнопка добавления транзакции */}
         <Button
           type="primary"
           icon={<PlusOutlined />}
           onClick={() => showModal()}
-          style={{ marginBottom: 16 }}
         >
-          Add transaction
+          Добавить платеж
         </Button>
       </div>
 
-      {/* Таблица транзакций */}
       <Table
-        dataSource={transactions}
+        dataSource={plannedPayments}
         rowKey="id"
         loading={loading}
         pagination={{
@@ -211,10 +204,11 @@ const TransactionsPage: React.FC = () => {
         }}
         columns={[
           {
-            title: "Date",
-            dataIndex: "date",
+            title: "Due date",
+            dataIndex: "due_date",
             render: (text) => dayjs(text).format("YYYY-MM-DD"),
-            sorter: (a, b) => dayjs(a.date).unix() - dayjs(b.date).unix(),
+            sorter: (a, b) =>
+              dayjs(a.due_date).unix() - dayjs(b.due_date).unix(),
           },
           {
             title: "Amount",
@@ -240,49 +234,26 @@ const TransactionsPage: React.FC = () => {
           },
         ]}
       />
-
-      {/* Модальное окно для создания/редактирования транзакции */}
       <Modal
-        title={editingTransaction ? "Edit" : "Add"}
-        open={isModalVisible}
+        title={editingPayment ? "Edit" : "Add"}
+        visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
-        okText="Save"
-        cancelText="Cancel"
       >
         <Form form={form} layout="vertical">
           <Form.Item
             name="amount"
-            label="Amount"
+            label="Сумма"
             rules={[{ required: true, message: "Enter the amount" }]}
           >
             <InputNumber style={{ width: "100%" }} />
           </Form.Item>
-
-          <Form.Item name="description" label="Description">
-            <Input />
-          </Form.Item>
-
           <Form.Item
-            name="date"
-            label="Date"
-            rules={[{ required: true, message: "Choose date" }]}
+            name="due_date"
+            label="Due date"
+            rules={[{ required: true, message: "Choose a date" }]}
           >
             <DatePicker style={{ width: "100%" }} />
-          </Form.Item>
-
-          <Form.Item
-            name="category_id"
-            label="Category"
-            rules={[{ required: true, message: "Choose category" }]}
-          >
-            <Select>
-              {categories.map((category) => (
-                <Select.Option key={category.id} value={category.id}>
-                  {category.name}
-                </Select.Option>
-              ))}
-            </Select>
           </Form.Item>
         </Form>
       </Modal>
@@ -290,4 +261,4 @@ const TransactionsPage: React.FC = () => {
   );
 };
 
-export default TransactionsPage;
+export default PlannedPaymentsPage;

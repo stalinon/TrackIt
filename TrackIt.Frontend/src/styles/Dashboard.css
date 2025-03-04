@@ -12,10 +12,12 @@
 .layout__sider {
   background-color: #fff;
   display: flex;
+  flex-direction: column;
+  padding-top: 10px;
 }
 
 .layout__sider__btn {
-  width: 150%;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   border-radius: 0;

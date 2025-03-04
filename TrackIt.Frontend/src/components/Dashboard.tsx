@@ -9,6 +9,7 @@ import DashboardContent from "./DashboardContent";
 import TransactionsContent from "./TransactionsContent";
 import LimitsContent from "./LimitsContent";
 import PlannedPaymentsContent from "./PlannedPaymentsContent";
+import CategoriesContent from "./CategoriesContent";
 
 import "../styles/Dashboard.css";
 
@@ -19,7 +20,8 @@ import {
   HomeOutlined,
   CreditCardOutlined,
   SafetyCertificateOutlined,
-  CalendarOutlined
+  CalendarOutlined,
+  AlignLeftOutlined,
 } from "@ant-design/icons";
 
 const { Header, Sider, Content } = Layout;
@@ -54,6 +56,8 @@ const Dashboard = () => {
         return <LimitsContent />;
       case "plannedPayments":
         return <PlannedPaymentsContent />;
+      case "categories":
+        return <CategoriesContent />;
       default:
         return <DashboardContent />;
     }
@@ -63,11 +67,11 @@ const Dashboard = () => {
     <Layout className="layout">
       <Sider
         className="layout__sider"
-        width={300}
+        width={250}
         trigger={null}
         collapsible
         collapsed={collapsed}
-        style={{ justifyContent: "" }}
+        style={{ alignItems: collapsed ? "center" : "" }}
       >
         <img
           className="layout__sider__logo"
@@ -82,6 +86,15 @@ const Dashboard = () => {
         >
           &nbsp;
           {collapsed ? "" : "Dashboard"}
+        </Button>
+        <Button
+          className="layout__sider__btn"
+          type="text"
+          onClick={() => setActivePage("categories")}
+          icon={<AlignLeftOutlined />}
+        >
+          &nbsp;
+          {collapsed ? "" : "Categories"}
         </Button>
         <Button
           className="layout__sider__btn"

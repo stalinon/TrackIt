@@ -21,10 +21,9 @@ const MonthlyAverageCard = () => {
     const fetchMonthlyAverage = async () => {
       try {
         const response = await analyticsApi.apiAnalyticsMonthlyAverageGet();
-        console.log("Данные средних месячных:", response.data);
         setAverage(response.data);
       } catch (error) {
-        console.error("Ошибка средних месячных", error);
+        console.error("Error while fetching average", error);
       }
     };
 

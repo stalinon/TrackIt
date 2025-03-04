@@ -18,10 +18,9 @@ const TopCategoryCard = () => {
     const fetchCategories = async () => {
       try {
         const response = await analyticsApi.apiAnalyticsTopCategoriesGet();
-        console.log("Топ категории:", response.data);
         setCategories(response.data || []);
       } catch (error) {
-        console.error("Ошибка получения топовых категорий", error);
+        console.error("Error while fetching top categories", error);
       }
     };
 

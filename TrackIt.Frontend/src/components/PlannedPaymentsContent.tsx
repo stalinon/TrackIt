@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
-import { PlannedPaymentApi } from "../api/generated";
-import api from "../api/api";
+import PlannedPaymentsPage from "./PlannedPaymentsComponents/PlannedPaymentsPage";
 
-const PlannedPaymentsContent = () => <div>Контент для PlannedPayments</div>;
+const PlannedPaymentsContent = () => <PlannedPaymentsPage />;
 
 export default PlannedPaymentsContent;

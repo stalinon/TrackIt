@@ -25,10 +25,9 @@ const BalanceCard = () => {
     const fetchBalance = async () => {
       try {
         const response = await analyticsApi.apiAnalyticsBalanceGet();
-        console.log("Данные баланса:", response.data);
         setBalance(response.data);
       } catch (error) {
-        console.error("Ошибка получения баланса", error);
+        console.error("Error while fetching balance", error);
       }
     };
 
