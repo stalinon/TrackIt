@@ -34,6 +34,11 @@ public interface IUnitOfWork : IDisposable
     IBudgetRepository Budgets { get; }
     
     /// <summary>
+    ///     Пользователи Телеграма
+    /// </summary>
+    ITelegramUserRepository TelegramUsers { get; }
+    
+    /// <summary>
     ///     Сохранить изменения
     /// </summary>
     Task<int> SaveChangesAsync();

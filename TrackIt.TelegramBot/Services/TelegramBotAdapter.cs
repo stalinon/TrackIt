@@ -1,76 +1,37 @@
 using Microsoft.Extensions.Logging;
 using Telegram.Bot;
-using Telegram.Bot.Polling;
-using Telegram.Bot.Types;
+using Telegram.Bot.Requests.Abstractions;
 using TrackIt.Application.Interfaces;
-using TrackIt.TelegramBot.Handlers.Errors;
-using TrackIt.TelegramBot.Handlers.Updates;
 
 namespace TrackIt.TelegramBot.Services;
 
 /// <summary>
 ///     Адаптер для работы с Telegram.Bot
 /// </summary>
-internal sealed class TelegramBotAdapter : ITelegramBotAdapter
+internal sealed class TelegramBotAdapter : TelegramBotClient
 {
-    private readonly ITelegramBotClient _botClient;
     private readonly ILogger<TelegramBotAdapter> _logger;
 
-    /// <summary>
-    ///     Обработчик входящих сообщений
-    /// </summary>
-    private Func<ITelegramBotClient, Update, CancellationToken, Task> UpdateHandler { get; set; }
-
-    /// <summary>
-    ///     Обработчик ошибок
-    /// </summary>
-    private Func<ITelegramBotClient, Exception, CancellationToken, Task> ErrorHandler { get; set; }
-
     /// <inheritdoc cref="TelegramBotAdapter" />
-    public TelegramBotAdapter(string token, ILogger<TelegramBotAdapter> logger)
+    public TelegramBotAdapter(string token, ILogger<TelegramBotAdapter> logger) : base(token)
     {
-        _botClient = new TelegramBotClient(token);
         _logger = logger;
-
-        ErrorHandler = new CommonErrorHandler(logger);
-        UpdateHandler = new CommonUpdateHandler(this);
     }
 
-    /// <summary>
-    ///     Запускает обработку сообщений от Telegram
-    /// </summary>
-    public void StartReceiving(CancellationToken cancellationToken)
+    /// <inheritdoc />
+    public override async Task<TResponse> SendRequest<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default)
     {
         try
         {
-            _botClient.StartReceiving(
-                UpdateHandler,
-                ErrorHandler,
-                new ReceiverOptions(),
-                cancellationToken
-            );
-
-            _logger.LogInformation("Бот начал принимать сообщения...");
-        }
-        catch
-        {
-            _logger.LogCritical("Не удалось авторизовать бота");
-        }
-    }
-
-    /// <summary>
-    ///     Отправка сообщения пользователю
-    /// </summary>
-    public async Task SendMessageAsync(long chatId, string message)
-    {
-        try
-        {
-            await _botClient.SendMessage(chatId, message);
-            _logger.LogInformation($"Сообщение отправлено пользователю {chatId}");
+            var result = await base.SendRequest(request, cancellationToken);
+            _logger.LogInformation("Запрос в Telegram успешно отправлен");
+            
+            return result;
         }
         catch (Exception ex)
         {
-            _logger.LogError($"Ошибка при отправке сообщения пользователю {chatId}: {ex.Message}");
+            _logger.LogError($"Ошибка при отправке запроса в Telegram: {ex.Message}");
+            throw;
         }
     }
 }

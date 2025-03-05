@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Telegram.Bot;
 using TrackIt.Application.Interfaces;
+using TrackIt.TelegramBot.BotCommands;
 using TrackIt.TelegramBot.Services;
 
 namespace TrackIt.TelegramBot;
@@ -20,10 +22,15 @@ public static class TelegramBotServiceExtensions
         IConfiguration configuration)
     {
         var botToken = configuration["TelegramBot:Token"];
-        services.AddSingleton<TelegramBotAdapter>(o
+        services.AddSingleton<ITelegramBotClient, TelegramBotAdapter>(o
             => new TelegramBotAdapter(botToken!, o.GetRequiredService<ILogger<TelegramBotAdapter>>()));
-        services.AddSingleton<ITelegramBotAdapter>(o => o.GetRequiredService<TelegramBotAdapter>());
         services.AddScoped<ITelegramNotificationService, TelegramNotificationService>();
+
+        services.AddScoped<IBotCommand, StartCommand>();
+        services.AddScoped<IBotCommand, AddIncomeCommand>();
+        services.AddScoped<IBotCommand, AddExpenseCommand>();
+        services.AddScoped<IBotCommand, HelpCommand>();
+        services.AddScoped<CommandHandler>();
 
         return services;
     }
@@ -31,11 +38,15 @@ public static class TelegramBotServiceExtensions
     /// <summary>
     ///     Конфигурировать сервисы бота
     /// </summary>
-    public static WebApplication UseTelegramBotServices(this WebApplication app)
+    public static WebApplication UseTelegramBotServices(this WebApplication app, IConfiguration configuration)
     {
-        var adapter = app.Services.GetRequiredService<TelegramBotAdapter>();
-        adapter.StartReceiving(CancellationToken.None);
+        using var scope = app.Services.CreateScope();
+        var botClient = scope.ServiceProvider.GetRequiredService<ITelegramBotClient>();
+        
+        var domain = configuration["HostingDomain"]!;
+        botClient.SetWebhook(domain).GetAwaiter().GetResult();
+
+        Console.WriteLine("Webhook для бота установлен");
         return app;
     }
-    
 }

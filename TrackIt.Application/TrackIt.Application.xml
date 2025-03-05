@@ -1085,16 +1085,6 @@
                 Получить список запланированных оплат
             </summary>
         </member>
-        <member name="T:TrackIt.Application.Interfaces.ITelegramBotAdapter">
-            <summary>
-                Адаптер для работы с Tg
-            </summary>
-        </member>
-        <member name="M:TrackIt.Application.Interfaces.ITelegramBotAdapter.SendMessageAsync(System.Int64,System.String)">
-            <summary>
-                Отправить сообщение
-            </summary>
-        </member>
         <member name="T:TrackIt.Application.Interfaces.ITelegramNotificationService">
             <summary>
                 Сервис уведомлений через Telegram
