@@ -10,17 +10,19 @@ namespace TrackIt.TelegramBot.BotCommands;
 /// <summary>
 ///     Добавление расхода
 /// </summary>
-internal sealed class AddExpenseCommand(IUnitOfWork unitOfWork, ITransactionService transactionService) : IBotCommand
+internal sealed class AddExpenseCommand(IUnitOfWork unitOfWork, ITransactionService transactionService, IUserContext userContext) : AuthorizedCommand(userContext), IBotCommand
 {
     /// <inheritdoc />
-    public string Command => "/add_expense";
+    public override string Command => "/add_expense";
     
     /// <inheritdoc />
-    public string Description => "Добавить расход. Использование: /add_expense <категория> <сумма> <описание>";
+    public override string Description => "Добавить расход. Использование: /add_expense <категория> <сумма> <описание>";
 
     /// <inheritdoc />
-    public async Task ExecuteAsync(ITelegramBotClient botClient, Message message, string[] args)
+    public override async Task ExecuteAsync(ITelegramBotClient botClient, Message message, string[] args)
     {
+        await base.ExecuteAsync(botClient, message, args);
+        
         if (args.Length < 3)
         {
             await botClient.SendMessage(message.Chat.Id, "⚠ Ошибка: Используйте /add_expense <категория> <сумма> <описание>");

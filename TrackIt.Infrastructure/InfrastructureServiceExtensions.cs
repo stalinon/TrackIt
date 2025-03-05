@@ -37,6 +37,7 @@ public static class InfrastructureServiceExtensions
         services.AddTransient<DatabaseSeeder>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IUserLinkService, UserLinkService>();
         services.AddScoped<ITransactionService, TransactionService>();
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<IPlannedPaymentService, PlannedPaymentService>();

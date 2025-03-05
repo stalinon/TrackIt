@@ -1,8 +1,11 @@
 using System.Security.Claims;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TrackIt.Application.DTOs;
+using TrackIt.Application.Features.Users.Commands;
 using TrackIt.Application.Interfaces;
+using TrackIt.TelegramBot.BotCommands;
 
 namespace TrackIt.API.Controllers;
 
@@ -15,11 +18,13 @@ namespace TrackIt.API.Controllers;
 public class UserController : ControllerBase
 {
     private readonly IUserService _userService;
+    private readonly IMediator _mediator;
 
     /// <inheritdoc cref="UserController"/>
-    public UserController(IUserService userService)
+    public UserController(IUserService userService, IMediator mediator)
     {
         _userService = userService;
+        _mediator = mediator;
     }
 
     private string? GetUserEmail()
@@ -43,5 +48,16 @@ public class UserController : ControllerBase
 
         var user = await _userService.GetUserByEmailAsync(userEmail);
         return user == null ? NotFound("User not found") : Ok(user);
+    }
+
+    /// <summary>
+    ///     Привязать пользователя Телеграм
+    /// </summary>
+    [HttpPost("link")]
+    [ProducesResponseType(200)]
+    public async Task<IActionResult> LinkTelegram(LinkUserToTelegramCommand command)
+    {
+        await _mediator.Send(command);
+        return Ok();
     }
 }

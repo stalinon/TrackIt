@@ -27,6 +27,7 @@ public static class TelegramBotServiceExtensions
         services.AddScoped<ITelegramNotificationService, TelegramNotificationService>();
 
         services.AddScoped<IBotCommand, StartCommand>();
+        services.AddScoped<IBotCommand, LinkCommand>();
         services.AddScoped<IBotCommand, AddIncomeCommand>();
         services.AddScoped<IBotCommand, AddExpenseCommand>();
         services.AddScoped<IBotCommand, HelpCommand>();
