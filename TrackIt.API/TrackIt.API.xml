@@ -4,6 +4,11 @@
         <name>TrackIt.API</name>
     </assembly>
     <members>
+        <member name="T:TrackIt.API.Attributes.TelegramWebhookAttribute">
+            <summary>
+                Атрибут для отметки, что это контроллер - вебхук телеграма
+            </summary>
+        </member>
         <member name="T:TrackIt.API.Controllers.AnalyticsController">
             <summary>
                 Контроллер аналитики финансов
@@ -144,6 +149,21 @@
                 Получение платежа по ID
             </summary>
         </member>
+        <member name="T:TrackIt.API.Controllers.TelegramController">
+            <summary>
+                Контроллер Телеграма
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.TelegramController.#ctor(TrackIt.TelegramBot.BotCommands.CommandHandler)">
+            <summary>
+                Контроллер Телеграма
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.TelegramController.Post(Telegram.Bot.Types.Update)">
+            <summary>
+                Обработчик вебхука
+            </summary>
+        </member>
         <member name="T:TrackIt.API.Controllers.TransactionController">
             <summary>
                 Контроллер транзакций
@@ -184,12 +204,17 @@
                 Контроллер пользователей
             </summary>
         </member>
-        <member name="M:TrackIt.API.Controllers.UserController.#ctor(TrackIt.Application.Interfaces.IUserService)">
+        <member name="M:TrackIt.API.Controllers.UserController.#ctor(TrackIt.Application.Interfaces.IUserService,MediatR.IMediator)">
             <inheritdoc cref="T:TrackIt.API.Controllers.UserController"/>
         </member>
         <member name="M:TrackIt.API.Controllers.UserController.GetUserProfile">
             <summary>
                 Получить профиль текущего пользователя
+            </summary>
+        </member>
+        <member name="M:TrackIt.API.Controllers.UserController.LinkTelegram(TrackIt.Application.Features.Users.Commands.LinkUserToTelegramCommand)">
+            <summary>
+                Привязать пользователя Телеграм
             </summary>
         </member>
         <member name="T:TrackIt.API.Extensions.KeycloakExtensions">

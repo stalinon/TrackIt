@@ -52,7 +52,7 @@ public class UserEntity : IBaseEntity
     /// <summary>
     ///     Телеграм
     /// </summary>
-    public TelegramUserEntity TelegramUser { get; set; } = default!;
+    public TelegramUserEntity? TelegramUser { get; set; }
 
     /// <summary>
     ///     Настройка сущности

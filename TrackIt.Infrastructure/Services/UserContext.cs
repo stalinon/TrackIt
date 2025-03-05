@@ -93,9 +93,7 @@ public class UserContext : IUserContext
             throw new UnauthorizedAccessException("Пользователь с таким Telegram ID не найден");
         }
 
-        _httpContextAccessor.HttpContext!.User = new ClaimsPrincipal(new ClaimsIdentity([
-            new Claim(ClaimTypes.Email, telegramUser.User.Email)
-        ]));
+        _httpContextAccessor.HttpContext!.User = new ClaimsPrincipal(new ClaimsIdentity(new[] {new Claim(ClaimTypes.Email, telegramUser.User.Email)}));
     }
 
 
@@ -103,7 +101,7 @@ public class UserContext : IUserContext
     {
         return new UserDto
         {
-            Id = user.Id,
+            LinkedTelegram = user.TelegramUser != null,
             Email = user.Email,
             CreatedAt = user.CreatedAt
         };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, Layout } from "antd";
 import logo from "../black_on_white.png";
 import short_logo from "../black_on_white_short.png";
@@ -8,6 +8,9 @@ import TransactionsContent from "./TransactionsContent";
 import LimitsContent from "./LimitsContent";
 import PlannedPaymentsContent from "./PlannedPaymentsContent";
 import CategoriesContent from "./CategoriesContent";
+
+import { UserApi } from "../api/generated";
+import api from "../api/api";
 
 import "../styles/Dashboard.css";
 
@@ -21,12 +24,27 @@ import {
   CalendarOutlined,
   AlignLeftOutlined,
 } from "@ant-design/icons";
+import LinkTelegram from "./ProfileComponents/LinkTelegram";
+
+const userApi = new UserApi(undefined, api.defaults.baseURL, api);
 
 const { Header, Sider, Content } = Layout;
 
 const Dashboard = () => {
   const [activePage, setActivePage] = useState("dashboard");
   const [collapsed, setCollapsed] = useState(false);
+  const [linkedTelegram, setLinkedTelegram] = useState(false);
+
+  const fetchProfile = async () => {
+    try {
+      var response = await userApi.apiUsersProfileGet();
+      setLinkedTelegram(response.data.linked_telegram);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    fetchProfile();
+  }, []);
 
   // Функция для рендеринга контента в зависимости от активной страницы
   const renderContent = () => {
@@ -124,7 +142,10 @@ const Dashboard = () => {
           }}
         />
       </Header>
-      <Content className="layout__content">{renderContent()}</Content>
+      <Content className="layout__content">
+        {renderContent()}
+        {!linkedTelegram ? <LinkTelegram /> : <></>}
+      </Content>
     </Layout>
   );
 };

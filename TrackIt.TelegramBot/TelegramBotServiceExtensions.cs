@@ -30,7 +30,6 @@ public static class TelegramBotServiceExtensions
         services.AddScoped<IBotCommand, LinkCommand>();
         services.AddScoped<IBotCommand, AddIncomeCommand>();
         services.AddScoped<IBotCommand, AddExpenseCommand>();
-        services.AddScoped<IBotCommand, HelpCommand>();
         services.AddScoped<CommandHandler>();
 
         return services;
