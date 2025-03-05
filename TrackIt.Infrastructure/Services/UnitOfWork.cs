@@ -26,6 +26,9 @@ public class UnitOfWork : IUnitOfWork
     
     /// <inheritdoc />
     public IBudgetRepository Budgets { get; }
+    
+    /// <inheritdoc />
+    public ITelegramUserRepository TelegramUsers { get; }
 
     /// <inheritdoc cref="UnitOfWork" />
     public UnitOfWork(ApplicationDbContext context)
@@ -36,6 +39,7 @@ public class UnitOfWork : IUnitOfWork
         Categories = new CategoryRepository(_context);
         PlannedPayments = new PlannedPaymentRepository(_context);
         Budgets = new BudgetRepository(_context);
+        TelegramUsers = new TelegramUserRepository(_context);
     }
 
     /// <inheritdoc />

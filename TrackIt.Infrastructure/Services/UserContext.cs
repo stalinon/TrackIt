@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using TrackIt.Application.DTOs;
 using TrackIt.Application.Interfaces;
 using TrackIt.Domain.Entities;
@@ -82,7 +83,22 @@ public class UserContext : IUserContext
         return MapToUserDto(user);
     }
 
-    
+    /// <inheritdoc />
+    public async Task AuthorizeTelegramUserAsync(long telegramId)
+    {
+        var telegramUser = await _unitOfWork.TelegramUsers.GetQuery()
+            .FirstOrDefaultAsync(t => t.TelegramId == telegramId);
+        if (telegramUser?.User == null)
+        {
+            throw new UnauthorizedAccessException("Пользователь с таким Telegram ID не найден");
+        }
+
+        _httpContextAccessor.HttpContext!.User = new ClaimsPrincipal(new ClaimsIdentity([
+            new Claim(ClaimTypes.Email, telegramUser.User.Email)
+        ]));
+    }
+
+
     private static UserDto MapToUserDto(UserEntity user)
     {
         return new UserDto

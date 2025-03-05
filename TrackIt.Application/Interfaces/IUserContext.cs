@@ -27,4 +27,9 @@ public interface IUserContext
     ///     Создать пользователя, если его нет в БД
     /// </summary>
     Task<UserDto> GetOrCreateCurrentUserAsync();
+    
+    /// <summary>
+    ///     Авторизовать пользователя телеграма
+    /// </summary>
+    Task AuthorizeTelegramUserAsync(long telegramId);
 }
