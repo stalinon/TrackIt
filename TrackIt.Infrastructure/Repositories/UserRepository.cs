@@ -12,7 +12,13 @@ internal sealed class UserRepository : GenericRepository<UserEntity>, IUserRepos
     public UserRepository(ApplicationDbContext context) : base(context) { }
 
     /// <inheritdoc />
-    public async Task<UserEntity?> GetByEmailAsync(string email) => await DbSet.FirstOrDefaultAsync(u => u.Email == email);
+    public override IQueryable<UserEntity> GetQuery()
+    {
+        return base.GetQuery().Include(u => u.TelegramUser);
+    }
+
+    /// <inheritdoc />
+    public async Task<UserEntity?> GetByEmailAsync(string email) => await GetQuery().FirstOrDefaultAsync(u => u.Email == email);
 
     /// <inheritdoc />
     public async Task<IEnumerable<UserEntity>> GetPaginatedUsersAsync(int pageIndex, int pageSize) => await GetPaginatedAsync(pageIndex, pageSize, null, u => u.CreatedAt, true);

@@ -50,7 +50,8 @@ internal sealed class UserLinkService(IUnitOfWork unitOfWork) : IUserLinkService
 
     private static string GenerateRandomCode()
     {
-        var randomBytes = RandomNumberGenerator.GetBytes(3);
-        return BitConverter.ToUInt32(randomBytes, 0).ToString()[..6];
+        var randomBytes = RandomNumberGenerator.GetBytes(4);
+        var randomNumber = BitConverter.ToUInt32(randomBytes, 0) % 1_000_000;
+        return randomNumber.ToString("D6");
     }
 }

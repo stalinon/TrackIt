@@ -8,16 +8,10 @@ namespace TrackIt.TelegramBot.BotCommands;
 /// <summary>
 ///     Команда с авторизацией
 /// </summary>
-internal abstract class AuthorizedCommand(IUserContext userContext) : IBotCommand
+internal abstract class AuthorizedCommand(IUserContext userContext) : BotCommand
 {
     /// <inheritdoc />
-    public abstract string Command { get; }
-    
-    /// <inheritdoc />
-    public abstract string Description { get; }
-
-    /// <inheritdoc />
-    public virtual async Task ExecuteAsync(ITelegramBotClient botClient, Message message, string[] args)
+    public override async Task ExecuteAsync(ITelegramBotClient botClient, Message message, string[] args)
     {
         if (userContext.Email == null)
         {

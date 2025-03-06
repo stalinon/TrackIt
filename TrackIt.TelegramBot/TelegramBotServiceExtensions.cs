@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot;
+using Telegram.Bot.Types.Enums;
 using TrackIt.Application.Interfaces;
 using TrackIt.TelegramBot.BotCommands;
 using TrackIt.TelegramBot.Services;
@@ -44,7 +45,7 @@ public static class TelegramBotServiceExtensions
         var botClient = scope.ServiceProvider.GetRequiredService<ITelegramBotClient>();
         
         var domain = configuration["HostingDomain"]!;
-        botClient.SetWebhook(domain).GetAwaiter().GetResult();
+        botClient.SetWebhook($"{domain}/api/bot", allowedUpdates: [UpdateType.Message]).GetAwaiter().GetResult();
 
         Console.WriteLine("Webhook для бота установлен");
         return app;

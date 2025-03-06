@@ -16,7 +16,7 @@ internal sealed class AddIncomeCommand(IUnitOfWork unitOfWork, ITransactionServi
     public override string Command => "/add_income";
     
     /// <inheritdoc />
-    public override string Description => "Добавить доход. Использование: /add_income <категория> <сумма> <описание>";
+    public override string Description => "Добавить доход. Использование: `/add_income <категория> <сумма> <описание>`";
 
     /// <inheritdoc />
     public override async Task ExecuteAsync(ITelegramBotClient botClient, Message message, string[] args)
@@ -43,7 +43,7 @@ internal sealed class AddIncomeCommand(IUnitOfWork unitOfWork, ITransactionServi
             return;
         }
         
-        var description = string.Join(" ", args.Skip(1));
+        var description = string.Join(" ", args[2]);
         await transactionService.CreateAsync(new CreateTransactionCommand
         {
             CategoryId = categoryEntity.Id,

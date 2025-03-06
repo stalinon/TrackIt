@@ -16,7 +16,7 @@ internal sealed class AddExpenseCommand(IUnitOfWork unitOfWork, ITransactionServ
     public override string Command => "/add_expense";
     
     /// <inheritdoc />
-    public override string Description => "Добавить расход. Использование: /add_expense <категория> <сумма> <описание>";
+    public override string Description => "Добавить расход. Использование: `/add_expense <категория> <сумма> <описание>`";
 
     /// <inheritdoc />
     public override async Task ExecuteAsync(ITelegramBotClient botClient, Message message, string[] args)
@@ -43,7 +43,7 @@ internal sealed class AddExpenseCommand(IUnitOfWork unitOfWork, ITransactionServ
             return;
         }
         
-        var description = string.Join(" ", args.Skip(1));
+        var description = string.Join(" ", args[2]);
         await transactionService.CreateAsync(new CreateTransactionCommand
         {
             CategoryId = categoryEntity.Id,
