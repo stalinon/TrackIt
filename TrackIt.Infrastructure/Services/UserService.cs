@@ -25,9 +25,9 @@ public class UserService : IUserService
     {
         return user == null ? null : new UserDto
         {
-            Id = user.Id,
             Email = user.Email,
-            CreatedAt = user.CreatedAt
+            CreatedAt = user.CreatedAt,
+            LinkedTelegram = user.TelegramUser != null
         };
     }
 }

@@ -19,7 +19,11 @@ public partial class CommandHandler
     public CommandHandler(IEnumerable<IBotCommand> commands, ITelegramBotClient botClient)
     {
         _botClient = botClient;
-        _commands = commands.ToDictionary(
+
+        var commandList = commands.ToList();
+        var helpCommand = new HelpCommand(commandList);
+        commandList.Add(helpCommand);
+        _commands = commandList.ToDictionary(
             cmd => cmd.Command,
             cmd => cmd);
     }

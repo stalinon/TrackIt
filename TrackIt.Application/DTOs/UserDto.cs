@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace TrackIt.Application.DTOs;
 
 /// <summary>
@@ -6,17 +8,20 @@ namespace TrackIt.Application.DTOs;
 public class UserDto
 {
     /// <summary>
-    ///     Идентификатор
-    /// </summary>
-    public Guid Id { get; set; }
-    
-    /// <summary>
     ///     Электронная почта
     /// </summary>
+    [JsonPropertyName("email")]
     public string Email { get; set; } = string.Empty;
     
     /// <summary>
     ///     Дата создания
     /// </summary>
+    [JsonPropertyName("created_at")]
     public DateTime CreatedAt { get; set; }
+
+    /// <summary>
+    ///     Привязал Телеграм
+    /// </summary>
+    [JsonPropertyName("linked_telegram")]
+    public bool LinkedTelegram { get; set; }
 }

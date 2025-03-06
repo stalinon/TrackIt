@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Telegram.Bot.Types;
@@ -60,18 +61,33 @@ public class UserContextMiddleware
             var body = await reader.ReadToEndAsync();
             context.Request.Body.Position = 0;
 
-            var update = JsonSerializer.Deserialize<Update>(body);
-            if (update?.Message?.From?.Id is { } userId)
+            if (string.IsNullOrWhiteSpace(body))
             {
-                await userContext.AuthorizeTelegramUserAsync(userId);
+                Console.WriteLine("Ошибка: пустое тело запроса.");
+                return false;
+            }
+
+            var json = JsonNode.Parse(body);
+            var userId = json?["message"]?["from"]?["id"]?.GetValue<long>();
+
+            if (userId != null)
+            {
+                await userContext.AuthorizeTelegramUserAsync(userId.Value);
+                Console.WriteLine($"Авторизован Telegram-пользователь: {userId}");
                 return true;
             }
+
+            Console.WriteLine("Ошибка: не удалось получить message.from.id.");
+        }
+        catch (JsonException jsonEx)
+        {
+            Console.WriteLine($"Ошибка парсинга JSON: {jsonEx.Message}");
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Ошибка Middleware: {ex.Message}");
         }
-        
+
         return false;
     }
 }

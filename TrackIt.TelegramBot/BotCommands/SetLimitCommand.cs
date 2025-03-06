@@ -10,17 +10,19 @@ namespace TrackIt.TelegramBot.BotCommands;
 /// <summary>
 ///     Установка лимита на категорию
 /// </summary>
-internal sealed class SetLimitCommand(IUnitOfWork unitOfWork, IBudgetService budgetService) : IBotCommand
+internal sealed class SetLimitCommand(IUnitOfWork unitOfWork, IBudgetService budgetService, IUserContext userContext) : AuthorizedCommand(userContext), IBotCommand
 {
     /// <inheritdoc />
-    public string Command => "/set_limit";
+    public override string Command => "/set_limit";
     
     /// <inheritdoc />
-    public string Description => "Установить лимит. Использование: /set_limit <категория> <сумма>";
+    public override string Description => "Установить лимит. Использование: /set_limit <категория> <сумма>";
 
     /// <inheritdoc />
-    public async Task ExecuteAsync(ITelegramBotClient botClient, Message message, string[] args)
+    public override async Task ExecuteAsync(ITelegramBotClient botClient, Message message, string[] args)
     {
+        await base.ExecuteAsync(botClient, message, args);
+        
         if (args.Length < 2)
         {
             await botClient.SendMessage(message.Chat.Id, "⚠ Ошибка: Введите команду в формате: /set_limit <категория> <сумма>");

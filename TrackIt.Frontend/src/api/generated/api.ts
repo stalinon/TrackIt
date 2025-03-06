@@ -24,6 +24,159 @@ import type { RequestArgs } from './base';
 import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerMap } from './base';
 
 /**
+ * 
+ * @export
+ * @interface Animation
+ */
+export interface Animation {
+    /**
+     * 
+     * @type {string}
+     * @memberof Animation
+     */
+    'fileId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Animation
+     */
+    'fileUniqueId'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Animation
+     */
+    'fileSize'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Animation
+     */
+    'width'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Animation
+     */
+    'height'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Animation
+     */
+    'duration'?: number;
+    /**
+     * 
+     * @type {PhotoSize}
+     * @memberof Animation
+     */
+    'thumbnail'?: PhotoSize;
+    /**
+     * 
+     * @type {string}
+     * @memberof Animation
+     */
+    'fileName'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Animation
+     */
+    'mimeType'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface Audio
+ */
+export interface Audio {
+    /**
+     * 
+     * @type {string}
+     * @memberof Audio
+     */
+    'fileId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Audio
+     */
+    'fileUniqueId'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Audio
+     */
+    'fileSize'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Audio
+     */
+    'duration'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof Audio
+     */
+    'performer'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Audio
+     */
+    'title'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Audio
+     */
+    'fileName'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Audio
+     */
+    'mimeType'?: string | null;
+    /**
+     * 
+     * @type {PhotoSize}
+     * @memberof Audio
+     */
+    'thumbnail'?: PhotoSize;
+}
+/**
+ * 
+ * @export
+ * @interface BackgroundType
+ */
+export interface BackgroundType {
+    /**
+     * 
+     * @type {BackgroundTypeKind}
+     * @memberof BackgroundType
+     */
+    'type'?: BackgroundTypeKind;
+}
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const BackgroundTypeKind = {
+    Fill: 'fill',
+    Wallpaper: 'wallpaper',
+    Pattern: 'pattern',
+    ChatTheme: 'chat_theme'
+} as const;
+
+export type BackgroundTypeKind = typeof BackgroundTypeKind[keyof typeof BackgroundTypeKind];
+
+
+/**
  * Модель общего баланса
  * @export
  * @interface BalanceDto
@@ -91,6 +244,123 @@ export interface BudgetDtoPagedList {
      * @memberof BudgetDtoPagedList
      */
     'total'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface BusinessConnection
+ */
+export interface BusinessConnection {
+    /**
+     * 
+     * @type {string}
+     * @memberof BusinessConnection
+     */
+    'id'?: string | null;
+    /**
+     * 
+     * @type {User}
+     * @memberof BusinessConnection
+     */
+    'user'?: User;
+    /**
+     * 
+     * @type {number}
+     * @memberof BusinessConnection
+     */
+    'userChatId'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof BusinessConnection
+     */
+    'date'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BusinessConnection
+     */
+    'canReply'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BusinessConnection
+     */
+    'isEnabled'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface BusinessMessagesDeleted
+ */
+export interface BusinessMessagesDeleted {
+    /**
+     * 
+     * @type {string}
+     * @memberof BusinessMessagesDeleted
+     */
+    'businessConnectionId'?: string | null;
+    /**
+     * 
+     * @type {Chat}
+     * @memberof BusinessMessagesDeleted
+     */
+    'chat'?: Chat;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof BusinessMessagesDeleted
+     */
+    'messageIds'?: Array<number> | null;
+}
+/**
+ * 
+ * @export
+ * @interface CallbackQuery
+ */
+export interface CallbackQuery {
+    /**
+     * 
+     * @type {string}
+     * @memberof CallbackQuery
+     */
+    'id'?: string | null;
+    /**
+     * 
+     * @type {User}
+     * @memberof CallbackQuery
+     */
+    'from'?: User;
+    /**
+     * 
+     * @type {Message}
+     * @memberof CallbackQuery
+     */
+    'message'?: Message;
+    /**
+     * 
+     * @type {string}
+     * @memberof CallbackQuery
+     */
+    'inlineMessageId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CallbackQuery
+     */
+    'chatInstance'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CallbackQuery
+     */
+    'data'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CallbackQuery
+     */
+    'gameShortName'?: string | null;
 }
 /**
  * Модель категории
@@ -177,6 +447,545 @@ export const CategoryType = {
 export type CategoryType = typeof CategoryType[keyof typeof CategoryType];
 
 
+/**
+ * 
+ * @export
+ * @interface Chat
+ */
+export interface Chat {
+    /**
+     * 
+     * @type {number}
+     * @memberof Chat
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {ChatType}
+     * @memberof Chat
+     */
+    'type'?: ChatType;
+    /**
+     * 
+     * @type {string}
+     * @memberof Chat
+     */
+    'title'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Chat
+     */
+    'username'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Chat
+     */
+    'firstName'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Chat
+     */
+    'lastName'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Chat
+     */
+    'isForum'?: boolean;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface ChatBackground
+ */
+export interface ChatBackground {
+    /**
+     * 
+     * @type {BackgroundType}
+     * @memberof ChatBackground
+     */
+    'type'?: BackgroundType;
+}
+/**
+ * 
+ * @export
+ * @interface ChatBoost
+ */
+export interface ChatBoost {
+    /**
+     * 
+     * @type {string}
+     * @memberof ChatBoost
+     */
+    'boostId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChatBoost
+     */
+    'addDate'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChatBoost
+     */
+    'expirationDate'?: string;
+    /**
+     * 
+     * @type {ChatBoostSource}
+     * @memberof ChatBoost
+     */
+    'source'?: ChatBoostSource;
+}
+/**
+ * 
+ * @export
+ * @interface ChatBoostAdded
+ */
+export interface ChatBoostAdded {
+    /**
+     * 
+     * @type {number}
+     * @memberof ChatBoostAdded
+     */
+    'boostCount'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface ChatBoostRemoved
+ */
+export interface ChatBoostRemoved {
+    /**
+     * 
+     * @type {Chat}
+     * @memberof ChatBoostRemoved
+     */
+    'chat'?: Chat;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChatBoostRemoved
+     */
+    'boostId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChatBoostRemoved
+     */
+    'removeDate'?: string;
+    /**
+     * 
+     * @type {ChatBoostSource}
+     * @memberof ChatBoostRemoved
+     */
+    'source'?: ChatBoostSource;
+}
+/**
+ * 
+ * @export
+ * @interface ChatBoostSource
+ */
+export interface ChatBoostSource {
+    /**
+     * 
+     * @type {ChatBoostSourceType}
+     * @memberof ChatBoostSource
+     */
+    'source'?: ChatBoostSourceType;
+}
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const ChatBoostSourceType = {
+    Premium: 'premium',
+    GiftCode: 'gift_code',
+    Giveaway: 'giveaway'
+} as const;
+
+export type ChatBoostSourceType = typeof ChatBoostSourceType[keyof typeof ChatBoostSourceType];
+
+
+/**
+ * 
+ * @export
+ * @interface ChatBoostUpdated
+ */
+export interface ChatBoostUpdated {
+    /**
+     * 
+     * @type {Chat}
+     * @memberof ChatBoostUpdated
+     */
+    'chat'?: Chat;
+    /**
+     * 
+     * @type {ChatBoost}
+     * @memberof ChatBoostUpdated
+     */
+    'boost'?: ChatBoost;
+}
+/**
+ * 
+ * @export
+ * @interface ChatInviteLink
+ */
+export interface ChatInviteLink {
+    /**
+     * 
+     * @type {string}
+     * @memberof ChatInviteLink
+     */
+    'inviteLink'?: string | null;
+    /**
+     * 
+     * @type {User}
+     * @memberof ChatInviteLink
+     */
+    'creator'?: User;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ChatInviteLink
+     */
+    'createsJoinRequest'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ChatInviteLink
+     */
+    'isPrimary'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ChatInviteLink
+     */
+    'isRevoked'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChatInviteLink
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChatInviteLink
+     */
+    'expireDate'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ChatInviteLink
+     */
+    'memberLimit'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ChatInviteLink
+     */
+    'pendingJoinRequestCount'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ChatInviteLink
+     */
+    'subscriptionPeriod'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ChatInviteLink
+     */
+    'subscriptionPrice'?: number | null;
+}
+/**
+ * 
+ * @export
+ * @interface ChatJoinRequest
+ */
+export interface ChatJoinRequest {
+    /**
+     * 
+     * @type {Chat}
+     * @memberof ChatJoinRequest
+     */
+    'chat'?: Chat;
+    /**
+     * 
+     * @type {User}
+     * @memberof ChatJoinRequest
+     */
+    'from'?: User;
+    /**
+     * 
+     * @type {number}
+     * @memberof ChatJoinRequest
+     */
+    'userChatId'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChatJoinRequest
+     */
+    'date'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChatJoinRequest
+     */
+    'bio'?: string | null;
+    /**
+     * 
+     * @type {ChatInviteLink}
+     * @memberof ChatJoinRequest
+     */
+    'inviteLink'?: ChatInviteLink;
+}
+/**
+ * 
+ * @export
+ * @interface ChatMember
+ */
+export interface ChatMember {
+    /**
+     * 
+     * @type {ChatMemberStatus}
+     * @memberof ChatMember
+     */
+    'status'?: ChatMemberStatus;
+    /**
+     * 
+     * @type {User}
+     * @memberof ChatMember
+     */
+    'user'?: User;
+}
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const ChatMemberStatus = {
+    Creator: 'creator',
+    Administrator: 'administrator',
+    Member: 'member',
+    Left: 'left',
+    Kicked: 'kicked',
+    Restricted: 'restricted'
+} as const;
+
+export type ChatMemberStatus = typeof ChatMemberStatus[keyof typeof ChatMemberStatus];
+
+
+/**
+ * 
+ * @export
+ * @interface ChatMemberUpdated
+ */
+export interface ChatMemberUpdated {
+    /**
+     * 
+     * @type {Chat}
+     * @memberof ChatMemberUpdated
+     */
+    'chat'?: Chat;
+    /**
+     * 
+     * @type {User}
+     * @memberof ChatMemberUpdated
+     */
+    'from'?: User;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChatMemberUpdated
+     */
+    'date'?: string;
+    /**
+     * 
+     * @type {ChatMember}
+     * @memberof ChatMemberUpdated
+     */
+    'oldChatMember'?: ChatMember;
+    /**
+     * 
+     * @type {ChatMember}
+     * @memberof ChatMemberUpdated
+     */
+    'newChatMember'?: ChatMember;
+    /**
+     * 
+     * @type {ChatInviteLink}
+     * @memberof ChatMemberUpdated
+     */
+    'inviteLink'?: ChatInviteLink;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ChatMemberUpdated
+     */
+    'viaJoinRequest'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ChatMemberUpdated
+     */
+    'viaChatFolderInviteLink'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface ChatShared
+ */
+export interface ChatShared {
+    /**
+     * 
+     * @type {number}
+     * @memberof ChatShared
+     */
+    'requestId'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ChatShared
+     */
+    'chatId'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChatShared
+     */
+    'title'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChatShared
+     */
+    'username'?: string | null;
+    /**
+     * 
+     * @type {Array<PhotoSize>}
+     * @memberof ChatShared
+     */
+    'photo'?: Array<PhotoSize> | null;
+}
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const ChatType = {
+    Private: 'private',
+    Group: 'group',
+    Channel: 'channel',
+    Supergroup: 'supergroup',
+    Sender: 'sender'
+} as const;
+
+export type ChatType = typeof ChatType[keyof typeof ChatType];
+
+
+/**
+ * 
+ * @export
+ * @interface ChosenInlineResult
+ */
+export interface ChosenInlineResult {
+    /**
+     * 
+     * @type {string}
+     * @memberof ChosenInlineResult
+     */
+    'resultId'?: string | null;
+    /**
+     * 
+     * @type {User}
+     * @memberof ChosenInlineResult
+     */
+    'from'?: User;
+    /**
+     * 
+     * @type {Location}
+     * @memberof ChosenInlineResult
+     */
+    'location'?: Location;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChosenInlineResult
+     */
+    'inlineMessageId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChosenInlineResult
+     */
+    'query'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface Contact
+ */
+export interface Contact {
+    /**
+     * 
+     * @type {string}
+     * @memberof Contact
+     */
+    'phoneNumber'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Contact
+     */
+    'firstName'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Contact
+     */
+    'lastName'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Contact
+     */
+    'userId'?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Contact
+     */
+    'vcard'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface CopyTextButton
+ */
+export interface CopyTextButton {
+    /**
+     * 
+     * @type {string}
+     * @memberof CopyTextButton
+     */
+    'text'?: string | null;
+}
 /**
  * Запрос на создание запланированного платежа
  * @export
@@ -485,6 +1294,1679 @@ export interface DetailedTransactionDto {
     'category_id'?: string | null;
 }
 /**
+ * 
+ * @export
+ * @interface Dice
+ */
+export interface Dice {
+    /**
+     * 
+     * @type {string}
+     * @memberof Dice
+     */
+    'emoji'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Dice
+     */
+    'value'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface Document
+ */
+export interface Document {
+    /**
+     * 
+     * @type {string}
+     * @memberof Document
+     */
+    'fileId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Document
+     */
+    'fileUniqueId'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Document
+     */
+    'fileSize'?: number | null;
+    /**
+     * 
+     * @type {PhotoSize}
+     * @memberof Document
+     */
+    'thumbnail'?: PhotoSize;
+    /**
+     * 
+     * @type {string}
+     * @memberof Document
+     */
+    'fileName'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Document
+     */
+    'mimeType'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface EncryptedCredentials
+ */
+export interface EncryptedCredentials {
+    /**
+     * 
+     * @type {string}
+     * @memberof EncryptedCredentials
+     */
+    'data'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof EncryptedCredentials
+     */
+    'hash'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof EncryptedCredentials
+     */
+    'secret'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface EncryptedPassportElement
+ */
+export interface EncryptedPassportElement {
+    /**
+     * 
+     * @type {EncryptedPassportElementType}
+     * @memberof EncryptedPassportElement
+     */
+    'type'?: EncryptedPassportElementType;
+    /**
+     * 
+     * @type {string}
+     * @memberof EncryptedPassportElement
+     */
+    'data'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof EncryptedPassportElement
+     */
+    'phoneNumber'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof EncryptedPassportElement
+     */
+    'email'?: string | null;
+    /**
+     * 
+     * @type {Array<PassportFile>}
+     * @memberof EncryptedPassportElement
+     */
+    'files'?: Array<PassportFile> | null;
+    /**
+     * 
+     * @type {PassportFile}
+     * @memberof EncryptedPassportElement
+     */
+    'frontSide'?: PassportFile;
+    /**
+     * 
+     * @type {PassportFile}
+     * @memberof EncryptedPassportElement
+     */
+    'reverseSide'?: PassportFile;
+    /**
+     * 
+     * @type {PassportFile}
+     * @memberof EncryptedPassportElement
+     */
+    'selfie'?: PassportFile;
+    /**
+     * 
+     * @type {Array<PassportFile>}
+     * @memberof EncryptedPassportElement
+     */
+    'translation'?: Array<PassportFile> | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof EncryptedPassportElement
+     */
+    'hash'?: string | null;
+}
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const EncryptedPassportElementType = {
+    PersonalDetails: 'personal_details',
+    Passport: 'passport',
+    DriverLicense: 'driver_license',
+    IdentityCard: 'identity_card',
+    InternalPassport: 'internal_passport',
+    Address: 'address',
+    UtilityBill: 'utility_bill',
+    BankStatement: 'bank_statement',
+    RentalAgreement: 'rental_agreement',
+    PassportRegistration: 'passport_registration',
+    TemporaryRegistration: 'temporary_registration',
+    PhoneNumber: 'phone_number',
+    Email: 'email'
+} as const;
+
+export type EncryptedPassportElementType = typeof EncryptedPassportElementType[keyof typeof EncryptedPassportElementType];
+
+
+/**
+ * 
+ * @export
+ * @interface ExternalReplyInfo
+ */
+export interface ExternalReplyInfo {
+    /**
+     * 
+     * @type {MessageOrigin}
+     * @memberof ExternalReplyInfo
+     */
+    'origin'?: MessageOrigin;
+    /**
+     * 
+     * @type {Chat}
+     * @memberof ExternalReplyInfo
+     */
+    'chat'?: Chat;
+    /**
+     * 
+     * @type {number}
+     * @memberof ExternalReplyInfo
+     */
+    'messageId'?: number | null;
+    /**
+     * 
+     * @type {LinkPreviewOptions}
+     * @memberof ExternalReplyInfo
+     */
+    'linkPreviewOptions'?: LinkPreviewOptions;
+    /**
+     * 
+     * @type {Animation}
+     * @memberof ExternalReplyInfo
+     */
+    'animation'?: Animation;
+    /**
+     * 
+     * @type {Audio}
+     * @memberof ExternalReplyInfo
+     */
+    'audio'?: Audio;
+    /**
+     * 
+     * @type {Document}
+     * @memberof ExternalReplyInfo
+     */
+    'document'?: Document;
+    /**
+     * 
+     * @type {PaidMediaInfo}
+     * @memberof ExternalReplyInfo
+     */
+    'paidMedia'?: PaidMediaInfo;
+    /**
+     * 
+     * @type {Array<PhotoSize>}
+     * @memberof ExternalReplyInfo
+     */
+    'photo'?: Array<PhotoSize> | null;
+    /**
+     * 
+     * @type {Sticker}
+     * @memberof ExternalReplyInfo
+     */
+    'sticker'?: Sticker;
+    /**
+     * 
+     * @type {Story}
+     * @memberof ExternalReplyInfo
+     */
+    'story'?: Story;
+    /**
+     * 
+     * @type {Video}
+     * @memberof ExternalReplyInfo
+     */
+    'video'?: Video;
+    /**
+     * 
+     * @type {VideoNote}
+     * @memberof ExternalReplyInfo
+     */
+    'videoNote'?: VideoNote;
+    /**
+     * 
+     * @type {Voice}
+     * @memberof ExternalReplyInfo
+     */
+    'voice'?: Voice;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ExternalReplyInfo
+     */
+    'hasMediaSpoiler'?: boolean;
+    /**
+     * 
+     * @type {Contact}
+     * @memberof ExternalReplyInfo
+     */
+    'contact'?: Contact;
+    /**
+     * 
+     * @type {Dice}
+     * @memberof ExternalReplyInfo
+     */
+    'dice'?: Dice;
+    /**
+     * 
+     * @type {Game}
+     * @memberof ExternalReplyInfo
+     */
+    'game'?: Game;
+    /**
+     * 
+     * @type {Giveaway}
+     * @memberof ExternalReplyInfo
+     */
+    'giveaway'?: Giveaway;
+    /**
+     * 
+     * @type {GiveawayWinners}
+     * @memberof ExternalReplyInfo
+     */
+    'giveawayWinners'?: GiveawayWinners;
+    /**
+     * 
+     * @type {Invoice}
+     * @memberof ExternalReplyInfo
+     */
+    'invoice'?: Invoice;
+    /**
+     * 
+     * @type {Location}
+     * @memberof ExternalReplyInfo
+     */
+    'location'?: Location;
+    /**
+     * 
+     * @type {Poll}
+     * @memberof ExternalReplyInfo
+     */
+    'poll'?: Poll;
+    /**
+     * 
+     * @type {Venue}
+     * @memberof ExternalReplyInfo
+     */
+    'venue'?: Venue;
+}
+/**
+ * 
+ * @export
+ * @interface ForumTopicCreated
+ */
+export interface ForumTopicCreated {
+    /**
+     * 
+     * @type {string}
+     * @memberof ForumTopicCreated
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ForumTopicCreated
+     */
+    'iconColor'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ForumTopicCreated
+     */
+    'iconCustomEmojiId'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface ForumTopicEdited
+ */
+export interface ForumTopicEdited {
+    /**
+     * 
+     * @type {string}
+     * @memberof ForumTopicEdited
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ForumTopicEdited
+     */
+    'iconCustomEmojiId'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface Game
+ */
+export interface Game {
+    /**
+     * 
+     * @type {string}
+     * @memberof Game
+     */
+    'title'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Game
+     */
+    'description'?: string | null;
+    /**
+     * 
+     * @type {Array<PhotoSize>}
+     * @memberof Game
+     */
+    'photo'?: Array<PhotoSize> | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Game
+     */
+    'text'?: string | null;
+    /**
+     * 
+     * @type {Array<MessageEntity>}
+     * @memberof Game
+     */
+    'textEntities'?: Array<MessageEntity> | null;
+    /**
+     * 
+     * @type {Animation}
+     * @memberof Game
+     */
+    'animation'?: Animation;
+}
+/**
+ * 
+ * @export
+ * @interface Giveaway
+ */
+export interface Giveaway {
+    /**
+     * 
+     * @type {Array<Chat>}
+     * @memberof Giveaway
+     */
+    'chats'?: Array<Chat> | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Giveaway
+     */
+    'winnersSelectionDate'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Giveaway
+     */
+    'winnerCount'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Giveaway
+     */
+    'onlyNewMembers'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Giveaway
+     */
+    'hasPublicWinners'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof Giveaway
+     */
+    'prizeDescription'?: string | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof Giveaway
+     */
+    'countryCodes'?: Array<string> | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Giveaway
+     */
+    'prizeStarCount'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Giveaway
+     */
+    'premiumSubscriptionMonthCount'?: number | null;
+}
+/**
+ * 
+ * @export
+ * @interface GiveawayCompleted
+ */
+export interface GiveawayCompleted {
+    /**
+     * 
+     * @type {number}
+     * @memberof GiveawayCompleted
+     */
+    'winnerCount'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GiveawayCompleted
+     */
+    'unclaimedPrizeCount'?: number | null;
+    /**
+     * 
+     * @type {Message}
+     * @memberof GiveawayCompleted
+     */
+    'giveawayMessage'?: Message;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GiveawayCompleted
+     */
+    'isStarGiveaway'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface GiveawayCreated
+ */
+export interface GiveawayCreated {
+    /**
+     * 
+     * @type {number}
+     * @memberof GiveawayCreated
+     */
+    'prizeStarCount'?: number | null;
+}
+/**
+ * 
+ * @export
+ * @interface GiveawayWinners
+ */
+export interface GiveawayWinners {
+    /**
+     * 
+     * @type {Chat}
+     * @memberof GiveawayWinners
+     */
+    'chat'?: Chat;
+    /**
+     * 
+     * @type {number}
+     * @memberof GiveawayWinners
+     */
+    'giveawayMessageId'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof GiveawayWinners
+     */
+    'winnersSelectionDate'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GiveawayWinners
+     */
+    'winnerCount'?: number;
+    /**
+     * 
+     * @type {Array<User>}
+     * @memberof GiveawayWinners
+     */
+    'winners'?: Array<User> | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof GiveawayWinners
+     */
+    'additionalChatCount'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof GiveawayWinners
+     */
+    'prizeStarCount'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof GiveawayWinners
+     */
+    'premiumSubscriptionMonthCount'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof GiveawayWinners
+     */
+    'unclaimedPrizeCount'?: number | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GiveawayWinners
+     */
+    'onlyNewMembers'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GiveawayWinners
+     */
+    'wasRefunded'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof GiveawayWinners
+     */
+    'prizeDescription'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface InlineKeyboardButton
+ */
+export interface InlineKeyboardButton {
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineKeyboardButton
+     */
+    'text'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineKeyboardButton
+     */
+    'url'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineKeyboardButton
+     */
+    'callbackData'?: string | null;
+    /**
+     * 
+     * @type {WebAppInfo}
+     * @memberof InlineKeyboardButton
+     */
+    'webApp'?: WebAppInfo;
+    /**
+     * 
+     * @type {LoginUrl}
+     * @memberof InlineKeyboardButton
+     */
+    'loginUrl'?: LoginUrl;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineKeyboardButton
+     */
+    'switchInlineQuery'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineKeyboardButton
+     */
+    'switchInlineQueryCurrentChat'?: string | null;
+    /**
+     * 
+     * @type {SwitchInlineQueryChosenChat}
+     * @memberof InlineKeyboardButton
+     */
+    'switchInlineQueryChosenChat'?: SwitchInlineQueryChosenChat;
+    /**
+     * 
+     * @type {CopyTextButton}
+     * @memberof InlineKeyboardButton
+     */
+    'copyText'?: CopyTextButton;
+    /**
+     * 
+     * @type {object}
+     * @memberof InlineKeyboardButton
+     */
+    'callbackGame'?: object;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof InlineKeyboardButton
+     */
+    'pay'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface InlineKeyboardMarkup
+ */
+export interface InlineKeyboardMarkup {
+    /**
+     * 
+     * @type {Array<Array<InlineKeyboardButton>>}
+     * @memberof InlineKeyboardMarkup
+     */
+    'inlineKeyboard'?: Array<Array<InlineKeyboardButton>> | null;
+}
+/**
+ * 
+ * @export
+ * @interface InlineQuery
+ */
+export interface InlineQuery {
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineQuery
+     */
+    'id'?: string | null;
+    /**
+     * 
+     * @type {User}
+     * @memberof InlineQuery
+     */
+    'from'?: User;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineQuery
+     */
+    'query'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineQuery
+     */
+    'offset'?: string | null;
+    /**
+     * 
+     * @type {ChatType}
+     * @memberof InlineQuery
+     */
+    'chatType'?: ChatType;
+    /**
+     * 
+     * @type {Location}
+     * @memberof InlineQuery
+     */
+    'location'?: Location;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface Invoice
+ */
+export interface Invoice {
+    /**
+     * 
+     * @type {string}
+     * @memberof Invoice
+     */
+    'title'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Invoice
+     */
+    'description'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Invoice
+     */
+    'startParameter'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Invoice
+     */
+    'currency'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Invoice
+     */
+    'totalAmount'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface LinkPreviewOptions
+ */
+export interface LinkPreviewOptions {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof LinkPreviewOptions
+     */
+    'isDisabled'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof LinkPreviewOptions
+     */
+    'url'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof LinkPreviewOptions
+     */
+    'preferSmallMedia'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof LinkPreviewOptions
+     */
+    'preferLargeMedia'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof LinkPreviewOptions
+     */
+    'showAboveText'?: boolean;
+}
+/**
+ * Прикрепить пользователя к Телеграм
+ * @export
+ * @interface LinkUserToTelegramCommand
+ */
+export interface LinkUserToTelegramCommand {
+    /**
+     * Код для привязки
+     * @type {string}
+     * @memberof LinkUserToTelegramCommand
+     */
+    'code'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface Location
+ */
+export interface Location {
+    /**
+     * 
+     * @type {number}
+     * @memberof Location
+     */
+    'latitude'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Location
+     */
+    'longitude'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Location
+     */
+    'horizontalAccuracy'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Location
+     */
+    'livePeriod'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Location
+     */
+    'heading'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Location
+     */
+    'proximityAlertRadius'?: number | null;
+}
+/**
+ * 
+ * @export
+ * @interface LoginUrl
+ */
+export interface LoginUrl {
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginUrl
+     */
+    'url'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginUrl
+     */
+    'forwardText'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginUrl
+     */
+    'botUsername'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof LoginUrl
+     */
+    'requestWriteAccess'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface MaskPosition
+ */
+export interface MaskPosition {
+    /**
+     * 
+     * @type {MaskPositionPoint}
+     * @memberof MaskPosition
+     */
+    'point'?: MaskPositionPoint;
+    /**
+     * 
+     * @type {number}
+     * @memberof MaskPosition
+     */
+    'xShift'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof MaskPosition
+     */
+    'yShift'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof MaskPosition
+     */
+    'scale'?: number;
+}
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const MaskPositionPoint = {
+    Forehead: 'forehead',
+    Eyes: 'eyes',
+    Mouth: 'mouth',
+    Chin: 'chin'
+} as const;
+
+export type MaskPositionPoint = typeof MaskPositionPoint[keyof typeof MaskPositionPoint];
+
+
+/**
+ * 
+ * @export
+ * @interface Message
+ */
+export interface Message {
+    /**
+     * 
+     * @type {number}
+     * @memberof Message
+     */
+    'message_id'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Message
+     */
+    'messageThreadId'?: number | null;
+    /**
+     * 
+     * @type {User}
+     * @memberof Message
+     */
+    'from'?: User;
+    /**
+     * 
+     * @type {Chat}
+     * @memberof Message
+     */
+    'senderChat'?: Chat;
+    /**
+     * 
+     * @type {number}
+     * @memberof Message
+     */
+    'senderBoostCount'?: number | null;
+    /**
+     * 
+     * @type {User}
+     * @memberof Message
+     */
+    'senderBusinessBot'?: User;
+    /**
+     * 
+     * @type {string}
+     * @memberof Message
+     */
+    'date'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Message
+     */
+    'businessConnectionId'?: string | null;
+    /**
+     * 
+     * @type {Chat}
+     * @memberof Message
+     */
+    'chat'?: Chat;
+    /**
+     * 
+     * @type {MessageOrigin}
+     * @memberof Message
+     */
+    'forwardOrigin'?: MessageOrigin;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Message
+     */
+    'isTopicMessage'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Message
+     */
+    'isAutomaticForward'?: boolean;
+    /**
+     * 
+     * @type {Message}
+     * @memberof Message
+     */
+    'replyToMessage'?: Message;
+    /**
+     * 
+     * @type {ExternalReplyInfo}
+     * @memberof Message
+     */
+    'externalReply'?: ExternalReplyInfo;
+    /**
+     * 
+     * @type {TextQuote}
+     * @memberof Message
+     */
+    'quote'?: TextQuote;
+    /**
+     * 
+     * @type {Story}
+     * @memberof Message
+     */
+    'replyToStory'?: Story;
+    /**
+     * 
+     * @type {User}
+     * @memberof Message
+     */
+    'viaBot'?: User;
+    /**
+     * 
+     * @type {string}
+     * @memberof Message
+     */
+    'editDate'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Message
+     */
+    'hasProtectedContent'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Message
+     */
+    'isFromOffline'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof Message
+     */
+    'mediaGroupId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Message
+     */
+    'authorSignature'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Message
+     */
+    'text'?: string | null;
+    /**
+     * 
+     * @type {Array<MessageEntity>}
+     * @memberof Message
+     */
+    'entities'?: Array<MessageEntity> | null;
+    /**
+     * 
+     * @type {LinkPreviewOptions}
+     * @memberof Message
+     */
+    'linkPreviewOptions'?: LinkPreviewOptions;
+    /**
+     * 
+     * @type {string}
+     * @memberof Message
+     */
+    'effectId'?: string | null;
+    /**
+     * 
+     * @type {Animation}
+     * @memberof Message
+     */
+    'animation'?: Animation;
+    /**
+     * 
+     * @type {Audio}
+     * @memberof Message
+     */
+    'audio'?: Audio;
+    /**
+     * 
+     * @type {Document}
+     * @memberof Message
+     */
+    'document'?: Document;
+    /**
+     * 
+     * @type {PaidMediaInfo}
+     * @memberof Message
+     */
+    'paidMedia'?: PaidMediaInfo;
+    /**
+     * 
+     * @type {Array<PhotoSize>}
+     * @memberof Message
+     */
+    'photo'?: Array<PhotoSize> | null;
+    /**
+     * 
+     * @type {Sticker}
+     * @memberof Message
+     */
+    'sticker'?: Sticker;
+    /**
+     * 
+     * @type {Story}
+     * @memberof Message
+     */
+    'story'?: Story;
+    /**
+     * 
+     * @type {Video}
+     * @memberof Message
+     */
+    'video'?: Video;
+    /**
+     * 
+     * @type {VideoNote}
+     * @memberof Message
+     */
+    'videoNote'?: VideoNote;
+    /**
+     * 
+     * @type {Voice}
+     * @memberof Message
+     */
+    'voice'?: Voice;
+    /**
+     * 
+     * @type {string}
+     * @memberof Message
+     */
+    'caption'?: string | null;
+    /**
+     * 
+     * @type {Array<MessageEntity>}
+     * @memberof Message
+     */
+    'captionEntities'?: Array<MessageEntity> | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Message
+     */
+    'showCaptionAboveMedia'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Message
+     */
+    'hasMediaSpoiler'?: boolean;
+    /**
+     * 
+     * @type {Contact}
+     * @memberof Message
+     */
+    'contact'?: Contact;
+    /**
+     * 
+     * @type {Dice}
+     * @memberof Message
+     */
+    'dice'?: Dice;
+    /**
+     * 
+     * @type {Game}
+     * @memberof Message
+     */
+    'game'?: Game;
+    /**
+     * 
+     * @type {Poll}
+     * @memberof Message
+     */
+    'poll'?: Poll;
+    /**
+     * 
+     * @type {Venue}
+     * @memberof Message
+     */
+    'venue'?: Venue;
+    /**
+     * 
+     * @type {Location}
+     * @memberof Message
+     */
+    'location'?: Location;
+    /**
+     * 
+     * @type {Array<User>}
+     * @memberof Message
+     */
+    'newChatMembers'?: Array<User> | null;
+    /**
+     * 
+     * @type {User}
+     * @memberof Message
+     */
+    'leftChatMember'?: User;
+    /**
+     * 
+     * @type {string}
+     * @memberof Message
+     */
+    'newChatTitle'?: string | null;
+    /**
+     * 
+     * @type {Array<PhotoSize>}
+     * @memberof Message
+     */
+    'newChatPhoto'?: Array<PhotoSize> | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Message
+     */
+    'deleteChatPhoto'?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Message
+     */
+    'groupChatCreated'?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Message
+     */
+    'supergroupChatCreated'?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Message
+     */
+    'channelChatCreated'?: boolean | null;
+    /**
+     * 
+     * @type {MessageAutoDeleteTimerChanged}
+     * @memberof Message
+     */
+    'messageAutoDeleteTimerChanged'?: MessageAutoDeleteTimerChanged;
+    /**
+     * 
+     * @type {number}
+     * @memberof Message
+     */
+    'migrateToChatId'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Message
+     */
+    'migrateFromChatId'?: number | null;
+    /**
+     * 
+     * @type {Message}
+     * @memberof Message
+     */
+    'pinnedMessage'?: Message;
+    /**
+     * 
+     * @type {Invoice}
+     * @memberof Message
+     */
+    'invoice'?: Invoice;
+    /**
+     * 
+     * @type {SuccessfulPayment}
+     * @memberof Message
+     */
+    'successfulPayment'?: SuccessfulPayment;
+    /**
+     * 
+     * @type {RefundedPayment}
+     * @memberof Message
+     */
+    'refundedPayment'?: RefundedPayment;
+    /**
+     * 
+     * @type {UsersShared}
+     * @memberof Message
+     */
+    'usersShared'?: UsersShared;
+    /**
+     * 
+     * @type {ChatShared}
+     * @memberof Message
+     */
+    'chatShared'?: ChatShared;
+    /**
+     * 
+     * @type {string}
+     * @memberof Message
+     */
+    'connectedWebsite'?: string | null;
+    /**
+     * 
+     * @type {WriteAccessAllowed}
+     * @memberof Message
+     */
+    'writeAccessAllowed'?: WriteAccessAllowed;
+    /**
+     * 
+     * @type {PassportData}
+     * @memberof Message
+     */
+    'passportData'?: PassportData;
+    /**
+     * 
+     * @type {ProximityAlertTriggered}
+     * @memberof Message
+     */
+    'proximityAlertTriggered'?: ProximityAlertTriggered;
+    /**
+     * 
+     * @type {ChatBoostAdded}
+     * @memberof Message
+     */
+    'boostAdded'?: ChatBoostAdded;
+    /**
+     * 
+     * @type {ChatBackground}
+     * @memberof Message
+     */
+    'chatBackgroundSet'?: ChatBackground;
+    /**
+     * 
+     * @type {ForumTopicCreated}
+     * @memberof Message
+     */
+    'forumTopicCreated'?: ForumTopicCreated;
+    /**
+     * 
+     * @type {ForumTopicEdited}
+     * @memberof Message
+     */
+    'forumTopicEdited'?: ForumTopicEdited;
+    /**
+     * 
+     * @type {object}
+     * @memberof Message
+     */
+    'forumTopicClosed'?: object;
+    /**
+     * 
+     * @type {object}
+     * @memberof Message
+     */
+    'forumTopicReopened'?: object;
+    /**
+     * 
+     * @type {object}
+     * @memberof Message
+     */
+    'generalForumTopicHidden'?: object;
+    /**
+     * 
+     * @type {object}
+     * @memberof Message
+     */
+    'generalForumTopicUnhidden'?: object;
+    /**
+     * 
+     * @type {GiveawayCreated}
+     * @memberof Message
+     */
+    'giveawayCreated'?: GiveawayCreated;
+    /**
+     * 
+     * @type {Giveaway}
+     * @memberof Message
+     */
+    'giveaway'?: Giveaway;
+    /**
+     * 
+     * @type {GiveawayWinners}
+     * @memberof Message
+     */
+    'giveawayWinners'?: GiveawayWinners;
+    /**
+     * 
+     * @type {GiveawayCompleted}
+     * @memberof Message
+     */
+    'giveawayCompleted'?: GiveawayCompleted;
+    /**
+     * 
+     * @type {VideoChatScheduled}
+     * @memberof Message
+     */
+    'videoChatScheduled'?: VideoChatScheduled;
+    /**
+     * 
+     * @type {object}
+     * @memberof Message
+     */
+    'videoChatStarted'?: object;
+    /**
+     * 
+     * @type {VideoChatEnded}
+     * @memberof Message
+     */
+    'videoChatEnded'?: VideoChatEnded;
+    /**
+     * 
+     * @type {VideoChatParticipantsInvited}
+     * @memberof Message
+     */
+    'videoChatParticipantsInvited'?: VideoChatParticipantsInvited;
+    /**
+     * 
+     * @type {WebAppData}
+     * @memberof Message
+     */
+    'webAppData'?: WebAppData;
+    /**
+     * 
+     * @type {InlineKeyboardMarkup}
+     * @memberof Message
+     */
+    'replyMarkup'?: InlineKeyboardMarkup;
+}
+/**
+ * 
+ * @export
+ * @interface MessageAutoDeleteTimerChanged
+ */
+export interface MessageAutoDeleteTimerChanged {
+    /**
+     * 
+     * @type {number}
+     * @memberof MessageAutoDeleteTimerChanged
+     */
+    'messageAutoDeleteTime'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface MessageEntity
+ */
+export interface MessageEntity {
+    /**
+     * 
+     * @type {MessageEntityType}
+     * @memberof MessageEntity
+     */
+    'type'?: MessageEntityType;
+    /**
+     * 
+     * @type {number}
+     * @memberof MessageEntity
+     */
+    'offset'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof MessageEntity
+     */
+    'length'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof MessageEntity
+     */
+    'url'?: string | null;
+    /**
+     * 
+     * @type {User}
+     * @memberof MessageEntity
+     */
+    'user'?: User;
+    /**
+     * 
+     * @type {string}
+     * @memberof MessageEntity
+     */
+    'language'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof MessageEntity
+     */
+    'customEmojiId'?: string | null;
+}
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const MessageEntityType = {
+    Mention: 'mention',
+    Hashtag: 'hashtag',
+    BotCommand: 'bot_command',
+    Url: 'url',
+    Email: 'email',
+    Bold: 'bold',
+    Italic: 'italic',
+    Code: 'code',
+    Pre: 'pre',
+    TextLink: 'text_link',
+    TextMention: 'text_mention',
+    PhoneNumber: 'phone_number',
+    Cashtag: 'cashtag',
+    Underline: 'underline',
+    Strikethrough: 'strikethrough',
+    Spoiler: 'spoiler',
+    CustomEmoji: 'custom_emoji',
+    Blockquote: 'blockquote',
+    ExpandableBlockquote: 'expandable_blockquote'
+} as const;
+
+export type MessageEntityType = typeof MessageEntityType[keyof typeof MessageEntityType];
+
+
+/**
+ * 
+ * @export
+ * @interface MessageOrigin
+ */
+export interface MessageOrigin {
+    /**
+     * 
+     * @type {MessageOriginType}
+     * @memberof MessageOrigin
+     */
+    'type'?: MessageOriginType;
+    /**
+     * 
+     * @type {string}
+     * @memberof MessageOrigin
+     */
+    'date'?: string;
+}
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const MessageOriginType = {
+    User: 'user',
+    HiddenUser: 'hidden_user',
+    Chat: 'chat',
+    Channel: 'channel'
+} as const;
+
+export type MessageOriginType = typeof MessageOriginType[keyof typeof MessageOriginType];
+
+
+/**
+ * 
+ * @export
+ * @interface MessageReactionCountUpdated
+ */
+export interface MessageReactionCountUpdated {
+    /**
+     * 
+     * @type {Chat}
+     * @memberof MessageReactionCountUpdated
+     */
+    'chat'?: Chat;
+    /**
+     * 
+     * @type {number}
+     * @memberof MessageReactionCountUpdated
+     */
+    'messageId'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof MessageReactionCountUpdated
+     */
+    'date'?: string;
+    /**
+     * 
+     * @type {Array<ReactionCount>}
+     * @memberof MessageReactionCountUpdated
+     */
+    'reactions'?: Array<ReactionCount> | null;
+}
+/**
+ * 
+ * @export
+ * @interface MessageReactionUpdated
+ */
+export interface MessageReactionUpdated {
+    /**
+     * 
+     * @type {Chat}
+     * @memberof MessageReactionUpdated
+     */
+    'chat'?: Chat;
+    /**
+     * 
+     * @type {number}
+     * @memberof MessageReactionUpdated
+     */
+    'messageId'?: number;
+    /**
+     * 
+     * @type {User}
+     * @memberof MessageReactionUpdated
+     */
+    'user'?: User;
+    /**
+     * 
+     * @type {Chat}
+     * @memberof MessageReactionUpdated
+     */
+    'actorChat'?: Chat;
+    /**
+     * 
+     * @type {string}
+     * @memberof MessageReactionUpdated
+     */
+    'date'?: string;
+    /**
+     * 
+     * @type {Array<ReactionType>}
+     * @memberof MessageReactionUpdated
+     */
+    'oldReaction'?: Array<ReactionType> | null;
+    /**
+     * 
+     * @type {Array<ReactionType>}
+     * @memberof MessageReactionUpdated
+     */
+    'newReaction'?: Array<ReactionType> | null;
+}
+/**
  * Модель средних затрат
  * @export
  * @interface MonthlyAverageDto
@@ -496,6 +2978,192 @@ export interface MonthlyAverageDto {
      * @memberof MonthlyAverageDto
      */
     'average_month_spent'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface OrderInfo
+ */
+export interface OrderInfo {
+    /**
+     * 
+     * @type {string}
+     * @memberof OrderInfo
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof OrderInfo
+     */
+    'phoneNumber'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof OrderInfo
+     */
+    'email'?: string | null;
+    /**
+     * 
+     * @type {ShippingAddress}
+     * @memberof OrderInfo
+     */
+    'shippingAddress'?: ShippingAddress;
+}
+/**
+ * 
+ * @export
+ * @interface PaidMedia
+ */
+export interface PaidMedia {
+    /**
+     * 
+     * @type {PaidMediaType}
+     * @memberof PaidMedia
+     */
+    'type'?: PaidMediaType;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface PaidMediaInfo
+ */
+export interface PaidMediaInfo {
+    /**
+     * 
+     * @type {number}
+     * @memberof PaidMediaInfo
+     */
+    'starCount'?: number;
+    /**
+     * 
+     * @type {Array<PaidMedia>}
+     * @memberof PaidMediaInfo
+     */
+    'paidMedia'?: Array<PaidMedia> | null;
+}
+/**
+ * 
+ * @export
+ * @interface PaidMediaPurchased
+ */
+export interface PaidMediaPurchased {
+    /**
+     * 
+     * @type {User}
+     * @memberof PaidMediaPurchased
+     */
+    'from'?: User;
+    /**
+     * 
+     * @type {string}
+     * @memberof PaidMediaPurchased
+     */
+    'paidMediaPayload'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const PaidMediaType = {
+    Preview: 'preview',
+    Photo: 'photo',
+    Video: 'video'
+} as const;
+
+export type PaidMediaType = typeof PaidMediaType[keyof typeof PaidMediaType];
+
+
+/**
+ * 
+ * @export
+ * @interface PassportData
+ */
+export interface PassportData {
+    /**
+     * 
+     * @type {Array<EncryptedPassportElement>}
+     * @memberof PassportData
+     */
+    'data'?: Array<EncryptedPassportElement> | null;
+    /**
+     * 
+     * @type {EncryptedCredentials}
+     * @memberof PassportData
+     */
+    'credentials'?: EncryptedCredentials;
+}
+/**
+ * 
+ * @export
+ * @interface PassportFile
+ */
+export interface PassportFile {
+    /**
+     * 
+     * @type {string}
+     * @memberof PassportFile
+     */
+    'fileId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof PassportFile
+     */
+    'fileUniqueId'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof PassportFile
+     */
+    'fileSize'?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof PassportFile
+     */
+    'fileDate'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface PhotoSize
+ */
+export interface PhotoSize {
+    /**
+     * 
+     * @type {string}
+     * @memberof PhotoSize
+     */
+    'fileId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof PhotoSize
+     */
+    'fileUniqueId'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof PhotoSize
+     */
+    'fileSize'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof PhotoSize
+     */
+    'width'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PhotoSize
+     */
+    'height'?: number;
 }
 /**
  * Модель запланированной платы
@@ -546,6 +3214,723 @@ export interface PlannedPaymentDtoPagedList {
      * @memberof PlannedPaymentDtoPagedList
      */
     'total'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface Poll
+ */
+export interface Poll {
+    /**
+     * 
+     * @type {string}
+     * @memberof Poll
+     */
+    'id'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Poll
+     */
+    'question'?: string | null;
+    /**
+     * 
+     * @type {Array<MessageEntity>}
+     * @memberof Poll
+     */
+    'questionEntities'?: Array<MessageEntity> | null;
+    /**
+     * 
+     * @type {Array<PollOption>}
+     * @memberof Poll
+     */
+    'options'?: Array<PollOption> | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Poll
+     */
+    'totalVoterCount'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Poll
+     */
+    'isClosed'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Poll
+     */
+    'isAnonymous'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof Poll
+     */
+    'type'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Poll
+     */
+    'allowsMultipleAnswers'?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof Poll
+     */
+    'correctOptionId'?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Poll
+     */
+    'explanation'?: string | null;
+    /**
+     * 
+     * @type {Array<MessageEntity>}
+     * @memberof Poll
+     */
+    'explanationEntities'?: Array<MessageEntity> | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Poll
+     */
+    'openPeriod'?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Poll
+     */
+    'closeDate'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface PollAnswer
+ */
+export interface PollAnswer {
+    /**
+     * 
+     * @type {string}
+     * @memberof PollAnswer
+     */
+    'pollId'?: string | null;
+    /**
+     * 
+     * @type {Chat}
+     * @memberof PollAnswer
+     */
+    'voterChat'?: Chat;
+    /**
+     * 
+     * @type {User}
+     * @memberof PollAnswer
+     */
+    'user'?: User;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof PollAnswer
+     */
+    'optionIds'?: Array<number> | null;
+}
+/**
+ * 
+ * @export
+ * @interface PollOption
+ */
+export interface PollOption {
+    /**
+     * 
+     * @type {string}
+     * @memberof PollOption
+     */
+    'text'?: string | null;
+    /**
+     * 
+     * @type {Array<MessageEntity>}
+     * @memberof PollOption
+     */
+    'textEntities'?: Array<MessageEntity> | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof PollOption
+     */
+    'voterCount'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface PreCheckoutQuery
+ */
+export interface PreCheckoutQuery {
+    /**
+     * 
+     * @type {string}
+     * @memberof PreCheckoutQuery
+     */
+    'id'?: string | null;
+    /**
+     * 
+     * @type {User}
+     * @memberof PreCheckoutQuery
+     */
+    'from'?: User;
+    /**
+     * 
+     * @type {string}
+     * @memberof PreCheckoutQuery
+     */
+    'currency'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof PreCheckoutQuery
+     */
+    'totalAmount'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof PreCheckoutQuery
+     */
+    'invoicePayload'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof PreCheckoutQuery
+     */
+    'shippingOptionId'?: string | null;
+    /**
+     * 
+     * @type {OrderInfo}
+     * @memberof PreCheckoutQuery
+     */
+    'orderInfo'?: OrderInfo;
+}
+/**
+ * 
+ * @export
+ * @interface ProximityAlertTriggered
+ */
+export interface ProximityAlertTriggered {
+    /**
+     * 
+     * @type {User}
+     * @memberof ProximityAlertTriggered
+     */
+    'traveler'?: User;
+    /**
+     * 
+     * @type {User}
+     * @memberof ProximityAlertTriggered
+     */
+    'watcher'?: User;
+    /**
+     * 
+     * @type {number}
+     * @memberof ProximityAlertTriggered
+     */
+    'distance'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface ReactionCount
+ */
+export interface ReactionCount {
+    /**
+     * 
+     * @type {ReactionType}
+     * @memberof ReactionCount
+     */
+    'type'?: ReactionType;
+    /**
+     * 
+     * @type {number}
+     * @memberof ReactionCount
+     */
+    'totalCount'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface ReactionType
+ */
+export interface ReactionType {
+    /**
+     * 
+     * @type {ReactionTypeKind}
+     * @memberof ReactionType
+     */
+    'type'?: ReactionTypeKind;
+}
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const ReactionTypeKind = {
+    Emoji: 'emoji',
+    CustomEmoji: 'custom_emoji',
+    Paid: 'paid'
+} as const;
+
+export type ReactionTypeKind = typeof ReactionTypeKind[keyof typeof ReactionTypeKind];
+
+
+/**
+ * 
+ * @export
+ * @interface RefundedPayment
+ */
+export interface RefundedPayment {
+    /**
+     * 
+     * @type {string}
+     * @memberof RefundedPayment
+     */
+    'currency'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof RefundedPayment
+     */
+    'totalAmount'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof RefundedPayment
+     */
+    'invoicePayload'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof RefundedPayment
+     */
+    'telegramPaymentChargeId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof RefundedPayment
+     */
+    'providerPaymentChargeId'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface SharedUser
+ */
+export interface SharedUser {
+    /**
+     * 
+     * @type {number}
+     * @memberof SharedUser
+     */
+    'userId'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof SharedUser
+     */
+    'firstName'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof SharedUser
+     */
+    'lastName'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof SharedUser
+     */
+    'username'?: string | null;
+    /**
+     * 
+     * @type {Array<PhotoSize>}
+     * @memberof SharedUser
+     */
+    'photo'?: Array<PhotoSize> | null;
+}
+/**
+ * 
+ * @export
+ * @interface ShippingAddress
+ */
+export interface ShippingAddress {
+    /**
+     * 
+     * @type {string}
+     * @memberof ShippingAddress
+     */
+    'countryCode'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ShippingAddress
+     */
+    'state'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ShippingAddress
+     */
+    'city'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ShippingAddress
+     */
+    'streetLine1'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ShippingAddress
+     */
+    'streetLine2'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ShippingAddress
+     */
+    'postCode'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface ShippingQuery
+ */
+export interface ShippingQuery {
+    /**
+     * 
+     * @type {string}
+     * @memberof ShippingQuery
+     */
+    'id'?: string | null;
+    /**
+     * 
+     * @type {User}
+     * @memberof ShippingQuery
+     */
+    'from'?: User;
+    /**
+     * 
+     * @type {string}
+     * @memberof ShippingQuery
+     */
+    'invoicePayload'?: string | null;
+    /**
+     * 
+     * @type {ShippingAddress}
+     * @memberof ShippingQuery
+     */
+    'shippingAddress'?: ShippingAddress;
+}
+/**
+ * 
+ * @export
+ * @interface Sticker
+ */
+export interface Sticker {
+    /**
+     * 
+     * @type {string}
+     * @memberof Sticker
+     */
+    'fileId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Sticker
+     */
+    'fileUniqueId'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Sticker
+     */
+    'fileSize'?: number | null;
+    /**
+     * 
+     * @type {StickerType}
+     * @memberof Sticker
+     */
+    'type'?: StickerType;
+    /**
+     * 
+     * @type {number}
+     * @memberof Sticker
+     */
+    'width'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Sticker
+     */
+    'height'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Sticker
+     */
+    'isAnimated'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Sticker
+     */
+    'isVideo'?: boolean;
+    /**
+     * 
+     * @type {PhotoSize}
+     * @memberof Sticker
+     */
+    'thumbnail'?: PhotoSize;
+    /**
+     * 
+     * @type {string}
+     * @memberof Sticker
+     */
+    'emoji'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Sticker
+     */
+    'setName'?: string | null;
+    /**
+     * 
+     * @type {TGFile}
+     * @memberof Sticker
+     */
+    'premiumAnimation'?: TGFile;
+    /**
+     * 
+     * @type {MaskPosition}
+     * @memberof Sticker
+     */
+    'maskPosition'?: MaskPosition;
+    /**
+     * 
+     * @type {string}
+     * @memberof Sticker
+     */
+    'customEmojiId'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Sticker
+     */
+    'needsRepainting'?: boolean;
+}
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const StickerType = {
+    Regular: 'regular',
+    Mask: 'mask',
+    CustomEmoji: 'custom_emoji'
+} as const;
+
+export type StickerType = typeof StickerType[keyof typeof StickerType];
+
+
+/**
+ * 
+ * @export
+ * @interface Story
+ */
+export interface Story {
+    /**
+     * 
+     * @type {Chat}
+     * @memberof Story
+     */
+    'chat'?: Chat;
+    /**
+     * 
+     * @type {number}
+     * @memberof Story
+     */
+    'id'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface SuccessfulPayment
+ */
+export interface SuccessfulPayment {
+    /**
+     * 
+     * @type {string}
+     * @memberof SuccessfulPayment
+     */
+    'currency'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof SuccessfulPayment
+     */
+    'totalAmount'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof SuccessfulPayment
+     */
+    'invoicePayload'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof SuccessfulPayment
+     */
+    'subscriptionExpirationDate'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SuccessfulPayment
+     */
+    'isRecurring'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SuccessfulPayment
+     */
+    'isFirstRecurring'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof SuccessfulPayment
+     */
+    'shippingOptionId'?: string | null;
+    /**
+     * 
+     * @type {OrderInfo}
+     * @memberof SuccessfulPayment
+     */
+    'orderInfo'?: OrderInfo;
+    /**
+     * 
+     * @type {string}
+     * @memberof SuccessfulPayment
+     */
+    'telegramPaymentChargeId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof SuccessfulPayment
+     */
+    'providerPaymentChargeId'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface SwitchInlineQueryChosenChat
+ */
+export interface SwitchInlineQueryChosenChat {
+    /**
+     * 
+     * @type {string}
+     * @memberof SwitchInlineQueryChosenChat
+     */
+    'query'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SwitchInlineQueryChosenChat
+     */
+    'allowUserChats'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SwitchInlineQueryChosenChat
+     */
+    'allowBotChats'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SwitchInlineQueryChosenChat
+     */
+    'allowGroupChats'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SwitchInlineQueryChosenChat
+     */
+    'allowChannelChats'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface TGFile
+ */
+export interface TGFile {
+    /**
+     * 
+     * @type {string}
+     * @memberof TGFile
+     */
+    'fileId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof TGFile
+     */
+    'fileUniqueId'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof TGFile
+     */
+    'fileSize'?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof TGFile
+     */
+    'filePath'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface TextQuote
+ */
+export interface TextQuote {
+    /**
+     * 
+     * @type {string}
+     * @memberof TextQuote
+     */
+    'text'?: string | null;
+    /**
+     * 
+     * @type {Array<MessageEntity>}
+     * @memberof TextQuote
+     */
+    'entities'?: Array<MessageEntity> | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof TextQuote
+     */
+    'position'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TextQuote
+     */
+    'isManual'?: boolean;
 }
 /**
  * Модель самых затратных категорий
@@ -615,6 +4000,157 @@ export interface TransactionDtoPagedList {
      * @memberof TransactionDtoPagedList
      */
     'total'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface Update
+ */
+export interface Update {
+    /**
+     * 
+     * @type {number}
+     * @memberof Update
+     */
+    'update_id'?: number;
+    /**
+     * 
+     * @type {Message}
+     * @memberof Update
+     */
+    'message'?: Message;
+    /**
+     * 
+     * @type {Message}
+     * @memberof Update
+     */
+    'editedMessage'?: Message;
+    /**
+     * 
+     * @type {Message}
+     * @memberof Update
+     */
+    'channelPost'?: Message;
+    /**
+     * 
+     * @type {Message}
+     * @memberof Update
+     */
+    'editedChannelPost'?: Message;
+    /**
+     * 
+     * @type {BusinessConnection}
+     * @memberof Update
+     */
+    'businessConnection'?: BusinessConnection;
+    /**
+     * 
+     * @type {Message}
+     * @memberof Update
+     */
+    'businessMessage'?: Message;
+    /**
+     * 
+     * @type {Message}
+     * @memberof Update
+     */
+    'editedBusinessMessage'?: Message;
+    /**
+     * 
+     * @type {BusinessMessagesDeleted}
+     * @memberof Update
+     */
+    'deletedBusinessMessages'?: BusinessMessagesDeleted;
+    /**
+     * 
+     * @type {MessageReactionUpdated}
+     * @memberof Update
+     */
+    'messageReaction'?: MessageReactionUpdated;
+    /**
+     * 
+     * @type {MessageReactionCountUpdated}
+     * @memberof Update
+     */
+    'messageReactionCount'?: MessageReactionCountUpdated;
+    /**
+     * 
+     * @type {InlineQuery}
+     * @memberof Update
+     */
+    'inlineQuery'?: InlineQuery;
+    /**
+     * 
+     * @type {ChosenInlineResult}
+     * @memberof Update
+     */
+    'chosenInlineResult'?: ChosenInlineResult;
+    /**
+     * 
+     * @type {CallbackQuery}
+     * @memberof Update
+     */
+    'callbackQuery'?: CallbackQuery;
+    /**
+     * 
+     * @type {ShippingQuery}
+     * @memberof Update
+     */
+    'shippingQuery'?: ShippingQuery;
+    /**
+     * 
+     * @type {PreCheckoutQuery}
+     * @memberof Update
+     */
+    'preCheckoutQuery'?: PreCheckoutQuery;
+    /**
+     * 
+     * @type {PaidMediaPurchased}
+     * @memberof Update
+     */
+    'purchasedPaidMedia'?: PaidMediaPurchased;
+    /**
+     * 
+     * @type {Poll}
+     * @memberof Update
+     */
+    'poll'?: Poll;
+    /**
+     * 
+     * @type {PollAnswer}
+     * @memberof Update
+     */
+    'pollAnswer'?: PollAnswer;
+    /**
+     * 
+     * @type {ChatMemberUpdated}
+     * @memberof Update
+     */
+    'myChatMember'?: ChatMemberUpdated;
+    /**
+     * 
+     * @type {ChatMemberUpdated}
+     * @memberof Update
+     */
+    'chatMember'?: ChatMemberUpdated;
+    /**
+     * 
+     * @type {ChatJoinRequest}
+     * @memberof Update
+     */
+    'chatJoinRequest'?: ChatJoinRequest;
+    /**
+     * 
+     * @type {ChatBoostUpdated}
+     * @memberof Update
+     */
+    'chatBoost'?: ChatBoostUpdated;
+    /**
+     * 
+     * @type {ChatBoostRemoved}
+     * @memberof Update
+     */
+    'removedChatBoost'?: ChatBoostRemoved;
 }
 /**
  * Запрос на обновление запланированного платежа
@@ -743,17 +4279,96 @@ export interface UpdateTransactionCommand {
     'date'?: string;
 }
 /**
+ * 
+ * @export
+ * @interface User
+ */
+export interface User {
+    /**
+     * 
+     * @type {number}
+     * @memberof User
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof User
+     */
+    'isBot'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    'firstName'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    'lastName'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    'username'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    'languageCode'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof User
+     */
+    'isPremium'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof User
+     */
+    'addedToAttachmentMenu'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof User
+     */
+    'canJoinGroups'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof User
+     */
+    'canReadAllGroupMessages'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof User
+     */
+    'supportsInlineQueries'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof User
+     */
+    'canConnectToBusiness'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof User
+     */
+    'hasMainWebApp'?: boolean;
+}
+/**
  * Модель пользователя
  * @export
  * @interface UserDto
  */
 export interface UserDto {
-    /**
-     * Идентификатор
-     * @type {string}
-     * @memberof UserDto
-     */
-    'id'?: string;
     /**
      * Электронная почта
      * @type {string}
@@ -765,7 +4380,330 @@ export interface UserDto {
      * @type {string}
      * @memberof UserDto
      */
-    'createdAt'?: string;
+    'created_at'?: string;
+    /**
+     * Привязал Телеграм
+     * @type {boolean}
+     * @memberof UserDto
+     */
+    'linked_telegram'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface UsersShared
+ */
+export interface UsersShared {
+    /**
+     * 
+     * @type {number}
+     * @memberof UsersShared
+     */
+    'requestId'?: number;
+    /**
+     * 
+     * @type {Array<SharedUser>}
+     * @memberof UsersShared
+     */
+    'users'?: Array<SharedUser> | null;
+}
+/**
+ * 
+ * @export
+ * @interface Venue
+ */
+export interface Venue {
+    /**
+     * 
+     * @type {Location}
+     * @memberof Venue
+     */
+    'location'?: Location;
+    /**
+     * 
+     * @type {string}
+     * @memberof Venue
+     */
+    'title'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Venue
+     */
+    'address'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Venue
+     */
+    'foursquareId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Venue
+     */
+    'foursquareType'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Venue
+     */
+    'googlePlaceId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Venue
+     */
+    'googlePlaceType'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface Video
+ */
+export interface Video {
+    /**
+     * 
+     * @type {string}
+     * @memberof Video
+     */
+    'fileId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Video
+     */
+    'fileUniqueId'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Video
+     */
+    'fileSize'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Video
+     */
+    'width'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Video
+     */
+    'height'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Video
+     */
+    'duration'?: number;
+    /**
+     * 
+     * @type {PhotoSize}
+     * @memberof Video
+     */
+    'thumbnail'?: PhotoSize;
+    /**
+     * 
+     * @type {Array<PhotoSize>}
+     * @memberof Video
+     */
+    'cover'?: Array<PhotoSize> | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Video
+     */
+    'startTimestamp'?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Video
+     */
+    'fileName'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Video
+     */
+    'mimeType'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface VideoChatEnded
+ */
+export interface VideoChatEnded {
+    /**
+     * 
+     * @type {number}
+     * @memberof VideoChatEnded
+     */
+    'duration'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface VideoChatParticipantsInvited
+ */
+export interface VideoChatParticipantsInvited {
+    /**
+     * 
+     * @type {Array<User>}
+     * @memberof VideoChatParticipantsInvited
+     */
+    'users'?: Array<User> | null;
+}
+/**
+ * 
+ * @export
+ * @interface VideoChatScheduled
+ */
+export interface VideoChatScheduled {
+    /**
+     * 
+     * @type {string}
+     * @memberof VideoChatScheduled
+     */
+    'startDate'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface VideoNote
+ */
+export interface VideoNote {
+    /**
+     * 
+     * @type {string}
+     * @memberof VideoNote
+     */
+    'fileId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof VideoNote
+     */
+    'fileUniqueId'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof VideoNote
+     */
+    'fileSize'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof VideoNote
+     */
+    'length'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof VideoNote
+     */
+    'duration'?: number;
+    /**
+     * 
+     * @type {PhotoSize}
+     * @memberof VideoNote
+     */
+    'thumbnail'?: PhotoSize;
+}
+/**
+ * 
+ * @export
+ * @interface Voice
+ */
+export interface Voice {
+    /**
+     * 
+     * @type {string}
+     * @memberof Voice
+     */
+    'fileId'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Voice
+     */
+    'fileUniqueId'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Voice
+     */
+    'fileSize'?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof Voice
+     */
+    'duration'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof Voice
+     */
+    'mimeType'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface WebAppData
+ */
+export interface WebAppData {
+    /**
+     * 
+     * @type {string}
+     * @memberof WebAppData
+     */
+    'data'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof WebAppData
+     */
+    'buttonText'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface WebAppInfo
+ */
+export interface WebAppInfo {
+    /**
+     * 
+     * @type {string}
+     * @memberof WebAppInfo
+     */
+    'url'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface WriteAccessAllowed
+ */
+export interface WriteAccessAllowed {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof WriteAccessAllowed
+     */
+    'fromRequest'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof WriteAccessAllowed
+     */
+    'webAppName'?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof WriteAccessAllowed
+     */
+    'fromAttachmentMenu'?: boolean;
 }
 
 /**
@@ -2464,6 +6402,118 @@ export class PlannedPaymentApi extends BaseAPI {
 
 
 /**
+ * TelegramApi - axios parameter creator
+ * @export
+ */
+export const TelegramApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Обработчик вебхука
+         * @param {Update} [update] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiBotPost: async (update?: Update, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/bot`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(update, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * TelegramApi - functional programming interface
+ * @export
+ */
+export const TelegramApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = TelegramApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Обработчик вебхука
+         * @param {Update} [update] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiBotPost(update?: Update, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiBotPost(update, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['TelegramApi.apiBotPost']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * TelegramApi - factory interface
+ * @export
+ */
+export const TelegramApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = TelegramApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Обработчик вебхука
+         * @param {Update} [update] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiBotPost(update?: Update, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.apiBotPost(update, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * TelegramApi - object-oriented interface
+ * @export
+ * @class TelegramApi
+ * @extends {BaseAPI}
+ */
+export class TelegramApi extends BaseAPI {
+    /**
+     * 
+     * @summary Обработчик вебхука
+     * @param {Update} [update] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TelegramApi
+     */
+    public apiBotPost(update?: Update, options?: RawAxiosRequestConfig) {
+        return TelegramApiFp(this.configuration).apiBotPost(update, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * TransactionApi - axios parameter creator
  * @export
  */
@@ -2899,6 +6949,44 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
     return {
         /**
          * 
+         * @summary Привязать пользователя Телеграм
+         * @param {LinkUserToTelegramCommand} [linkUserToTelegramCommand] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersLinkPost: async (linkUserToTelegramCommand?: LinkUserToTelegramCommand, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/users/link`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(linkUserToTelegramCommand, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Получить профиль текущего пользователя
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2943,6 +7031,19 @@ export const UserApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Привязать пользователя Телеграм
+         * @param {LinkUserToTelegramCommand} [linkUserToTelegramCommand] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async apiUsersLinkPost(linkUserToTelegramCommand?: LinkUserToTelegramCommand, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiUsersLinkPost(linkUserToTelegramCommand, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['UserApi.apiUsersLinkPost']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Получить профиль текущего пользователя
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2965,6 +7066,16 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
     return {
         /**
          * 
+         * @summary Привязать пользователя Телеграм
+         * @param {LinkUserToTelegramCommand} [linkUserToTelegramCommand] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        apiUsersLinkPost(linkUserToTelegramCommand?: LinkUserToTelegramCommand, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.apiUsersLinkPost(linkUserToTelegramCommand, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Получить профиль текущего пользователя
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2982,6 +7093,18 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
  * @extends {BaseAPI}
  */
 export class UserApi extends BaseAPI {
+    /**
+     * 
+     * @summary Привязать пользователя Телеграм
+     * @param {LinkUserToTelegramCommand} [linkUserToTelegramCommand] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    public apiUsersLinkPost(linkUserToTelegramCommand?: LinkUserToTelegramCommand, options?: RawAxiosRequestConfig) {
+        return UserApiFp(this.configuration).apiUsersLinkPost(linkUserToTelegramCommand, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @summary Получить профиль текущего пользователя

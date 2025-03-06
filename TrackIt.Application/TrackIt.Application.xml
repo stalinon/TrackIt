@@ -299,11 +299,6 @@
                 Модель пользователя
             </summary>
         </member>
-        <member name="P:TrackIt.Application.DTOs.UserDto.Id">
-            <summary>
-                Идентификатор
-            </summary>
-        </member>
         <member name="P:TrackIt.Application.DTOs.UserDto.Email">
             <summary>
                 Электронная почта
@@ -312,6 +307,11 @@
         <member name="P:TrackIt.Application.DTOs.UserDto.CreatedAt">
             <summary>
                 Дата создания
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.DTOs.UserDto.LinkedTelegram">
+            <summary>
+                Привязал Телеграм
             </summary>
         </member>
         <member name="T:TrackIt.Application.Features.Analytics.Queries.GetBalanceQuery">
@@ -959,6 +959,29 @@
         <member name="M:TrackIt.Application.Features.Transactions.Queries.GetTransactionsQueryHandler.Handle(TrackIt.Application.Features.Transactions.Queries.GetTransactionsQuery,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
+        <member name="T:TrackIt.Application.Features.Users.Commands.LinkUserToTelegramCommand">
+            <summary>
+                Прикрепить пользователя к Телеграм
+            </summary>
+        </member>
+        <member name="P:TrackIt.Application.Features.Users.Commands.LinkUserToTelegramCommand.Code">
+            <summary>
+                Код для привязки
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Features.Users.Commands.LinkUserToTelegramCommandHandler">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Users.Commands.LinkUserToTelegramCommand" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Users.Commands.LinkUserToTelegramCommandHandler.#ctor(TrackIt.Application.Interfaces.IUserLinkService,TrackIt.Application.Interfaces.IUserContext)">
+            <summary>
+                Обработчик команды <see cref="T:TrackIt.Application.Features.Users.Commands.LinkUserToTelegramCommand" />
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Features.Users.Commands.LinkUserToTelegramCommandHandler.Handle(TrackIt.Application.Features.Users.Commands.LinkUserToTelegramCommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
         <member name="T:TrackIt.Application.Interfaces.IBudgetService">
             <summary>
                 Сервис лимитов на бюджет
@@ -1158,6 +1181,11 @@
                 Лимиты бюджета
             </summary>
         </member>
+        <member name="P:TrackIt.Application.Interfaces.IUnitOfWork.TelegramUsers">
+            <summary>
+                Пользователи Телеграма
+            </summary>
+        </member>
         <member name="M:TrackIt.Application.Interfaces.IUnitOfWork.SaveChangesAsync">
             <summary>
                 Сохранить изменения
@@ -1201,6 +1229,26 @@
         <member name="M:TrackIt.Application.Interfaces.IUserContext.GetOrCreateCurrentUserAsync">
             <summary>
                 Создать пользователя, если его нет в БД
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IUserContext.AuthorizeTelegramUserAsync(System.Int64)">
+            <summary>
+                Авторизовать пользователя телеграма
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Interfaces.IUserLinkService">
+            <summary>
+                Сервис линкования аккаунта к телеграмму
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IUserLinkService.GenerateLinkCode(System.Int64)">
+            <summary>
+                Генерация одноразового кода для привязки
+            </summary>
+        </member>
+        <member name="M:TrackIt.Application.Interfaces.IUserLinkService.ConfirmLinkAsync(System.String,System.String)">
+            <summary>
+                Проверка кода привязки
             </summary>
         </member>
         <member name="T:TrackIt.Application.Interfaces.IUserService">
@@ -1282,6 +1330,11 @@
         <member name="T:TrackIt.Application.Interfaces.Repositories.IPlannedPaymentRepository">
             <summary>
                 Интерфейс репозитория для работы с платежами.
+            </summary>
+        </member>
+        <member name="T:TrackIt.Application.Interfaces.Repositories.ITelegramUserRepository">
+            <summary>
+                Репозиторий пользователя Телеграма
             </summary>
         </member>
         <member name="T:TrackIt.Application.Interfaces.Repositories.ITransactionRepository">
