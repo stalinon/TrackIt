@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TrackIt.Application.Interfaces;
-using TrackIt.Infrastructure.Configurations;
 using TrackIt.Infrastructure.Persistence;
 using TrackIt.Infrastructure.Services;
 
@@ -23,8 +22,6 @@ public static class InfrastructureServiceExtensions
         this IServiceCollection services, 
         IConfiguration configuration)
     {
-        services.Configure<AppSettings>(configuration.GetSection(nameof(AppSettings)));
-        
         // Получаем строку подключения из конфигурации
         var connectionString = configuration.GetConnectionString("DefaultConnection");
 
@@ -34,7 +31,6 @@ public static class InfrastructureServiceExtensions
             options.UseNpgsql(connectionString);
         });
         
-        services.AddTransient<DatabaseSeeder>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IUserLinkService, UserLinkService>();
@@ -62,19 +58,8 @@ public static class InfrastructureServiceExtensions
     {
         app.UseHangfireDashboard();
         
-        app.Services.ExecuteDatabaseSeed();
+        app.Services.ApplyMigrations<ApplicationDbContext>();
         return app;
-    }
-
-    private static void ExecuteDatabaseSeed(this IServiceProvider serviceProvider)
-    {
-        serviceProvider.ApplyMigrations<ApplicationDbContext>();
-        
-        // Запуск DatabaseSeeder при старте приложения
-        using var scope = serviceProvider.CreateScope();
-        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-        var seeder = scope.ServiceProvider.GetRequiredService<DatabaseSeeder>();
-        seeder.Seed(context);
     }
     
     private static void ApplyMigrations<T>(this IServiceProvider serviceProvider) where T : DbContext
