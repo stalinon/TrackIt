@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FloatButton, Modal, Input, message, Timeline } from "antd";
-import { SendOutlined } from "@ant-design/icons";
+import { SendOutlined, CheckCircleOutlined } from "@ant-design/icons";
 import { QRCode } from "antd";
 import { UserApi } from "../../api/generated";
 import api from "../../api/api";
@@ -10,11 +10,13 @@ const userApi = new UserApi(undefined, api.defaults.baseURL, api);
 const LinkTelegram: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const [code, setCode] = useState<string>("");
+  const [isLinked, setIsLinked] = useState(false); // Состояние успешной привязки
 
   const handleSetCode = async () => {
     try {
       await userApi.apiUsersLinkPost({ code });
       message.success("Code successfully set");
+      setIsLinked(true); // Успешная привязка
       setVisible(false);
     } catch (error) {
       message.error("Couldn't set Telegram code");
@@ -26,7 +28,10 @@ const LinkTelegram: React.FC = () => {
       <FloatButton
         icon={<SendOutlined />}
         type="primary"
-        onClick={() => setVisible(true)}
+        onClick={() => {
+          setVisible(true);
+          setIsLinked(false); // Сбрасываем состояние при открытии
+        }}
         tooltip={<div>Link Telegram</div>}
       />
 
@@ -34,8 +39,9 @@ const LinkTelegram: React.FC = () => {
         title="Linking Telegram"
         open={visible}
         onCancel={() => setVisible(false)}
-        onOk={handleSetCode} // Выставление кода
-        okText="Send code"
+        onOk={isLinked ? () => setVisible(false) : handleSetCode} // Если успешно, закрываем
+        okText={isLinked ? "Close" : "Send code"} // Меняем текст кнопки
+        cancelButtonProps={{ style: { display: isLinked ? "none" : "inline-block" } }} // Прячем "Cancel"
       >
         <br />
         <Timeline
@@ -67,7 +73,13 @@ const LinkTelegram: React.FC = () => {
               ),
             },
             {
-              children: (
+              children: isLinked ? ( // Если успешно, показываем галочку и текст
+                <div style={{ textAlign: "center", fontSize: 16, color: "green" }}>
+                  <CheckCircleOutlined style={{ fontSize: 32, marginBottom: 8 }} />
+                  <br />
+                  Successfully linked Telegram
+                </div>
+              ) : (
                 <>
                   Enter code here:
                   <Input
